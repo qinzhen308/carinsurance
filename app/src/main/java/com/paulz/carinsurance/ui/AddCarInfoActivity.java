@@ -151,7 +151,7 @@ public class AddCarInfoActivity extends BaseActivity {
     private void init() {
 
         SpannableString sb=new SpannableString("* 目前只有“人保”支持按揭车报价");
-        sb.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.main)),7,9, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        sb.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.main)),0,sb.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvDaikuanTip.setText(sb);
     }
     private void setExtra(){

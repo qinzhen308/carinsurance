@@ -256,14 +256,14 @@ public class SelectCarModelActivity extends BaseActivity {
         isResultMode=false;
         DialogUtil.showDialog(lodDialog);
         ParamBuilder params = new ParamBuilder();
-//        HttpRequester requester = new HttpRequester();
+        HttpRequester requester = new HttpRequester();
         String url=null;
         if(getIntent().getBooleanExtra("is_customer",false)){
             url=AppUrls.getInstance().URL_CUSTOMER_SEARCH_CAR_MODEL;
         }else {
             url=AppUrls.getInstance().URL_SEARCH_CAR_MODEL;
         }
-        NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), url), new NetworkWorker.ICallback() {
+        NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(), url), new NetworkWorker.ICallback() {
             @Override
             public void onResponse(int status, String result) {
                 if (!isFinishing()) DialogUtil.dismissDialog(lodDialog);
@@ -282,7 +282,7 @@ public class SelectCarModelActivity extends BaseActivity {
                     }
                 }
             }
-        });
+        },requester, DESUtil.SECRET_DES);
     }
 
 
