@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popwindow_lv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popwindow_bg"
+    android:choiceMode="singleChoice"
+    android:divider="#ff343434"
+    android:dividerHeight="1.0dip"
+    android:listSelector="@drawable/transparent"
+    android:scrollbars="none" />

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical" >
+
+
+    <com.paulz.carinsurance.view.PageSlidingIndicator
+        android:id="@+id/page_indicator_interal"
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:background="@color/white"
+        android:textSize="14sp"
+        app:indicatorColor="@color/main"
+        app:tabTextSelectedColor="@color/main"
+        app:indicatorHeight="2.5dip" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/integral_viewPager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:flipInterval="30"
+        android:layout_marginTop="10dp"
+        android:persistentDrawingCache="animation" />
+
+</LinearLayout>

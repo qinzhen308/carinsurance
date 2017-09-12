@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/layout_order_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:scaleType="fitXY"
+                />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:hint="订单详情"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:drawableRight="@drawable/arr_big"
+                android:drawablePadding="5dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_step1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:layout_marginTop="1dp"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="1"
+                android:background="@drawable/shape_circle_orange"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/tv_step1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="提交保险公司审核"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_step2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="2"
+                android:background="@drawable/shape_circle_orange"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/tv_step2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="提交保险公司审核"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_step3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="3"
+                android:background="@drawable/shape_circle_orange"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/tv_step3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="提交保险公司审核"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_describ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+
+            <TextView
+                android:id="@+id/tv_describ1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+            <TextView
+                android:id="@+id/tv_describ2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/btn_orange"
+            android:layout_margin="15dp"
+            android:textColor="@color/btn_white_orange"
+            android:text="下一步"
+            android:gravity="center"
+            />
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>

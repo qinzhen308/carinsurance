@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/layout_module1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/text_grey"
+            android:text="输入车辆识别代码（VIN）"
+            />
+
+        <com.paulz.carinsurance.view.UpperCaseEditText
+            android:id="@+id/et_vin"
+            android:layout_width="match_parent"
+            android:layout_height='wrap_content'
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_search"
+            android:gravity="left|center_vertical"
+            android:hint="请输入车辆识别代码（VIN）"
+            android:maxLines="1"
+            android:inputType="textCapCharacters"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:maxLength="17"
+            android:digits="1234567890WERTYUPASDFGHJKLZXCVBNMwertyupasdfghjklzxcvbnm"
+            android:textColor="@color/text_grey"
+            android:textColorHint="@color/text_grey_french2"
+            android:textSize="@dimen/text_size_small" />
+
+        <TextView
+            android:id="@+id/btn_select_date"
+            android:layout_width="match_parent"
+            android:layout_height='wrap_content'
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_search"
+            android:gravity="left|center_vertical"
+            android:hint="请选择注册日期"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:textColor="@color/text_grey"
+            android:textColorHint="@color/text_grey_french2"
+            android:visibility="gone"
+            android:textSize="@dimen/text_size_small" />
+
+
+        <TextView
+            android:id="@+id/btn_search"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/btn_orange"
+            android:layout_margin="15dp"
+            android:textColor="@color/btn_white_orange"
+            android:text="查找车型"
+            android:gravity="center"
+            />
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="@dimen/text_size_small"
+        android:textColor="@color/text_grey_french1"
+        android:visibility="gone"
+        android:text="根据VIN码识别出的车型，请选择："
+        />
+
+
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:dividerHeight="1dp"
+        android:visibility="gone"
+        android:divider="@color/main_bg"
+        />
+
+    <View style="@style/divider_horizontal_grey2"/>
+
+
+    <TextView
+        android:id="@+id/btn_other_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/base_blue"
+        android:visibility="gone"
+        android:text="列表中找不到对应的车型，尝试精确查找"
+        />
+
+
+
+</LinearLayout>

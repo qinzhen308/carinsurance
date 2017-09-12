@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:id="@+id/tv_oder"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawableRight="@drawable/arr_big"
+            android:gravity="center_vertical"
+            android:text="订单号：139393993939393939"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+        <View style="@style/divider_horizontal_grey" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:textColor="@color/text_grey_french1"
+            android:textSize="@dimen/text_size" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/tv_name"
+            android:layout_marginTop="7dp"
+            android:text="已提现"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_name"
+            android:layout_below="@+id/tv_name"
+            android:layout_marginTop="7dp"
+            android:drawablePadding="10dp"
+            android:text="+14314"
+            android:textColor="@color/main"
+            android:textSize="@dimen/text_size" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="10dp"
+            android:text="2010-10-10 13:20"
+            android:textColor="@color/text_grey_french1"
+            android:textSize="@dimen/text_size" />
+
+
+    </RelativeLayout>
+</LinearLayout>

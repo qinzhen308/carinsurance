@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="第三者责任险"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/btn_ignore"
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:layout_marginRight="10dp"
+        android:textSize="@dimen/text_size_small"
+        android:textColor="@color/main"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        />
+
+
+    <TextView
+        android:id="@+id/btn_fuck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/arr_big"
+        android:gravity="center_vertical|right"
+        android:hint="点击选择"
+        android:drawablePadding="5dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/text_grey"
+        android:textColorHint="@color/text_grey_french2"
+        android:textSize="@dimen/text_size" />
+
+</LinearLayout>
+
+
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:id="@+id/layout_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_height"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改手机号"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:text="132131"
+            android:drawableRight="@drawable/arr_big"
+            android:textColor="@color/text_grey_french2"
+            android:textSize="@dimen/text_size" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/layout_login_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_height"
+        android:layout_marginTop="12dp"
+        android:background="@color/white"
+        android:drawablePadding="8dp"
+        android:drawableRight="@drawable/arr_big"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="修改登录密码"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/layout_withdraw_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_height"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:drawablePadding="8dp"
+        android:drawableRight="@drawable/arr_big"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="修改提现密码"
+        android:textColor="@color/text_grey"
+        android:textSize="@dimen/text_size" />
+
+
+</LinearLayout>
+

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_height"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提现金额"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+
+        <EditText
+            android:id="@+id/et_money"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:maxLines="1"
+            android:inputType="numberDecimal"
+            android:hint="请输入提现金额"
+            android:textColorHint="@color/text_grey_french2"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_height"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提现密码"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+
+        <EditText
+            android:id="@+id/et_pwd"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:hint="请输入提现密码"
+            android:textColorHint="@color/text_grey_french2"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_height"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="银行卡"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+
+        <TextView
+            android:id="@+id/btn_bank_card"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:hint="请选择银行卡"
+            android:textColorHint="@color/text_grey_french2"
+            android:background="@null"
+            android:drawableRight="@drawable/arr_big"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/text_grey_french2"
+            android:textSize="@dimen/text_size" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_height"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前绑定手机号"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:hint="还未绑定"
+            android:textColorHint="@color/text_grey_french2"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/text_grey_french2"
+            android:textSize="@dimen/text_size" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_height"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+
+        <EditText
+            android:id="@+id/et_captcha"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:hint="输入验证码"
+            android:textColorHint="@color/text_grey_french2"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+        <TextView
+            android:id="@+id/btn_get_captcha"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_orange"
+            android:gravity="center"
+            android:text="获取验证码"
+            android:textColor="@color/btn_white_orange"
+            android:ems="6"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="@dimen/text_size_small" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/btn_orange"
+        android:layout_margin="15dp"
+        android:textColor="@color/btn_white_orange"
+        android:text="立即提现"
+        android:gravity="center"
+        />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <TextView
+            android:id="@+id/btn_forget_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:text="忘记提现密码？"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/base_blue"
+            android:layout_marginRight="20dp"
+            />
+
+
+        <TextView
+            android:id="@+id/btn_change_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:text="更换手机？"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/base_blue"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+

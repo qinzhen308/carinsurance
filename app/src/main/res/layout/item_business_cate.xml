@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tv_cate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="车船税AV发生尽快发时间来发神经理"
+            android:textColor="@color/text_grey_french1"
+            android:layout_marginRight="2dp"
+            android:layout_toLeftOf="@+id/tv_value"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/text_size" />
+
+
+
+        <TextView
+            android:id="@+id/tv_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="投保"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/text_grey_french1"
+            android:textSize="@dimen/text_size" />
+
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawablePadding="5dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical|right"
+            android:text="a123213"
+            android:layout_centerVertical="true"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

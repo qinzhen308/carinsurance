@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="投保城市"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/btn_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:hint="选择投保城市"
+                android:drawablePadding="5dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="投保区县（选填）"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/btn_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:drawablePadding="5dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/shape_line_orange"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="车辆信息"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/btn_get_effective_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获取生效日期"
+                android:layout_marginRight="10dp"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/main"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/bg_rectangle_strake_orange_no_corner"
+                android:visibility="gone"
+                />
+
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="交强险/车船税"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <CheckBox
+                android:id="@+id/cb_force_and_car"
+                style="@style/CustomCheckboxTheme_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:layout_marginRight="10dp"
+                 />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_force"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="生效日期"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/btn_effective_date1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:hint="点击选择"
+                android:drawablePadding="5dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="商业险"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <CheckBox
+                android:id="@+id/cb_business"
+                style="@style/CustomCheckboxTheme_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:layout_marginRight="10dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_business"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="生效日期"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/btn_effective_date2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:hint="点击选择"
+                android:drawablePadding="5dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/label_business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/shape_line_orange"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:text="商业险套餐"
+            android:textColor="@color/text_grey_french1"
+            android:textSize="@dimen/text_size" />
+
+       <com.paulz.carinsurance.view.ListViewInScrollView
+           android:id="@+id/listview"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:dividerHeight="1dp"
+           android:divider="@null"
+           />
+
+
+
+
+
+        <TextView
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/btn_orange"
+            android:gravity="center"
+            android:text="下一步"
+            android:textColor="@color/btn_white_orange" />
+
+    </LinearLayout>
+</ScrollView>

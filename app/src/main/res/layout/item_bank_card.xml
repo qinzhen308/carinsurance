@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_rectangle_solid_white"
+    >
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/user2"
+        />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_grey"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="name"
+        android:textSize="@dimen/text_size"
+        android:layout_toRightOf="@+id/iv_icon"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_card_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_grey"
+        android:drawablePadding="10dp"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginTop="15dp"
+        android:text="1321313"
+        android:textSize="@dimen/text_size_small"
+        android:layout_alignLeft="@+id/tv_name"
+        />
+
+
+
+</RelativeLayout>

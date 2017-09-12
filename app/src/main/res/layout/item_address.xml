@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_grey"
+        android:text="name"
+        android:textSize="@dimen/text_size"
+        />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_grey"
+        android:text="13125123"
+        android:textSize="@dimen/text_size"
+        android:layout_toRightOf="@+id/tv_name"
+        android:layout_marginLeft="20dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_grey"
+        android:drawablePadding="10dp"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginTop="10dp"
+        android:text="1321313"
+        android:textSize="@dimen/text_size_small"
+        android:layout_alignLeft="@+id/tv_name"
+        />
+
+    <View
+        style="@style/divider_horizontal_grey"
+        android:layout_below="@+id/tv_address"
+        android:layout_marginTop="10dp"
+        />
+
+
+    <TextView
+        android:id="@+id/btn_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_grey"
+        android:drawablePadding="10dp"
+        android:layout_below="@+id/tv_address"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:layout_marginTop="25dp"
+        android:text="1321313"
+        android:gravity="center"
+        android:textSize="@dimen/text_size"
+        android:drawableLeft="@drawable/checkbox_address"
+        />
+
+
+
+    <TextView
+        android:id="@+id/btn_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_grey"
+        android:text="编辑"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="@dimen/text_size"
+        android:layout_marginLeft="10dp"
+        android:layout_alignTop="@+id/btn_default"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_rectangle_strake_grey_no_coner"
+        android:paddingLeft="12dp"
+        android:gravity="center_vertical"
+        android:paddingRight="12dp"
+        />
+
+    <TextView
+        android:id="@+id/btn_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="@color/text_grey"
+        android:text="删除"
+        android:textSize="@dimen/text_size"
+        android:layout_alignTop="@+id/btn_default"
+        android:background="@drawable/bg_rectangle_strake_grey_no_coner"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:gravity="center_vertical"
+        android:layout_toLeftOf="@+id/btn_edit"
+
+        />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="orderFilter">
+        <item>全部订单</item>
+        <item>待付款</item>
+        <item>待发货</item>
+        <item>待收货</item>
+        <item>已完成</item>
+        <item>待评论</item>
+        <item>已取消订单</item>
+    </string-array>
+    <string-array name="orderFilter_value">
+        <item>""</item>
+        <item>state_new</item>
+        <item>state_pay</item>
+        <item>state_send</item>
+        <item>state_success</item>
+        <item>state_noeval</item>
+        <item>state_cancel</item>
+    </string-array>
+    <string-array name="emails">
+        <item>163.com</item>
+        <item>126.com</item>
+        <item>qq.com</item>
+        <item>gmail.com</item>
+        <item>sina.com</item>
+        <item>sohu.com</item>
+        <item>yahoo.com</item>
+        <item>hotmail.com</item>
+    </string-array>
+    <string-array name="feedback_type">
+        <item>投诉</item>
+        <item>举报</item>
+        <item>建议</item>
+        <item>售后</item>
+        <item>求购</item>
+        <item>商家留言</item>
+    </string-array>
+    <string-array name="refound_type">
+        <item>改买其他商品</item>
+        <item>改用其他配送方式</item>
+        <item>从其他店铺购买</item>
+        <item>其他原因</item>
+    </string-array>
+
+
+
+    <string-array name="word_abcd">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+
+    <string-array name="province_short">
+        <item>渝</item>
+        <item>川</item>
+        <item>京</item>
+        <item>沪</item>
+        <item>浙</item>
+        <item>苏</item>
+        <item>粤</item>
+        <item>鲁</item>
+        <item>晋</item>
+        <item>冀</item>
+        <item>豫</item>
+        <item>辽</item>
+        <item>吉</item>
+        <item>黑</item>
+        <item>皖</item>
+        <item>鄂</item>
+        <item>津</item>
+        <item>贵</item>
+        <item>云</item>
+        <item>桂</item>
+        <item>琼</item>
+        <item>青</item>
+        <item>新</item>
+        <item>藏</item>
+        <item>蒙</item>
+        <item>宁</item>
+        <item>甘</item>
+        <item>陕</item>
+        <item>闽</item>
+        <item>赣</item>
+        <item>湘</item>
+    </string-array>
+
+
+</resources>

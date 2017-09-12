@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/shape_line_orange"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="客户信息"
+            android:textColor="@color/text_grey_french1"
+            android:textSize="@dimen/text_size" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="客户姓名"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:hint="请输入客户姓名"
+                android:maxLength="10"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机号码"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:hint="请输入手机号码"
+                android:inputType="number"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="身份证号"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/et_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:digits="1234567890Xx"
+                android:gravity="center_vertical|right"
+                android:hint="请输入身份证号（选填）"
+                android:inputType="text"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="客户生日"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/tv_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:hint="请选择客户生日（选填）"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="备注"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/et_remark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="left|top"
+                android:hint="请填写备注（选填）"
+                android:lines="4"
+                android:padding="20dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size_small" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/btn_orange"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/btn_white_orange" />
+
+        <TextView
+            android:id="@+id/btn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_orange"
+            android:gravity="center"
+            android:text="删除"
+            android:visibility="gone"
+            android:textColor="@color/btn_white_orange" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/main_color"
+        android:gravity="center"
+        android:text="首页"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.paulz.carinsurance.view.banner.AutoScollBanner
+                android:id="@+id/banner_view"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="4"
+                    android:gravity="right"
+                    android:text="车牌"
+                    android:textColor="@color/text_grey"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_car_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_car_number"
+                    android:gravity="center"
+                    android:minWidth="50dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/main"
+                    android:textSize="12sp" />
+
+
+                <com.paulz.carinsurance.view.UpperCaseEditText
+                    android:id="@+id/et_car_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:digits="1234567890QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"
+                    android:hint="请输入车牌号"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="5"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:gravity="right"
+                    android:text="未上牌"
+                    android:textColor="@color/text_grey_french1"
+                    android:textSize="12sp" />
+
+                <CheckBox
+                    android:id="@+id/check_box"
+                    style="@style/CustomCheckboxTheme_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="8dp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="4"
+                    android:gravity="right"
+                    android:text="姓名"
+                    android:textColor="@color/text_grey"
+                    android:textSize="14sp" />
+
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="请输入姓名"
+                    android:padding="5dp"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="4"
+                    android:gravity="right"
+                    android:text="身份证"
+                    android:textColor="@color/text_grey"
+                    android:textSize="14sp" />
+
+
+                <com.paulz.carinsurance.view.UpperCaseEditText
+                    android:id="@+id/et_id_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:digits="1234567890xX"
+                    android:hint="请输入身份证号码"
+                    android:inputType="textCapCharacters"
+                    android:padding="5dp"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="14sp" />
+
+                <ImageView
+
+                    android:id="@+id/iv_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:src="@drawable/btn_scanid" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/bg_rectangle_soild_half_circel_orange"
+                    android:gravity="center"
+                    android:text="立即报价"
+                    android:textColor="@color/btn_white_orange"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/tv_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/latelycar_icon_index_defulat"
+                    android:drawablePadding="2dp"
+                    android:gravity="center"
+                    android:text="最近车辆查询"
+                    android:textColor="@color/base_blue"
+                    android:textSize="@dimen/text_size_small" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</LinearLayout>

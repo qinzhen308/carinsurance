@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="8dp"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/text_grey"
+        android:text="按时放假回家第十三届电话费几十块混分巨兽福火箭发射就发货速度快喝点水空间还是大家好反倒是"
+        android:textSize="@dimen/text_size"
+        />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/text_grey"
+        android:drawablePadding="10dp"
+        android:text="参考价：12314"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/text_size"
+        />
+
+
+</LinearLayout>

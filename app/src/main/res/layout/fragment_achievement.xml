@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_start_date"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:hint="开始日期"
+            android:textColorHint="@color/text_grey_french2"
+            android:gravity="center"
+            android:textColor="@color/text_grey"
+            />
+
+
+        <TextView
+            android:id="@+id/btn_end_date"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:hint="结束日期"
+            android:textColorHint="@color/text_grey_french2"
+            android:gravity="center"
+            android:textColor="@color/text_grey"
+            />
+
+
+        <TextView
+            android:id="@+id/btn_search"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="32dp"
+            android:text="搜索"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bg_rectangle_soild_half_circel_orange"
+            android:gravity="center"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/main"
+        android:paddingBottom="20dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="总保费"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/white"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <TextView
+            android:id="@+id/tv_price_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12312321"
+            android:textSize="@dimen/text_size_big_big_big"
+            android:textColor="@color/white"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="交强险"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_price_force"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12312321"
+                    android:textSize="@dimen/text_size_big_big_big"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/white_gray"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="商业险"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_price_buz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12312321"
+                    android:textSize="@dimen/text_size_big_big_big"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="业绩详情"
+        android:textColor="@color/text_grey_french1"
+        android:textSize="@dimen/text_size_big"
+        android:drawableLeft="@drawable/shape_line_orange"
+        android:gravity="center"
+        android:drawablePadding="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.paulz.carinsurance.view.pulltorefresh.PullListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:divider="@drawable/list_divider1" />
+
+        <FrameLayout
+            android:id="@+id/load_state_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

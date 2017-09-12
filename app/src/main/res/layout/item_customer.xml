@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:background="@drawable/bg_line_bottom"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:paddingTop="7dp"
+    android:paddingBottom="7dp"
+    android:layout_height="50dp">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/text_grey"
+        android:gravity="center"
+        android:text="name"
+        android:ems="6"
+        android:textSize="@dimen/text_size"
+        />
+
+
+    <ImageView
+        android:id="@+id/iv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:src="@drawable/tel_icon_cutomer" />
+
+
+    <TextView
+        android:id="@+id/tv_car_id"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/text_grey"
+        android:gravity="center"
+        android:drawablePadding="10dp"
+        android:text="渝BAB123"
+        android:minEms="6"
+        android:textSize="@dimen/text_size"
+        />
+
+
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/text_grey"
+        android:gravity="center_vertical|right"
+        android:drawablePadding="10dp"
+        android:text="41天到期"
+        android:textSize="@dimen/text_size"
+        android:drawableRight="@drawable/arr_big"
+        />
+
+
+</LinearLayout>

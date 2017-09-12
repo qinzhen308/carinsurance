@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/shape_line_orange"
+                android:drawablePadding="5dp"
+                android:text="车辆信息"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/btn_ocr"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:drawableLeft="@drawable/btn_scanid"
+                android:drawablePadding="5dp"
+                android:text="拍照自动识别"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size_small" />
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="投保城市"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <TextView
+                android:id="@+id/btn_insure_city"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:text="请选择投保城市"
+                android:textColor="@color/text_grey_french2"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:layout_marginTop="1dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/text_grey"
+                android:text="车牌"
+                android:ems="4"
+                android:gravity="left"
+                />
+
+            <TextView
+                android:id="@+id/tv_car_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_car_number"
+                android:gravity="center"
+                android:minWidth="50dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="渝A"
+                android:textColor="@color/main"
+                android:textSize="12sp" />
+
+
+            <com.paulz.carinsurance.view.UpperCaseEditText
+                android:id="@+id/et_car_number"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="请输入车牌号"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/text_grey"
+                android:digits="1234567890QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"
+                android:maxLength="5"
+                android:maxLines="1"
+                android:textColorHint="@color/text_grey_french2"
+                android:background="@null"
+                android:padding="5dp"
+                android:textSize="14sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/text_grey_french1"
+                android:text="未上牌"
+                android:ems="3"
+                android:gravity="right"
+                />
+
+            <CheckBox
+                android:id="@+id/check_box"
+                style="@style/CustomCheckboxTheme_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="8dp"
+                />
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车辆识别代码"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <TextView
+                android:id="@+id/btn_car_code"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:hint="请点击输入车辆识别代码"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车型"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <TextView
+                android:id="@+id/btn_car_type"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:hint="请选择车型"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="座位数"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <TextView
+                android:id="@+id/btn_site_count"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:hint="请选择座位数"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发动机号"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <com.paulz.carinsurance.view.UpperCaseEditText
+                android:id="@+id/et_engine_id"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:digits="1234567890QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"
+                android:hint="请输入发动机号"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="是否一年内过户"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <CheckBox
+                android:id="@+id/cb_new"
+                style="@style/CustomCheckboxTheme_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_is_new"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="过户日期"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <TextView
+                android:id="@+id/btn_new_date"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:hint="请选择过户日期"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="注册日期"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <TextView
+                android:id="@+id/btn_regist_date"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:hint="请选择注册日期"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="交强险到期时间"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <TextView
+                android:id="@+id/btn_force_date"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:hint="请选择"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商业险到期时间"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <TextView
+                android:id="@+id/btn_business_date"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:hint="请选择"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/btn_orange"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/btn_white_orange" />
+
+        <TextView
+            android:id="@+id/btn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_orange"
+            android:gravity="center"
+            android:text="删除"
+            android:visibility="gone"
+            android:textColor="@color/btn_white_orange" />
+
+    </LinearLayout>
+</ScrollView>
+

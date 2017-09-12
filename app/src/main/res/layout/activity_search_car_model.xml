@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:id="@+id/tv_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="8dp"
+        android:textColor="@color/main_red"
+        android:textSize="@dimen/text_size_small"
+        android:text="抱歉，根据VIN码未识别出您的车型"
+        android:gravity="center"
+        android:visibility="gone"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height='wrap_content'
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_search"
+            android:imeOptions="actionSearch"
+            android:drawableRight="@drawable/search_icon_search"
+            android:gravity="left|center_vertical"
+            android:hint="请输入车辆品牌型号"
+            android:maxLines="1"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:textColor="@color/text_grey"
+            android:textColorHint="@color/text_grey_french2"
+            android:textSize="@dimen/text_size_small" />
+
+        <View
+            android:id="@+id/search_bar_btn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/search_bar"
+            android:layout_alignTop="@+id/search_bar"
+            android:layout_alignBottom="@+id/search_bar"
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+    <TextView
+        android:id="@+id/btn_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textColor="@color/base_blue"
+        android:textSize="@dimen/text_size_small"
+        android:text="什么是品牌型号"
+        android:gravity="center"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/layout_tab"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tab1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_height="match_parent"
+            android:text="不限"
+            android:drawableRight="@drawable/arr_big"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/text_grey"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/tab2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="不限"
+            android:drawableRight="@drawable/arr_big"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/text_grey"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            />
+        <TextView
+            android:id="@+id/tab3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="不限"
+            android:drawableRight="@drawable/arr_big"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/text_grey"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            />
+
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="1dp"
+        android:divider="@color/main_bg"
+        />
+
+</LinearLayout>
+

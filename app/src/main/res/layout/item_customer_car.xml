@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:padding="12dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:id="@+id/tv_car_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/carid_icon_customer_defulat"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/text_grey"
+        android:text="未上牌"
+        android:textSize="@dimen/text_size"
+        />
+
+
+
+    <TextView
+        android:id="@+id/tv_insure_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_grey"
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/city_icon_customer_defulat"
+        android:layout_below="@+id/tv_car_id"
+        android:layout_marginTop="8dp"
+        android:text="1321313"
+        android:textSize="@dimen/text_size"
+        android:layout_alignLeft="@+id/tv_name"
+        />
+
+    <TextView
+        android:id="@+id/btn_quote"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:background="@drawable/btn_orange"
+        android:text="报价"
+        android:textColor="@color/btn_white_orange"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        />
+
+
+</RelativeLayout>

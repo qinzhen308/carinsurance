@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_bg"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height='wrap_content'
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_search"
+            android:drawableRight="@drawable/search_icon_search"
+            android:gravity="left|center_vertical"
+            android:hint="请输入车牌和姓名搜索"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/text_grey"
+            android:textColorHint="@color/text_grey_french2"
+            android:textSize="@dimen/text_size_small" />
+
+        <View
+            android:id="@+id/btn_search"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/search_bar"
+            android:layout_alignBottom="@+id/search_bar"
+            android:layout_alignRight="@+id/search_bar"
+            />
+
+    </RelativeLayout>
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.paulz.carinsurance.view.pulltorefresh.PullListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:divider="@null"
+            />
+
+        <FrameLayout
+            android:id="@+id/load_state_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
+
+
+
+
+
+</LinearLayout>

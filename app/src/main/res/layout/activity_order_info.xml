@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="渝BJSS12 - fuc"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_order_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="订单号：134838939939"
+                    android:layout_below="@+id/tv_name"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:id="@+id/tv_order_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="订单状态"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/text_grey_french2"
+                    android:layout_marginRight="10dp"
+                    android:textSize="@dimen/text_size" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/shape_line_orange"
+                android:drawablePadding="5dp"
+                android:text="保单信息"
+                android:gravity="center"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size" />
+
+
+
+            <RelativeLayout
+                android:id="@+id/layout_insure_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_company"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_centerVertical="true"
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_company_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="平安保险"
+                    android:textColor="@color/text_grey"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/iv_company"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_insure_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="核保时间：未核保"
+                    android:layout_below="@+id/tv_company_name"
+                    android:layout_alignLeft="@+id/tv_company_name"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="保单信息"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/text_grey_french2"
+                    android:layout_marginRight="10dp"
+                    android:drawableRight="@drawable/arr_big"
+                    android:drawablePadding="10dp"
+                    android:textSize="@dimen/text_size" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/layout_business"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginTop="1dp"
+                android:padding="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_label1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="商业险"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="保险起期"
+                    android:layout_below="@+id/tv_label1"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:id="@+id/tv_business_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥4732"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/main"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_business_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2015-10-20 10:00"
+                    android:layout_below="@+id/tv_label1"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_force"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginTop="1dp"
+                android:padding="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_label2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="交强险"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="保险起期"
+                    android:layout_below="@+id/tv_label2"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+                <TextView
+                    android:id="@+id/tv_force_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥4732"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/main"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_force_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2015-10-20 10:00"
+                    android:layout_below="@+id/tv_label2"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+            </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_height"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="投保城市"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_insure_city"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical|right"
+                    android:text="四川-班志华"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/shape_line_orange"
+                android:drawablePadding="5dp"
+                android:text="车辆信息"
+                android:gravity="center"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车牌号"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_car_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical|right"
+                    android:text="渝AUA123"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:visibility="gone"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车架号"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_car_code"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical|right"
+                    android:text="LDAS1342423ASD22"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:visibility="gone"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="发动机号"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_engine_code"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical|right"
+                    android:text="1231423"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/tag_view"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="5dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/shape_line_orange"
+                android:drawablePadding="5dp"
+                android:text="车主信息"
+                android:gravity="center"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="车主姓名"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_owner_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical|right"
+                    android:text="清淡"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="身份证号"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_owner_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical|right"
+                    android:text="LDAS1342423ASD22"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手机号码"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_owner_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical|right"
+                    android:text="1231423"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/shape_line_orange"
+                android:drawablePadding="5dp"
+                android:text="投保人与被保人"
+                android:gravity="center"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size" />
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/tv_same_insure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:padding="10dp"
+                    android:text="投保人同车主"
+                    android:gravity="center"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <LinearLayout
+                    android:id="@+id/layout_insure_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="投保人姓名"
+                        android:textColor="@color/text_grey_french1"
+                        android:textSize="@dimen/text_size" />
+
+
+                    <TextView
+                        android:id="@+id/tv_insure_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical|right"
+                        android:textColor="@color/text_grey"
+                        android:textColorHint="@color/text_grey_french2"
+                        android:textSize="@dimen/text_size" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/layout_insure_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="投保人身份证号"
+                        android:textColor="@color/text_grey_french1"
+                        android:textSize="@dimen/text_size" />
+
+
+                    <TextView
+                        android:id="@+id/tv_insure_id"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical|right"
+                        android:textColor="@color/text_grey"
+                        android:textColorHint="@color/text_grey_french2"
+                        android:textSize="@dimen/text_size" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_insure_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="投保人手机号码"
+                        android:textColor="@color/text_grey_french1"
+                        android:textSize="@dimen/text_size" />
+
+
+                    <TextView
+                        android:id="@+id/tv_insure_phone"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical|right"
+                        android:textColor="@color/text_grey"
+                        android:textColorHint="@color/text_grey_french2"
+                        android:textSize="@dimen/text_size" />
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/tv_same_insured"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:padding="10dp"
+                    android:text="被投保人同车主"
+                    android:gravity="center"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <LinearLayout
+                    android:id="@+id/layout_insured_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="被投保人姓名"
+                        android:textColor="@color/text_grey_french1"
+                        android:textSize="@dimen/text_size" />
+
+
+                    <TextView
+                        android:id="@+id/tv_insured_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical|right"
+                        android:textColor="@color/text_grey"
+                        android:textColorHint="@color/text_grey_french2"
+                        android:textSize="@dimen/text_size" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/layout_insured_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="被投保人身份证号"
+                        android:textColor="@color/text_grey_french1"
+                        android:textSize="@dimen/text_size" />
+
+
+                    <TextView
+                        android:id="@+id/tv_insured_id"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical|right"
+                        android:textColor="@color/text_grey"
+                        android:textColorHint="@color/text_grey_french2"
+                        android:textSize="@dimen/text_size" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_insured_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="被投保人手机号码"
+                        android:textColor="@color/text_grey_french1"
+                        android:textSize="@dimen/text_size" />
+
+
+                    <TextView
+                        android:id="@+id/tv_insured_phone"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical|right"
+                        android:textColor="@color/text_grey"
+                        android:textColorHint="@color/text_grey_french2"
+                        android:textSize="@dimen/text_size" />
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/shape_line_orange"
+                android:drawablePadding="5dp"
+                android:text="保单配送信息"
+                android:gravity="center"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="姓名"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_insured_person_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical|right"
+                    android:text="清淡"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手机号码"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_insured_person_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical|right"
+                    android:text="LDAS1342423ASD22"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="配送地址"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_insured_person_address"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical|right"
+                    android:text="四川省 成都市 双流区 阿斯达大所"
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main"
+            android:textSize="@dimen/text_size_big_big_big"
+            android:text="￥25378"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/btn_operation"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@color/main"
+            android:gravity="center"
+            android:text="交易关闭"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/btn_white_orange" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+

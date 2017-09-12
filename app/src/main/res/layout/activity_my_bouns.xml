@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/main_bg"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:background="@color/main"
+        android:gravity="center_horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="今日佣金（元）"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_bouns"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="213213"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_big_big_big"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            />
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/layout_bouns_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="佣金明细"
+        android:textColor="@color/text_grey"
+        android:background="@color/white"
+        android:textSize="@dimen/text_size"
+        android:gravity="center_vertical"
+        android:drawablePadding="5dp"
+        android:padding="10dp"
+        android:drawableRight="@drawable/arr_big"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/layout_bouns_all"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            >
+
+        <ImageView
+            android:id="@+id/icon1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/total_icon_mybouns"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/label1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/icon1"
+            android:textColor="@color/text_grey_french1"
+            android:textSize="@dimen/text_size_small"
+            android:text="累积佣金"
+            android:layout_marginLeft="8dp"
+            />
+
+            <TextView
+                android:id="@+id/tv_bouns_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/label1"
+                android:layout_below="@+id/label1"
+                android:text="13321"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size"
+                android:layout_marginTop="2dp"
+                />
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_bouns_withdraw"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginLeft="1dp"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            >
+
+            <ImageView
+                android:id="@+id/icon2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/withdrawals_icon_mybouns"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                android:id="@+id/label2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon2"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size_small"
+                android:text="已提现"
+                android:layout_marginLeft="8dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_bouns_withdraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/label2"
+                android:layout_below="@+id/label2"
+                android:text="13321"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size"
+                android:layout_marginTop="2dp"
+                />
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/layout_bouns_can_withdraw"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            >
+
+            <ImageView
+                android:id="@+id/icon3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/drawals_icon_mybouns"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                android:id="@+id/label3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon3"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size_small"
+                android:text="可提现"
+                android:layout_marginLeft="8dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_bouns_can_withdraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/label3"
+                android:layout_below="@+id/label3"
+                android:text="13321"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size"
+                android:layout_marginTop="2dp"
+                />
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_bouns_verify"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_marginLeft="1dp"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            >
+
+            <ImageView
+                android:id="@+id/icon4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/examine_icon_mybouns"
+                android:layout_centerVertical="true"
+                />
+
+            <TextView
+                android:id="@+id/label4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon4"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size_small"
+                android:text="审核中"
+                android:layout_marginLeft="8dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_bouns_verify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/label4"
+                android:layout_below="@+id/label4"
+                android:text="13321"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size"
+                android:layout_marginTop="2dp"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+
+    <TextView
+        android:id="@+id/btn_withdraw"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/btn_orange"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/btn_white_orange"
+        android:text="申请提现"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/btn_history"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/base_blue"
+        android:text="提现记录"
+        android:gravity="center"
+        />
+
+
+
+
+</LinearLayout>

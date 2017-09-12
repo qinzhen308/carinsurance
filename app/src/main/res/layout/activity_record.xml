@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    >
+
+    <TextView
+        android:id="@+id/tv_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_grey_french1"
+        android:text="以下是您最近查询的10辆车，点击快速重新报价"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_small"
+        android:padding="10dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+
+
+    <com.paulz.carinsurance.view.pulltorefresh.PullListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:divider="@drawable/list_divider1"
+        />
+
+</LinearLayout>

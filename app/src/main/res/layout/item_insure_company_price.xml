@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_rectangle_white_coner"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="name"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/iv_icon"
+            android:layout_below="@+id/iv_icon"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:text="1321313"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+
+        <LinearLayout
+            android:id="@+id/layout_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_name"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/iv_icon"
+            android:layout_marginRight="25dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
+                android:text="13113"
+                android:textColor="@color/main"
+                android:textSize="@dimen/text_size_big" />
+
+            <TextView
+                android:id="@+id/tv_bouns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@drawable/bonus_icon_my1"
+                android:drawablePadding="5dp"
+                android:text="13113"
+                android:textColor="@color/base_blue"
+                android:textSize="@dimen/text_size" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_no_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_name"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/iv_icon"
+            android:layout_marginRight="10dp"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="暂无报价，点击查看原因"
+            android:textColor="@color/text_grey_french1"
+            android:textSize="@dimen/text_size"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/layout_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                style="@style/divider_horizontal_grey"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/tv_reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="10dp"
+                android:text="13113"
+                android:textColor="@color/text_grey_french1"
+                android:textSize="@dimen/text_size" />
+
+        </LinearLayout>
+
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arr_big"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_marginTop="10dp"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:indeterminateDrawable="@drawable/load_refresh_progress"
+            />
+
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>
