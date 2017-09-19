@@ -1,13 +1,19 @@
 package com.paulz.carinsurance.ui;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -182,6 +188,27 @@ public class SearchCarModelActivity extends BaseActivity {
         });
     }
 
+    private void showVinExample(){
+        final Dialog dialog=new Dialog(this,R.style.CommonDialog);
+        Window dialogWindow = getWindow();
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setContentView(R.layout.dialog_trans_image);
+        ((ImageView)dialog.findViewById(R.id.iv_img)).setImageResource(R.drawable.img_brand_example);
+        dialog.findViewById(R.id.common_dialog_root).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        WindowManager.LayoutParams params = dialogWindow.getAttributes();
+        params.dimAmount = 0.5f;
+        dialogWindow.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        dialogWindow.setAttributes(params);
+        dialogWindow.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.MATCH_PARENT);
+        dialogWindow.setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
 
     public static void invoke(Activity context,boolean justShow,boolean fromCustomer) {
         Intent intent = new Intent(context, SearchCarModelActivity.class);
@@ -199,7 +226,7 @@ public class SearchCarModelActivity extends BaseActivity {
                 AppUtil.hideSoftInputMethod(SearchCarModelActivity.this,searchBar);
                 break;
             case R.id.btn_help:
-                CommonWebActivity.invoke(this, "https://baidu.com", "");
+                showVinExample();
                 break;
             case R.id.tab1:
                 break;

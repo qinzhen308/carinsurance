@@ -9,9 +9,10 @@
 
 
     <ImageView
+        android:id="@+id/iv_img"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_vin_example"
+        android:src="@drawable/img_carinfo_example"
         />
 </FrameLayout>

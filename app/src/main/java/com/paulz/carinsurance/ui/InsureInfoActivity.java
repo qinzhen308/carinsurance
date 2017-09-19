@@ -30,6 +30,7 @@ import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppUrls;
 import com.paulz.carinsurance.httputil.HttpRequester;
 import com.paulz.carinsurance.httputil.ParamBuilder;
+import com.paulz.carinsurance.model.Area;
 import com.paulz.carinsurance.model.InsureCate;
 import com.paulz.carinsurance.parser.gson.BaseObject;
 import com.paulz.carinsurance.parser.gson.GsonParser;
@@ -37,6 +38,7 @@ import com.paulz.carinsurance.utils.AppUtil;
 import com.paulz.carinsurance.utils.DateUtil;
 import com.paulz.carinsurance.view.ListViewInScrollView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -112,7 +114,7 @@ public class InsureInfoActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_city:
-                SelectCityActivity.invoke(this, false,data!=null?data.cityid:"");
+                SelectCityActivity.invoke(this, false,data!=null?data.cityid:"",data!=null&&data.data!=null?data.data.citylist:null);
                 break;
             case R.id.btn_address:
                 if(data==null||AppUtil.isNull(data.cityid)){
@@ -291,7 +293,13 @@ public class InsureInfoActivity extends BaseActivity {
         public String compulsoryinsdate;
         public String businessinsdate;
         List<InsureCate> typelist;
+        ArrayList<Area> citylist;
+        public CityData data;
 
+    }
+
+    private class CityData{
+        ArrayList<Area> citylist;
     }
 
     DateAfterPickView datePickView1;

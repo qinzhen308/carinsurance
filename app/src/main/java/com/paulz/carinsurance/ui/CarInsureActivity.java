@@ -2,13 +2,18 @@ package com.paulz.carinsurance.ui;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -25,6 +30,7 @@ import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppUrls;
 import com.paulz.carinsurance.httputil.HttpRequester;
 import com.paulz.carinsurance.httputil.ParamBuilder;
+import com.paulz.carinsurance.model.Area;
 import com.paulz.carinsurance.model.CarCard;
 import com.paulz.carinsurance.parser.gson.BaseObject;
 import com.paulz.carinsurance.parser.gson.GsonParser;
@@ -32,6 +38,8 @@ import com.paulz.carinsurance.utils.AppUtil;
 import com.paulz.carinsurance.utils.DateUtil;
 import com.paulz.carinsurance.utils.OCRDecoder;
 import com.paulz.carinsurance.view.CommonDialog;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -151,11 +159,13 @@ public class CarInsureActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    @OnClick({R.id.btn_ocr,R.id.btn_delete,R.id.tv_car_id, R.id.btn_insure_city, R.id.btn_new_date, R.id.btn_car_code, R.id.btn_car_type, R.id.btn_site_count, R.id.btn_regist_date, R.id.btn_force_date, R.id.btn_business_date, R.id.btn_next})
+    @OnClick({R.id.btn_ocr,R.id.btn_delete,R.id.tv_car_id, R.id.btn_insure_city, R.id.btn_new_date,
+            R.id.btn_car_code, R.id.btn_car_type, R.id.btn_site_count, R.id.btn_regist_date, R.id.btn_force_date,
+            R.id.btn_business_date, R.id.btn_next, R.id.btn_help})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_insure_city:
-                SelectCityActivity.invoke(this, false,pid);
+                SelectCityActivity.invoke(this, false,pid,data!=null&&data.data!=null?data.data.citylist:null);
                 break;
             case R.id.btn_car_code:
                 SelectCarModelActivity.invoke(this, btnCarCode.getText().toString().trim(), btnRegistDate.getText().toString().trim(),true,false,false);
@@ -206,6 +216,9 @@ public class CarInsureActivity extends BaseActivity {
                         CarInsureActivityPermissionsDispatcher.showCameraWithCheck(CarInsureActivity.this);
                     }
                 });
+                break;
+            case R.id.btn_help:
+                showVinExample();
                 break;
         }
     }
@@ -396,6 +409,28 @@ public class CarInsureActivity extends BaseActivity {
         btnRegistDate.setText(data.regdate);
 
     }
+
+
+    private void showVinExample(){
+        final Dialog dialog=new Dialog(this,R.style.CommonDialog);
+        Window dialogWindow = getWindow();
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setContentView(R.layout.dialog_trans_image);
+        dialog.findViewById(R.id.common_dialog_root).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        WindowManager.LayoutParams params = dialogWindow.getAttributes();
+        params.dimAmount = 0.5f;
+        dialogWindow.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        dialogWindow.setAttributes(params);
+        dialogWindow.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.MATCH_PARENT);
+        dialogWindow.setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
 
 
     private void loadData() {
@@ -625,6 +660,11 @@ public class CarInsureActivity extends BaseActivity {
         public String insurance_compulsoryinsdate;
         public String cityvalue;
         public String cityid;
+        public CityData data;
+    }
+
+    private class CityData{
+        ArrayList<Area> citylist;
     }
 
     @Override

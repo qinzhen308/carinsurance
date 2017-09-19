@@ -8,5 +8,6 @@
 /Framework/build
 /share/build
 /gradle
+*.apk
 /captures
 .externalNativeBuild

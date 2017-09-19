@@ -496,6 +496,22 @@
             android:visibility="gone"
             android:textColor="@color/btn_white_orange" />
 
+
+        <TextView
+            android:id="@+id/btn_help"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:drawablePadding="5dp"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="不会填？看例图"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/text_size_small" />
+
     </LinearLayout>
 </ScrollView>
 

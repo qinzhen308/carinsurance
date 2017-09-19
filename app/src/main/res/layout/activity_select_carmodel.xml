@@ -15,11 +15,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:textSize="@dimen/text_size_big"
             android:textColor="@color/text_grey"
             android:text="输入车辆识别代码（VIN）"
             />
+
+        <TextView
+            android:id="@+id/btn_help"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:drawablePadding="5dp"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="什么是车辆识别代码（VIN）？"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/text_size_small" />
+
 
         <com.paulz.carinsurance.view.UpperCaseEditText
             android:id="@+id/et_vin"

@@ -124,8 +124,13 @@ public class UnderwritingActivity extends BaseActivity {
             btnNext.setText("查看订单");
 
         }else if(data.insurance_xiadan_hbres==2){
-            layoutStep2.setVisibility(View.GONE);
-            btnNext.setVisibility(View.GONE);
+//            layoutStep2.setVisibility(View.GONE);
+//            btnNext.setVisibility(View.GONE);
+            tvStep2.setText("核保失败");
+            layoutDescrib.setVisibility(View.VISIBLE);
+            tvDescrib2.setVisibility(View.GONE);
+            tvDescrib1.setText(data.insurance_xiadan_hbdesc);
+            btnNext.setText("重选保险公司");
 
         }else if(data.insurance_xiadan_hbres==3){
             tvStep2.setText("核保成功");
@@ -150,7 +155,7 @@ public class UnderwritingActivity extends BaseActivity {
                     MainActivity.invokeWithAction(this,IActions.ACTION_TO_ODER_LIST);
                 }else if(data.insurance_xiadan_hbres==3){
                     pay();
-                }else if(data.insurance_xiadan_hbres==0){
+                }else if(data.insurance_xiadan_hbres==0||data.insurance_xiadan_hbres==2){
                     SelectInsureCompanyActivity.invoke(this);
                 }
                 break;

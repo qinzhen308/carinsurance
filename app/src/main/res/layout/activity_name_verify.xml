@@ -112,7 +112,7 @@
                 android:paddingTop="10dp"
                 android:maxLines="1"
                 android:inputType="text"
-                android:digits="1234567890QWERTYUIOPASDFGHJKLZXCVBNM"
+                android:digits="1234567890Xx"
                 android:textColor="@color/text_grey"
                 android:textColorHint="@color/text_grey_french2"
                 android:textSize="@dimen/text_size" />

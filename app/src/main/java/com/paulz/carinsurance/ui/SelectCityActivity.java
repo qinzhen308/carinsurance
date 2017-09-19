@@ -60,18 +60,25 @@ public class SelectCityActivity extends BaseActivity {
 
     private void load(){
         try {
-            InputStream is=getResources().getAssets().open(getIntent().getBooleanExtra("extra_all",true)?"city1":"city0");
-            int size = is.available();
+            List<Area> cities=null;
 
-            // Read the entire asset into a local byte buffer.
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
+            if(getIntent().hasExtra("extra_cities")){
+                cities=(ArrayList<Area>)getIntent().getSerializableExtra("extra_cities");
+            }else {
+                InputStream is=getResources().getAssets().open(getIntent().getBooleanExtra("extra_all",true)?"city1":"city0");
+                int size = is.available();
 
-            // Convert the buffer into a string.
-            String text = new String(buffer, "UTF-8");
+                // Read the entire asset into a local byte buffer.
+                byte[] buffer = new byte[size];
+                is.read(buffer);
+                is.close();
+
+                // Convert the buffer into a string.
+                String text = new String(buffer, "UTF-8");
 //            BaseObjectList<Area> list= GsonParser.getInstance().parseToObj4List(text, Area.class);
-            List<Area> cities=new Gson().fromJson(text,new TypeToken<ArrayList<Area>>(){}.getType());
+                cities=new Gson().fromJson(text,new TypeToken<ArrayList<Area>>(){}.getType());
+            }
+
             LogUtil.d("citys="+cities.size());
             int[] positions=handleSelects(cities);
             if(positions!=null){
@@ -119,8 +126,12 @@ public class SelectCityActivity extends BaseActivity {
     }
 
 
-    public static void invoke(Activity context,boolean all,String ids){
-        context.startActivityForResult(new Intent(context,SelectCityActivity.class).putExtra("extra_all",all).putExtra("extra_selects",ids),REQUEST_CODE);
+    public static void invoke(Activity context,boolean all,String ids,ArrayList<Area> cities){
+        Intent intent=new Intent(context,SelectCityActivity.class).putExtra("extra_all",all).putExtra("extra_selects",ids);
+        if(!AppUtil.isEmpty(cities)){
+            intent.putExtra("extra_cities",cities);
+        }
+        context.startActivityForResult(intent,REQUEST_CODE);
     }
 
 }

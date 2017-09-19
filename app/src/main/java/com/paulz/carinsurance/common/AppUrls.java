@@ -18,8 +18,8 @@ public class AppUrls {
 	public String SESSION_ID="1231321";
 
 
-//	public String BASE_DOMAIN="http://120.27.222.234:58580/bxagency";//测试域名
-	public String BASE_DOMAIN="http://www.hgbaoxian.cn";//正式域名
+	public String BASE_DOMAIN="http://120.27.222.234:58580/bxagency";//测试域名
+//	public String BASE_DOMAIN="http://www.hgbaoxian.cn";//正式域名
 	public String BASE_URL=BASE_DOMAIN+"/index.php?s=/Api/";//测试域名
 	public String BASE_WAP_URL=BASE_DOMAIN+"/index.php?s=/Home/";//测试域名
 	public String BASE_IMG_URL=BASE_DOMAIN+"/Res/Avatar/";//图片

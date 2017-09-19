@@ -156,7 +156,7 @@ public class AddBankCardActivity extends BaseActivity {
 
 
     private void selectCity() {
-        SelectCityActivity.invoke(this,false,pid);
+        SelectCityActivity.invoke(this,false,pid,null);
     }
 
 

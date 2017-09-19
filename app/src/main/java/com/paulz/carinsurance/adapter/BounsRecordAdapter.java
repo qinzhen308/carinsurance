@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.model.BounsRecord;
 import com.paulz.carinsurance.model.CashRecord;
+import com.paulz.carinsurance.ui.OrderInfoActivity;
 import com.paulz.carinsurance.utils.DateUtil;
 
 import butterknife.BindView;
@@ -46,7 +47,12 @@ public class BounsRecordAdapter extends AbsMutipleAdapter<BounsRecord, BounsReco
         }
         holder.tvName.setText(bean.insurance_carnumber+" - "+bean.insurance_name);
         holder.tvOder.setText("订单号："+bean.order_sn);
-
+        holder.root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OrderInfoActivity.invoke(mContext,bean.order_sn);
+            }
+        });
 
     }
 

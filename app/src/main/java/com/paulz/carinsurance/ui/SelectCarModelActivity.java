@@ -1,13 +1,19 @@
 package com.paulz.carinsurance.ui;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -248,6 +254,27 @@ public class SelectCarModelActivity extends BaseActivity {
         setResult(RESULT_OK,data);
     }
 
+    private void showVinExample(){
+        final Dialog dialog=new Dialog(this,R.style.CommonDialog);
+        Window dialogWindow = getWindow();
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setContentView(R.layout.dialog_trans_image);
+        ((ImageView)dialog.findViewById(R.id.iv_img)).setImageResource(R.drawable.img_vin_example);
+        dialog.findViewById(R.id.common_dialog_root).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        WindowManager.LayoutParams params = dialogWindow.getAttributes();
+        params.dimAmount = 0.5f;
+        dialogWindow.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        dialogWindow.setAttributes(params);
+        dialogWindow.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.MATCH_PARENT);
+        dialogWindow.setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
 
     private void justShowSearchCar() {
 
@@ -298,7 +325,7 @@ public class SelectCarModelActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.btn_select_date, R.id.btn_search, R.id.btn_other_search})
+    @OnClick({R.id.btn_select_date, R.id.btn_search, R.id.btn_other_search,R.id.btn_help})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_select_date:
@@ -309,6 +336,9 @@ public class SelectCarModelActivity extends BaseActivity {
                 break;
             case R.id.btn_other_search:
                 SearchCarModelActivity.invoke(this,false,getIntent().getBooleanExtra("is_customer",false));
+                break;
+            case R.id.btn_help:
+                showVinExample();
                 break;
         }
     }

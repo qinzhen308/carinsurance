@@ -133,7 +133,7 @@ public class EditAddressActivity extends BaseActivity {
     }
 
     private void selectAddress(){
-        SelectCityActivity.invoke(this,true,pid);
+        SelectCityActivity.invoke(this,true,pid,null);
     }
 
 
