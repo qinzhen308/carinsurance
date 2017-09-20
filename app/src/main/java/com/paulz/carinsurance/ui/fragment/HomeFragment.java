@@ -215,7 +215,7 @@ public class HomeFragment extends BaseFragment {
                     }
                     if(obj!=null&&obj.status==BaseObject.STATUS_OK){
                         if(obj==null||obj.data==null||obj.data.firstcarnumber==null||obj.data.firstcarnumber.length()!=1){
-                            tvCarId.setText("渝A");
+                            tvCarId.setText("川A");
                         }else {
                             tvCarId.setText(obj.data.firstcarnumber+"A");
 

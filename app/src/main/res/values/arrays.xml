@@ -76,8 +76,8 @@
     </string-array>
 
     <string-array name="province_short">
-        <item>渝</item>
         <item>川</item>
+        <item>渝</item>
         <item>京</item>
         <item>沪</item>
         <item>浙</item>

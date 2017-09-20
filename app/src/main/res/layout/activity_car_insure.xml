@@ -111,7 +111,7 @@
                 android:minWidth="50dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="渝A"
+                android:text="川A"
                 android:textColor="@color/main"
                 android:textSize="12sp" />
 
