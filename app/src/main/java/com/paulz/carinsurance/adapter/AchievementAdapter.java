@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.model.Achievement;
 import com.paulz.carinsurance.model.Model;
+import com.paulz.carinsurance.ui.OrderInfoActivity;
 
 import butterknife.BindView;
 
@@ -32,10 +33,16 @@ public class AchievementAdapter extends AbsMutipleAdapter<Achievement, Achieveme
 
     @Override
     public void onBindViewHolder(int position, ViewHolderImpl holder) {
-        Achievement bean=(Achievement)getItem(position);
+        final Achievement bean=(Achievement)getItem(position);
         holder.tvName.setText(bean.insurance_carnumber+" - "+bean.insurance_name);
         holder.tvChannel.setText(bean.insurance_company_name);
         holder.tvPrice.setText("￥"+bean.amount);
+        holder.root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OrderInfoActivity.invoke(mContext,bean.order_sn);
+            }
+        });
     }
 
     public static class ViewHolderImpl extends ViewHolder {
