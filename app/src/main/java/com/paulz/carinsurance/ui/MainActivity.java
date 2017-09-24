@@ -413,7 +413,9 @@ public class MainActivity extends BaseFragmentActivity implements
 	}
 
 	private void handleAction(Intent data){
-		switch (data.getAction()){
+		String action=data.getAction();
+		if(AppUtil.isNull(action))return;
+		switch (action){
 			case IActions.ACTION_TO_ODER_LIST:
 				AccountActivity.invoke(this,1);
 				break;

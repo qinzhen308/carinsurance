@@ -57,7 +57,7 @@
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:layout_marginTop="25dp"
-        android:text="1321313"
+        android:text="设为默认"
         android:gravity="center"
         android:textSize="@dimen/text_size"
         android:drawableLeft="@drawable/checkbox_address"
