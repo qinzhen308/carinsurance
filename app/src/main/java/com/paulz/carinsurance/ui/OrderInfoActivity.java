@@ -245,7 +245,8 @@ public class OrderInfoActivity extends BaseActivity {
             tvInsuredPhone.setText(data.btbtel);
             tvInsuredId.setText(data.btbsfz);
         }
-        tvPrice.setText("￥" + (Float.valueOf(data.insurance_xunjia_bamount) + Float.valueOf(data.insurance_xunjia_camount)));
+//        tvPrice.setText("￥" + (Float.valueOf(data.insurance_xunjia_bamount) + Float.valueOf(data.insurance_xunjia_camount)));
+        tvPrice.setText("￥" + data.amount);
 
         btnOperation.setText(orderOpTexts[data.order_status]);
         btnOperation.setBackgroundColor(getResources().getColor(orderOpBgColors[data.order_status]));

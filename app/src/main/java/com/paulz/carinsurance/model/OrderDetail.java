@@ -6,6 +6,7 @@ package com.paulz.carinsurance.model;
 
 public class OrderDetail {
 
+    public String amount;
     public String insurance_carnumber;
     public String insurance_name;
     public int order_status;
