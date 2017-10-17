@@ -124,6 +124,7 @@ public class InsureInfoActivity extends BaseActivity {
                 }
                 break;
             case R.id.btn_get_effective_date:
+                requestEffectiveDate();
                 break;
             case R.id.btn_effective_date1:
                 showDatePicker1();
@@ -135,6 +136,27 @@ public class InsureInfoActivity extends BaseActivity {
                 submit();
                 break;
         }
+    }
+
+
+    private void requestEffectiveDate(){
+        DialogUtil.showDialog(lodDialog);
+        ParamBuilder params=new ParamBuilder();
+        NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_GET_EFFECTIVE_DATE), new NetworkWorker.ICallback() {
+            @Override
+            public void onResponse(int status, String result) {
+                if (!isFinishing()) DialogUtil.dismissDialog(lodDialog);
+                if (status == 200) {
+                    BaseObject<EffectiveDate> object = GsonParser.getInstance().parseToObj(result, EffectiveDate.class);
+                    if (object != null && object.status == BaseObject.STATUS_OK && object.data != null) {
+                        btnEffectiveDate1.setText(object.data.cdate);
+                        btnEffectiveDate2.setText(object.data.bdate);
+                    } else {
+                        AppUtil.showToast(getApplicationContext(), object!=null?object.msg:"获取失败");
+                    }
+                }
+            }
+        });
     }
 
     @OnCheckedChanged(R.id.cb_business)
@@ -298,6 +320,11 @@ public class InsureInfoActivity extends BaseActivity {
 
     }
 
+    private class EffectiveDate {
+        public String cdate;
+        public String bdate;
+    }
+
     private class CityData{
         ArrayList<Area> citylist;
     }
@@ -310,7 +337,7 @@ public class InsureInfoActivity extends BaseActivity {
             datePickView1.setDatePickListener(new DateAfterPickView.DatePickListener() {
                 @Override
                 public void onSelected(String date) {
-                    if(DateUtil.afterToday(date,false)){
+                    if(DateUtil.afterToday(date,true)){
                         data.compulsoryinsdate = date;
                         btnEffectiveDate1.setText(date);
                     }else {
@@ -331,7 +358,7 @@ public class InsureInfoActivity extends BaseActivity {
             datePickView2.setDatePickListener(new DateAfterPickView.DatePickListener() {
                 @Override
                 public void onSelected(String date) {
-                    if(DateUtil.afterToday(date,false)){
+                    if(DateUtil.afterToday(date,true)){
                         data.businessinsdate = date;
                         btnEffectiveDate2.setText(date);
                     }else {

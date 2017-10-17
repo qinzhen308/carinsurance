@@ -1514,9 +1514,9 @@ public class DateUtil {
 			int cy=calendar.get(Calendar.YEAR);
 			int cm=calendar.get(Calendar.MONTH);
 			int cd=calendar.get(Calendar.DAY_OF_MONTH);
-			calendar.setTime(new Date());
+			calendar.setTime(new Date(0));
 			calendar.set(cy,cm,cd);
-			long delta=date.getTime()-calendar.getTimeInMillis();
+			long delta=date.getTime()-calendar.getTimeInMillis()+28800000;
 			if(delta==0)return containToday;
 			return delta<0;
 		} catch (ParseException e) {
@@ -1531,9 +1531,9 @@ public class DateUtil {
 			int cy=calendar.get(Calendar.YEAR);
 			int cm=calendar.get(Calendar.MONTH);
 			int cd=calendar.get(Calendar.DAY_OF_MONTH);
-			calendar.setTime(new Date());
+			calendar.setTime(new Date(0));
 			calendar.set(cy,cm,cd);
-			long delta=date.getTime()-calendar.getTimeInMillis();
+			long delta=date.getTime()-calendar.getTimeInMillis()+28800000;
 			if(delta==0)return containToday;
 			return delta>0;
 		} catch (ParseException e) {

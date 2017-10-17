@@ -94,6 +94,7 @@ public class AppUrls {
 	public String URL_INSURE_DETAIL_SUBMIT=BASE_URL+"Process/cearteorder.html";//保单详情页（确认页）提交
 	public String URL_RECEIVE_ADDRESS=BASE_URL+"Index/logistics.html";//配送信息
 	public String URL_GET_AREA=BASE_URL+"process/getdistrict.html";//根据id查区域
+	public String URL_GET_EFFECTIVE_DATE = BASE_URL + "Process/getinsurancedate.html";//查询生效日期
 
 	public String URL_SUBMIT_RECEIVE_ADDRESS=BASE_URL+"Process/getaddr.html";//提交配送信息
 	public String URL_UNDERWRITING=BASE_URL+"Index/insuranceapprove.html";//核保
