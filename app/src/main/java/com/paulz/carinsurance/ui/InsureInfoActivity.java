@@ -341,7 +341,7 @@ public class InsureInfoActivity extends BaseActivity {
                         data.compulsoryinsdate = date;
                         btnEffectiveDate1.setText(date);
                     }else {
-                        AppUtil.showToast(getApplication(),"生效日期必须从明天起");
+                        AppUtil.showToast(getApplication(),"请选择今天或以后的日期");
                     }
 
                 }
@@ -362,7 +362,7 @@ public class InsureInfoActivity extends BaseActivity {
                         data.businessinsdate = date;
                         btnEffectiveDate2.setText(date);
                     }else {
-                        AppUtil.showToast(getApplication(),"生效日期必须从明天起");
+                        AppUtil.showToast(getApplication(),"请选择今天或以后的日期");
                     }
 
                 }
