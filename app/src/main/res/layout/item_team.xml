@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
+
+
+        <com.paulz.carinsurance.view.CircleImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/user2"
+            android:scaleType="fitXY"
+            android:layout_marginRight="10dp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_manager_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_grey"
+            android:text="name"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:textSize="@dimen/text_size"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_team_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_grey"
+            android:text="name"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:layout_below="@+id/tv_manager_name"
+            android:layout_marginTop="10dp"
+            android:textSize="@dimen/text_size"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_half_circle_solid_green"
+            android:gravity="center"
+            android:paddingBottom="3dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:text="未认证"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_small" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_grey"
+            android:text="name"
+            android:layout_below="@+id/tv_manager_name"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:textSize="@dimen/text_size"
+            />
+
+
+
+    </RelativeLayout>
+
+
+    <View
+        style="@style/divider_horizontal_grey"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_total_fee"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_grey"
+            android:text="name"
+            android:textSize="@dimen/text_size_small"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_monthly_fee"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/text_grey"
+            android:text="name"
+            android:textSize="@dimen/text_size_small"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_dayly_fee"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/text_grey"
+            android:text="name"
+            android:textSize="@dimen/text_size_small"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tv_total_count"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_grey"
+            android:text="name"
+            android:textSize="@dimen/text_size_small"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_monthly_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/text_grey"
+            android:text="name"
+            android:textSize="@dimen/text_size_small"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_dayly_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/text_grey"
+            android:text="name"
+            android:textSize="@dimen/text_size_small"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

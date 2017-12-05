@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <com.paulz.carinsurance.view.CircleImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/user2"
+            android:scaleType="fitXY"
+            />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/text_grey"
+            android:layout_gravity="center_horizontal"
+            android:layout_toRightOf="@+id/iv_avatar"
+            />
+
+        <TextView
+            android:id="@+id/tv_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/text_grey"
+            android:layout_gravity="center_horizontal"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:layout_below="@+id/tv_name"
+            android:layout_above="@+id/tv_date"
+            />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/text_grey"
+            android:layout_gravity="center_horizontal"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:layout_alignBottom="@+id/iv_avatar"
+            />
+
+
+
+        <TextView
+            android:id="@+id/tv_invited_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/text_grey"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/tv_name"
+            android:layout_above="@+id/tv_date"
+            android:layout_alignParentRight="true"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_invite_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/main"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignBottom="@+id/iv_avatar"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_half_circle_solid_green"
+            android:drawablePadding="5dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:paddingBottom="3dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:text="未认证"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_small" />
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="车牌"
+            android:paddingLeft="10dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/text_grey"
+            android:layout_gravity="center_horizontal"
+            />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="商业险保费"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/text_grey"
+            android:layout_gravity="center_horizontal"
+            />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="交强险保费"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical|right"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/text_grey"
+            android:layout_gravity="center_horizontal"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.paulz.carinsurance.view.pulltorefresh.PullListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:divider="@drawable/list_divider1" />
+
+        <FrameLayout
+            android:id="@+id/load_state_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

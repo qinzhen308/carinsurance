@@ -12,7 +12,7 @@
     <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-permission android:name="android.permission.READ_LOGS" />
@@ -35,14 +35,15 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
+        android:name=".HApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".HApplication"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.LaunchActivity"
+        <activity
+            android:name=".ui.LaunchActivity"
             android:label="@string/app_name"
             android:theme="@style/launch_fullscreen_trans">
             <intent-filter>
@@ -56,8 +57,7 @@
             android:name=".ui.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-            ></activity>
+            android:windowSoftInputMode="adjustPan"></activity>
 
         <activity
             android:name=".ui.GuideActivity"
@@ -83,196 +83,218 @@
         <activity
             android:name=".ui.MyBounsActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-             />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.MyAchievementActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-             />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.AccountActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-             />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.NameVerifyActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.UserInfoActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-             />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.BankCardActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-             />
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.SafeActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-             />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.ModifyPhoneActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.ModifyPhoneStep2Activity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.ModifyLoginPwdActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.ModifyWithdrawPwdActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.EditAddressActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.AddressListActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.AddBankCardActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.SelectCarNumberActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.AddCarInfoActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
             android:name=".ui.SelectCarModelActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.SearchCarModelActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.InsureInfoActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.SelectInsureCompanyActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.OrderInfoActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.CustomerInfoActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.CarInsureActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.WithdrawHistoryActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.WithdrawApplyActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.BounsRecordActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.SelectCityActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.SelectAreaActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.InsureDetailActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.InsureDetailActivity2"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.InsureCompanyPriceActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ui.AddressActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.UnderwritingActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.CommonWebActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".ui.MsgCenterActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.MsgNoticeDetailActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.MyOrganisationActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.TeamInfoActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.TeamListActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.SalesmanListActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.TeamAchievementActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+
+      <activity
+            android:name=".ui.TeamAchievementDetailActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.SalesmanCountListActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.SalesmanDetailActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.InsureFailedReasonActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.UploadProfileActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -281,8 +303,93 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
+
+
+        <!-- JPush
+        &lt;!&ndash; Required SDK核心功能 &ndash;&gt;
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="cn.xiaojs.xma"/>
+            </intent-filter>
+        </activity>
+        &lt;!&ndash; Required SDK 核心功能 &ndash;&gt;
+        &lt;!&ndash; 可配置android:process参数将PushService放在其他进程中 &ndash;&gt;
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:process=":mult">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER"/>
+                <action android:name="cn.jpush.android.intent.REPORT"/>
+                <action android:name="cn.jpush.android.intent.PushService"/>
+                <action android:name="cn.jpush.android.intent.PUSH_TIME"/>
+            </intent-filter>
+        </service>
+
+        &lt;!&ndash; since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 &ndash;&gt;
+        &lt;!&ndash; 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 &ndash;&gt;
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService"/>
+
+                <category android:name="cn.xiaojs.xma"/>
+            </intent-filter>
+        </service>
+
+        &lt;!&ndash; Required SDK核心功能 &ndash;&gt;
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/> &lt;!&ndash; Required  显示通知栏 &ndash;&gt;
+                <category android:name="cn.xiaojs.xma"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+            &lt;!&ndash; Optional &ndash;&gt;
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+
+        &lt;!&ndash; Required Push SDK核心功能 &ndash;&gt;
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false"/>
+        &lt;!&ndash; Required Push SDK核心功能 &ndash;&gt;
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver"/>
+
+        &lt;!&ndash; User defined.  For test only  用户自定义的广播接收器 &ndash;&gt;
+        <receiver
+            android:name=".service.JPushReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION"/> &lt;!&ndash; Required  用户注册SDK的intent &ndash;&gt;
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/> &lt;!&ndash; Required  用户接收SDK消息的intent &ndash;&gt;
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/> &lt;!&ndash; Required  用户接收SDK通知栏信息的intent &ndash;&gt;
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/> &lt;!&ndash; Required  用户打开自定义通知栏的intent &ndash;&gt;
+                <action android:name="cn.jpush.android.intent.CONNECTION"/> &lt;!&ndash; 接收网络变化 连接/断开 since 1.6.3 &ndash;&gt;
+                <category android:name="cn.xiaojs.xma"/>
+            </intent-filter>
+        </receiver>-->
 
 
     </application>

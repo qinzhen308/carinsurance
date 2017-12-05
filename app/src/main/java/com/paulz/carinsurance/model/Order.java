@@ -1,6 +1,7 @@
 package com.paulz.carinsurance.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Order implements Serializable{
 
@@ -34,5 +35,16 @@ public class Order implements Serializable{
 	public String insurance_cityid;
 	public long insurance_createtime;
 	public String insurance_businessins;
+
+	public List<ButtonModel> buttonlist;
+
+
+	public class ButtonModel{
+		public int type;
+		public String title;
+		public String confirm;
+		public String apiuri;
+
+	}
 
 }

@@ -285,13 +285,15 @@ public class OrderInfoActivity extends BaseActivity {
             updateOrder();
         } else if (data.order_status == 1) {//核保中，无操作功能
         } else if (data.order_status == 2) {//核保失败，从选择保险公司开始重新核保
-            recreateOrder();
+//            recreateOrder();
+            InsureFailedReasonActivity.invoke(this,data.order_sn);
         } else if (data.order_status == 3) {//支付，直接去支付
             pay();
         } else if (data.order_status == 4) {//已支付，无操作
         } else if (data.order_status == 5) {//交易关闭，无操作
         }
     }
+
 
     private void updateOrder() {
         DialogUtil.showDialog(lodDialog);

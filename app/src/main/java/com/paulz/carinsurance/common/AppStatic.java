@@ -127,6 +127,8 @@ public class AppStatic {
 		PreferencesUtils.remove("member_store");
 		PreferencesUtils.remove("member_nickname");
 		PreferencesUtils.remove("member_realname");
+		PreferencesUtils.remove("teammanage");
+		PreferencesUtils.remove("teamtype");
 
 	}
 
@@ -142,7 +144,9 @@ public class AppStatic {
 		putData("member_username", user.member_username);
 		putData("member_nickname", user.member_nickname);
 		putData("member_store", user.member_store);
+		putData("teammanage", user.teammanage);
 		PreferencesUtils.putInteger("member_realname", user.member_realname);
+		PreferencesUtils.putInteger("teamtype", user.teamtype);
 	}
 
 
@@ -165,7 +169,9 @@ public class AppStatic {
 		user.member_username=(PreferencesUtils.getString("member_username"));
 		user.member_store=(PreferencesUtils.getString("member_store"));
 		user.member_nickname=(PreferencesUtils.getString("member_nickname"));
+		user.teammanage=(PreferencesUtils.getString("teammanage"));
 		user.member_realname=(PreferencesUtils.getInteger("member_realname"));
+		user.teamtype=(PreferencesUtils.getInteger("teamtype"));
 		return user;
 	}
 

@@ -96,6 +96,20 @@
         android:layout_marginBottom="15dp"
         />
 
+    <TextView
+        android:id="@+id/btn_operation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_grey_french1"
+        android:layout_marginRight="10dp"
+        android:text="取消订单"
+        android:textSize="@dimen/text_size"
+        android:layout_alignBottom="@+id/tv_channel"
+        android:background="@drawable/bg_rectangle_strake_grey_no_coner"
+        android:layout_alignParentRight="true"
+        android:padding="6dp"
+        />
+
 
 
 

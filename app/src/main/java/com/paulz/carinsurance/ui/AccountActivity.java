@@ -1,5 +1,6 @@
 package com.paulz.carinsurance.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.paulz.carinsurance.view.PageSlidingIndicator;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -118,7 +120,22 @@ public class AccountActivity extends BaseFragmentActivity {
     }
 
 
-    public static void invoke(Context context,int tag){
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode== Activity.RESULT_OK){
+            if(requestCode==100){
+                Iterator<AccountFragment> fs=mapFragments.values().iterator();
+                while (fs.hasNext()){
+                    AccountFragment f=fs.next();
+                    if(f.isAdded()){
+                        f.onRefresh();
+                    }
+                }
+            }
+        }
+    }
+
+    public static void invoke(Context context, int tag){
         context.startActivity(new Intent(context,AccountActivity.class).putExtra("tag",tag));
     }
 }

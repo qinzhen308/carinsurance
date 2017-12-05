@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="10dp"
+    >
+
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:textColor="@color/text_grey"
+        android:text="状态"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/text_size"
+        android:layout_marginTop="10dp"
+        android:maxLines="1"
+        android:layout_toLeftOf="@+id/tv_date"
+        />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_height="36dp"
+        android:textColor="@color/text_grey_french1"
+        android:text="2015-19-29 32:22"
+        android:textSize="@dimen/text_size"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/iv_pic"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tv_name"
+        android:scaleType="fitXY"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_describ"
+        android:layout_width="wrap_content"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_height="36dp"
+        android:textColor="@color/text_grey_french1"
+        android:text="备课大师白金卡"
+        android:textSize="@dimen/text_size"
+        android:layout_below="@+id/iv_pic"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        />
+
+
+
+
+</RelativeLayout>

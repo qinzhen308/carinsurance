@@ -100,6 +100,8 @@
     <color name="base_yellow">#FEF6DC</color>
     <color name="base_blue">#3C74C9</color>
 
+    <color name="green1">#66DB42</color>
+
     <color name="text_yellow">#E25400</color>
     <color name="main_bg">#F4F4F4</color>
     <color name="background_tab_pressed">#6633B5E5</color>

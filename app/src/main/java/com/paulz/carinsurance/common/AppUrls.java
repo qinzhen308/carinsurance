@@ -18,8 +18,10 @@ public class AppUrls {
 	public String SESSION_ID="1231321";
 
 
-	public String BASE_DOMAIN="http://120.27.222.234:58580/bxagency";//测试域名
-//	public String BASE_DOMAIN="http://www.hgbaoxian.cn";//正式域名
+	public String DOMAIN="http://www.hgbaoxian.cn:58580";//测试域名
+	public String BASE_DOMAIN=DOMAIN+"/bxagency";//二期测试域名
+//	public String DOMAIN="http://www.hgbaoxian.cn";//测试域名
+//	public String BASE_DOMAIN=DOMAIN+"/";//正式域名
 	public String BASE_URL=BASE_DOMAIN+"/index.php?s=/Api/";//测试域名
 	public String BASE_WAP_URL=BASE_DOMAIN+"/index.php?s=/Home/";//测试域名
 	public String BASE_IMG_URL=BASE_DOMAIN+"/Res/Avatar/";//图片
@@ -116,9 +118,26 @@ public class AppUrls {
 	public String URL_REFRESH_PRICE_VERIFY=BASE_URL+"Process/shuaxinxunjiav.html";//刷新报价验证码
 
 
+	public String URL_ORGANIZATION_HOME=BASE_URL+"Teammanage/index.html";//机构或者团队首页
+	public String URL_TEAM_INFO =BASE_URL+"Teammanage/details.html";//机构或者团队信息
+	public String URL_ORGANIZATION_INFO_EDIT=BASE_URL+"Teammanage/teaminfoedit.html";//编辑机构或者团队信息
+	public String URL_TEAM_LIST=BASE_URL+"Teammanage/tdlist.html";//团队列表
+	public String URL_SALESMAN_LIST =BASE_URL+"Teammanage/workerlist.html";//业务员列表
+	public String URL_INSURE_ORDER_FEE_LIST =BASE_URL+"Teammanage/insurancetd.html";//出单明细列表
+	public String URL_INSURE_ORDER_DETAIL_FEE_LIST =BASE_URL+"Teammanage/insuranceorder.html";//出单明细列表
+	public String URL_SALESMAN_COUNT_LIST =BASE_URL+"Teammanage/ywlist.html";//业务员数列表
+	public String URL_SALESMAN_DETAILS =BASE_URL+"Teammanage/workerdetails.html";//业务员详情
+	public String URL_INSURE_FAILED_REASON =BASE_URL+"order/lookreason.html";//核保失败原因
+	public String URL_UPLOAD_PROFILE_INIT =BASE_URL+"Order/updateimg.html";//上传资料的初始化
+	public String URL_UPLOAD_PROFILE_COMMIT =BASE_URL+"Order/postimgajax.html";//上传资料完全提交
+	public String URL_UPLOAD_PROFILE_DELETE_IMG =BASE_URL+"Order/delimgajax.html";//删除临时上传了的照片
+	public String URL_UPLOAD_PROFILE_ADD_IMG =BASE_URL+"Order/updateimgajax.html";//添加临时上传了的照片
+
+
 
 	public String URL_WAP_FORGET_PASSWORD=BASE_WAP_URL+"Public/forget.html&form=andr";//忘记密码页面
 	public String URL_WAP_REGISTION=BASE_WAP_URL+"Public/register.html&form=andr";//注册页面
+
 
 
 

@@ -22,9 +22,12 @@ import com.paulz.carinsurance.parser.gson.BaseObject;
 import com.paulz.carinsurance.parser.gson.GsonParser;
 import com.paulz.carinsurance.ui.AccountActivity;
 import com.paulz.carinsurance.ui.CommonWebActivity;
+import com.paulz.carinsurance.ui.MsgCenterActivity;
 import com.paulz.carinsurance.ui.MyAchievementActivity;
 import com.paulz.carinsurance.ui.MyBounsActivity;
+import com.paulz.carinsurance.ui.MyOrganisationActivity;
 import com.paulz.carinsurance.ui.NameVerifyActivity;
+import com.paulz.carinsurance.ui.TeamInfoActivity;
 import com.paulz.carinsurance.ui.UserInfoActivity;
 import com.paulz.carinsurance.utils.Image13Loader;
 import com.paulz.carinsurance.view.CircleImageView;
@@ -74,6 +77,10 @@ public class UserCenterFragment extends BaseFragment {
     TextView tvPayingCount;
     @BindView(R.id.tv_payed_count)
     TextView tvPayedCount;
+    @BindView(R.id.layout_organization)
+    TextView layoutOrganization;
+    @BindView(R.id.tv_msg_count)
+    View tvMsgCount;
 
     @Override
     public void heavyBuz() {
@@ -112,6 +119,7 @@ public class UserCenterFragment extends BaseFragment {
                 tvStatus.setTextColor(getResources().getColor(R.color.text_grey_french1));
             }
             tvBonus.setText("￥" + user.member_money);
+            layoutOrganization.setText(user.teammanage);
         }
         handleCount(data.paidcount,tvPayedCount);
         handleCount(data.waitpaycount,tvPayingCount);
@@ -155,7 +163,9 @@ public class UserCenterFragment extends BaseFragment {
         initData();
     }
 
-    @OnClick({R.id.layout_more, R.id.layout_bonus, R.id.layout_achievement, R.id.layout_server, R.id.layout_feedback, R.id.tv_order, R.id.tv_paying_order, R.id.tv_payed_order, R.id.iv_avatar, R.id.tv_status})
+    @OnClick({R.id.layout_more, R.id.layout_bonus, R.id.layout_achievement, R.id.layout_server,
+            R.id.layout_feedback, R.id.tv_order, R.id.tv_paying_order, R.id.tv_payed_order,
+            R.id.iv_avatar, R.id.tv_status,R.id.layout_organization,R.id.tv_msg_count,R.id.btn_msg})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.layout_more:
@@ -187,6 +197,17 @@ public class UserCenterFragment extends BaseFragment {
                 break;
             case R.id.tv_status:
                 NameVerifyActivity.invoke(getActivity());
+                break;
+            case R.id.layout_organization:
+                if(AppStatic.getInstance().getmUserInfo().teamtype==0){
+                    TeamInfoActivity.invoke(getActivity(),"");
+                }else {
+                    MyOrganisationActivity.invoke(getActivity());
+                }
+                break;
+            case R.id.tv_msg_count:
+            case R.id.btn_msg:
+                MsgCenterActivity.invoke(getActivity(),0);
                 break;
         }
     }

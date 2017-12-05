@@ -26,6 +26,9 @@ public class UserInfo implements Serializable {
 	public String member_avatar;
 	public int member_realname;//大于0为已认证
 
+	public String teammanage;//机构/团队/个人主页按钮名称
+	public int teamtype;//按钮名称/按钮类型标识分别有: 机构管理/2,团队管理/1,我的团队/0
+
 
 
 

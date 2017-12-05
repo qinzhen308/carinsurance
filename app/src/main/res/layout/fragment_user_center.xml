@@ -171,6 +171,35 @@
                 />
 
 
+            <ImageView
+                android:id="@+id/btn_msg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:scaleType="fitXY"
+                android:padding="5dp"
+                android:src="@drawable/ic_user_msg"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_msg_count"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:text=""
+                android:background="@drawable/shape_circle_red"
+                android:textColor="@color/white"
+                android:layout_alignTop="@+id/btn_msg"
+                android:gravity="center"
+                android:layout_alignRight="@+id/btn_msg"
+                android:textSize="9sp"
+                android:visibility="gone"
+                />
+
+
 
         </RelativeLayout>
 
@@ -227,6 +256,22 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="我的业绩"
+            android:textColor="@color/text_grey"
+            android:textSize="@dimen/text_size" />
+
+        <TextView
+            android:id="@+id/layout_organization"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/ic_organization_"
+            android:drawablePadding="8dp"
+            android:drawableRight="@drawable/arr_big"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="机构管理"
             android:textColor="@color/text_grey"
             android:textSize="@dimen/text_size" />
 
