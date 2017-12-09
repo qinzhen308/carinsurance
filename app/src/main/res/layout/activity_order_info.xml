@@ -6,6 +6,43 @@
     android:background="@color/main_bg"
     >
 
+
+    <LinearLayout
+        android:id="@+id/layout_upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+        android:visibility="visible"
+        >
+
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@color/base_yellow"
+            android:textColor="@color/base_red"
+            android:textSize="@dimen/text_size_small"
+            android:padding="10dp"
+            android:minHeight="50dp"
+            android:gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/btn_upload_operate"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="@color/base_blue"
+            android:gravity="center"
+            android:text="上传证件"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/btn_white_orange" />
+
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -402,6 +439,42 @@
                 android:layout_width="match_parent"
                 android:background="@color/white"
                 android:layout_height="5dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="特别约定"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/text_size" />
+
+
+                <TextView
+                    android:id="@+id/tv_appoint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="30dp"
+                    android:text=""
+                    android:textColor="@color/text_grey"
+                    android:textColorHint="@color/text_grey_french2"
+                    android:textSize="@dimen/text_size" />
+
+
+            </LinearLayout>
 
 
             <TextView

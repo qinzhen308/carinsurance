@@ -32,6 +32,7 @@ public class AppStatic {
 	private UserInfo mUserInfo;
 	public boolean isLogin = false;// 用户是否登录
 	public String captcha = "";
+	public static String registerId = "";
 	public static boolean isRefrshHome=false;
 	private HashMap<String, Activity> mActivityMap = new HashMap<String, Activity>();
 
@@ -60,6 +61,8 @@ public class AppStatic {
 			mUserInfo=null;
 			isLogin=false;
 			PreferencesUtils.putBoolean("isLogin",false);
+			PreferencesUtils.remove("session_id");
+
 			//关闭所有页面，重新打开登录页面
 			Iterator<Activity> it = mActivityMap.values().iterator();
 			LogUtil.d("clearLoginStatus---mActivityMap size---"+mActivityMap.size());
@@ -77,6 +80,7 @@ public class AppStatic {
 			mUserInfo=null;
 			isLogin=false;
 			PreferencesUtils.putBoolean("isLogin",false);
+			PreferencesUtils.remove("session_id");
 		}
 	}
 

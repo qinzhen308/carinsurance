@@ -132,7 +132,7 @@ public class TeamInfoActivity extends BaseActivity {
            }else {
                //团队管理人查看所属机构资料
                setTitleText("", "机构资料",0 , true);
-               setTitleTextRightText("", "机构资料", "机构费用比例", true);
+//               setTitleTextRightText("", "机构资料", "机构费用比例", true);
                tvLabelTitle.setText("机构信息");
            }
        } else if(AppStatic.getInstance().getmUserInfo().teamtype==2){//我是机构管理人
@@ -153,7 +153,10 @@ public class TeamInfoActivity extends BaseActivity {
     @Override
     public void onRightClick() {
         if(AppStatic.getInstance().getmUserInfo().teamtype==0){
-            CommonWebActivity.invoke(this,"https://www.baidu.com","去邀请");
+            if(mData==null)return;
+            ParamBuilder params=new ParamBuilder();
+            String url=APIUtil.parseGetUrlHasMethod(params.getParamList(),AppUrls.getInstance().DOMAIN+mData.recommonurl);
+            CommonWebActivity.invoke(this,url,"去邀请");
         }else{
             lookRate();
         }

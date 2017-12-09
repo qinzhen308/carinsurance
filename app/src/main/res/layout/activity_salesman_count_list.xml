@@ -70,7 +70,7 @@
             android:background="@drawable/bg_search"
             android:drawableRight="@drawable/search_icon_search"
             android:gravity="left|center_vertical"
-            android:hint="请输入关键字"
+            android:hint="请输入名字、手机号、邀请人"
             android:imeOptions="actionDone"
             android:inputType="text"
             android:maxLines="1"

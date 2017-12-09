@@ -32,6 +32,7 @@ import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.model.wrapper.BeanWraper;
 import com.paulz.carinsurance.model.wrapper.CustomerWraper;
 import com.paulz.carinsurance.ui.AddCustomerActivity;
+import com.paulz.carinsurance.ui.MsgCenterActivity;
 import com.paulz.carinsurance.utils.AppUtil;
 import com.paulz.carinsurance.utils.ImageUtil;
 import com.paulz.carinsurance.view.pulltorefresh.PullListView;
@@ -135,7 +136,7 @@ public class CustomerFragment extends BaseListFragment implements PullToRefreshB
         });
     }
 
-    @OnClick({R.id.btn_add_customer,R.id.tv_sort,R.id.tv_filter,R.id.btn_search})
+    @OnClick({R.id.btn_add_customer,R.id.tv_sort,R.id.tv_filter,R.id.btn_search,R.id.tv_msg_count,R.id.btn_msg})
     public void onClick(View v){
         switch (v.getId()){
             case R.id.btn_add_customer:
@@ -152,7 +153,10 @@ public class CustomerFragment extends BaseListFragment implements PullToRefreshB
                 onRefresh();
                 AppUtil.hideSoftInputMethod(getActivity(),searchBar);
                 break;
-
+            case R.id.tv_msg_count:
+            case R.id.btn_msg:
+                MsgCenterActivity.invoke(getActivity(),0);
+                break;
 
             default:
                 break;

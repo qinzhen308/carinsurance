@@ -10,4 +10,6 @@ public class ImageModelDouble {
 
     public UploadProfileConfig.ImageModel left;
     public UploadProfileConfig.ImageModel right;
+
+    public boolean enable;
 }

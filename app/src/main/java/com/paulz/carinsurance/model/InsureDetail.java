@@ -46,6 +46,7 @@ public class InsureDetail {
         public String insurance_carmodel_seat;
         public String insurance_carmodel_vin;
         public String insurance_carmodel_en;
+        public String insurance_carmodel_teyue;
         public long insurance_carmodel_regdate;
 
     }

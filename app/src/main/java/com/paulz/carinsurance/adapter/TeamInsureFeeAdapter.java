@@ -9,6 +9,7 @@ import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.model.Achievement;
 import com.paulz.carinsurance.model.InsureFee;
 import com.paulz.carinsurance.ui.OrderInfoActivity;
+import com.paulz.carinsurance.ui.TeamAchievementDetailActivity;
 import com.paulz.carinsurance.ui.TeamInfoActivity;
 
 import butterknife.BindView;
@@ -41,7 +42,9 @@ public class TeamInsureFeeAdapter extends AbsMutipleAdapter<InsureFee, TeamInsur
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TeamInfoActivity.invoke(mContext,bean.store_id);
+//                TeamInfoActivity.invoke(mContext,bean.store_id);
+                TeamAchievementDetailActivity.invoke(mContext,bean.store_id);
+
             }
         });
     }

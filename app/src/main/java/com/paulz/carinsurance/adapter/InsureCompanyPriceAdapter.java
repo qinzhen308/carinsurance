@@ -56,8 +56,21 @@ public class InsureCompanyPriceAdapter extends AbsMutipleAdapter<CompanyResult, 
     public void onBindViewHolder(int position, final CustomerHolder holder) {
         final CompanyResult company = (CompanyResult) getItem(position);
 
+
         holder.tvName.setText(company.insurance_company_name);
         Image13Loader.getInstance().loadImage(AppUrls.getInstance().IMG_INSCOMPANY + company.insurance_company_img, holder.ivIcon);
+
+        if(company.isFakeResult){
+            holder.tvNoPrice.setVisibility(View.GONE);
+            holder.progressBar.setVisibility(View.VISIBLE);
+            holder.requestTip.setVisibility(View.VISIBLE);
+            holder.layoutNormal.setVisibility(View.GONE);
+            holder.root.setOnClickListener(null);
+            getPrice(position,company);
+            return;
+        }
+
+        holder.requestTip.setVisibility(View.GONE);
 
         if(company.isReasonShown){
             holder.layoutReason.setVisibility(View.VISIBLE);
@@ -120,6 +133,32 @@ public class InsureCompanyPriceAdapter extends AbsMutipleAdapter<CompanyResult, 
             }
         });
     }
+
+
+    private void getPrice(final int position,final CompanyResult bean){
+
+        if(bean.isLoading)return;
+        bean.isLoading=true;
+        ParamBuilder params=new ParamBuilder();
+        HttpRequester requester=new HttpRequester();
+        requester.getParams().put("company",bean.insurance_company_id);
+        NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_INSURE_PRICE_SINGLE), new NetworkWorker.ICallback() {
+            @Override
+            public void onResponse(int status, String result) {
+                if(status==200){
+                    BaseObject<CompanyResult> object= GsonParser.getInstance().parseToObj(result,CompanyResult.class);
+                    if(object!=null&&object.status==BaseObject.STATUS_OK&&object.data!=null){
+                        mList.set(position,object.data);
+                        notifyDataSetChanged();
+                    }else {
+
+                    }
+                }
+            }
+        },requester,DESUtil.SECRET_DES);
+
+    }
+
 
 
     private void showVerifyDialog(final CompanyResult company) {
@@ -250,6 +289,8 @@ public class InsureCompanyPriceAdapter extends AbsMutipleAdapter<CompanyResult, 
         LinearLayout layoutReason;
         @BindView(R.id.progress_bar)
         ProgressBar progressBar;
+        @BindView(R.id.request_tip)
+        TextView requestTip;
 
         public CustomerHolder(View view) {
             super(view);

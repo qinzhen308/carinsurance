@@ -42,6 +42,7 @@ import com.paulz.carinsurance.parser.gson.BaseObject;
 import com.paulz.carinsurance.parser.gson.GsonParser;
 import com.paulz.carinsurance.permissiongen.internal.PermissionUtil;
 import com.paulz.carinsurance.ui.AddCarInfoActivity;
+import com.paulz.carinsurance.ui.MsgCenterActivity;
 import com.paulz.carinsurance.ui.RecordActivity;
 import com.paulz.carinsurance.ui.SelectCarNumberActivity;
 import com.paulz.carinsurance.utils.AppUtil;
@@ -139,7 +140,7 @@ public class HomeFragment extends BaseFragment {
     }
 
 
-    @OnClick ({R.id.tv_record,R.id.tv_car_id,R.id.btn_submit,R.id.iv_camera})
+    @OnClick ({R.id.tv_record,R.id.tv_car_id,R.id.btn_submit,R.id.iv_camera,R.id.tv_msg_count,R.id.btn_msg})
     public void onClick(View v){
         switch (v.getId()){
             case R.id.tv_record:
@@ -155,6 +156,9 @@ public class HomeFragment extends BaseFragment {
             case R.id.iv_camera:
                 showPhotoWindow();
                 break;
+            case R.id.tv_msg_count:
+            case R.id.btn_msg:
+                MsgCenterActivity.invoke(getActivity(),0);
         }
     }
 
@@ -250,7 +254,7 @@ public class HomeFragment extends BaseFragment {
                 AppUtil.showToast(getActivity(),"请输入车牌号");
                 return;
             }
-            if(carId2.length()!=5){
+            if(carId2.length()<5){
                 AppUtil.showToast(getActivity(),"请输入正确车牌号");
                 return;
             }

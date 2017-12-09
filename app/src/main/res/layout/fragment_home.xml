@@ -4,14 +4,54 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/main_color"
         android:gravity="center"
-        android:text="首页"
-        android:textColor="@color/white"
-        android:textSize="15sp" />
+        android:background="@color/main_color"
+        android:layout_height="40dp" >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/main_color"
+            android:gravity="center"
+            android:text="首页"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/btn_msg"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:scaleType="fitXY"
+            android:padding="5dp"
+            android:src="@drawable/ic_user_msg"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_msg_count"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:text=""
+            android:background="@drawable/shape_circle_red"
+            android:textColor="@color/white"
+            android:layout_alignTop="@+id/btn_msg"
+            android:gravity="center"
+            android:layout_alignRight="@+id/btn_msg"
+            android:textSize="9sp"
+            android:visibility="gone"
+            />
+
+
+    </RelativeLayout>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -72,7 +112,7 @@
                     android:digits="1234567890QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"
                     android:hint="请输入车牌号"
                     android:inputType="textCapCharacters"
-                    android:maxLength="5"
+                    android:maxLength="6"
                     android:maxLines="1"
                     android:padding="5dp"
                     android:textColor="@color/text_grey"

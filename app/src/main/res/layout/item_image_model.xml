@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:scaleType="fitCenter" />
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/btn_add1"
@@ -55,6 +55,26 @@
                 />
 
 
+            <FrameLayout
+                android:id="@+id/progress_bar1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@color/transparency_black"
+                >
+                <ProgressBar
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:indeterminate="true"
+                    android:layout_gravity="center"
+                    android:indeterminateDrawable="@drawable/load_refresh_progress"
+                    />
+
+            </FrameLayout>
+
+
+
         </RelativeLayout>
 
 
@@ -75,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:scaleType="fitCenter" />
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/btn_add2"
@@ -98,6 +118,26 @@
                 android:src="@drawable/ic_board_layer_controll_delete"
                 android:layout_alignParentRight="true"
                 />
+
+
+            <FrameLayout
+                android:id="@+id/progress_bar2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@color/transparency_black"
+                >
+                <ProgressBar
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:indeterminate="true"
+                    android:layout_gravity="center"
+                    android:indeterminateDrawable="@drawable/load_refresh_progress"
+                    />
+
+            </FrameLayout>
+
 
 
         </RelativeLayout>

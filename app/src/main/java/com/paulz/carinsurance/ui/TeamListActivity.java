@@ -85,7 +85,16 @@ public class TeamListActivity extends BaseListActivity implements PullToRefreshB
         mAdapter = new TeamAdapter(this);
         mLoadStateController=new LoadStateController(this, (ViewGroup) findViewById(R.id.load_state_container));
         hasLoadingState=true;
+        initHeader();
         mListView.setAdapter(mAdapter);
+        searchBar.setHint("请输入团队名称、负责人名称、手机号");
+    }
+
+    TextView tvTotal;
+    private void initHeader(){
+        View v =LayoutInflater.from(this).inflate(R.layout.layout_footer_total_count,null);
+        tvTotal=(TextView)v.findViewById(R.id.tv_total);
+        mListView.addFooterView(v);
     }
 
     private void setListener() {
@@ -107,7 +116,7 @@ public class TeamListActivity extends BaseListActivity implements PullToRefreshB
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TeamInfoActivity.invoke(TeamListActivity.this,mAdapter.getList().get(position).store_id);
+                TeamInfoActivity.invoke(TeamListActivity.this,mAdapter.getList().get(position-mListView.getHeaderViewsCount()).store_id);
 
             }
         });
@@ -192,11 +201,17 @@ public class TeamListActivity extends BaseListActivity implements PullToRefreshB
         }
     }
 
+    public void handleHeader(){
+        TeamWraper wraper=(TeamWraper) getBeanWraper();
+        tvTotal.setText("共有"+wraper.total+"项");
+    }
+
 
     @Override
     protected void handlerData(List allData, List currentData, boolean isLastPage) {
         // TODO Auto-generated method stub
         mPullListView.onRefreshComplete();
+        handleHeader();
         if (AppUtil.isEmpty(allData)) {
             showNodata();
         } else {

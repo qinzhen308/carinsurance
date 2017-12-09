@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -93,10 +94,19 @@ public class SalesmanDetailActivity extends BaseListActivity implements LoadStat
         mListView = mPullListView.getRefreshableView();
         mListView.setDividerHeight(2);
         mAdapter = new SalesmanDetailAdapter(this);
+        initHeader();
         mListView.setAdapter(mAdapter);
 
     }
 
+
+
+    TextView tvTotal;
+    private void initHeader(){
+        View v = LayoutInflater.from(this).inflate(R.layout.layout_footer_total_count,null);
+        tvTotal=(TextView)v.findViewById(R.id.tv_total);
+        mListView.addFooterView(v);
+    }
 
 
     private void setListener() {
@@ -117,6 +127,8 @@ public class SalesmanDetailActivity extends BaseListActivity implements LoadStat
             case R.id.tv_invited_name:
                 break;
             case R.id.tv_invite_count:
+
+                SalesmanCountListActivity.invoke(this,id);
 
                 break;
         }
@@ -177,6 +189,7 @@ public class SalesmanDetailActivity extends BaseListActivity implements LoadStat
         tvStatus.setText(wraper.renzheng);
         tvDate.setText(wraper.createtime);
         rate=wraper.rate;
+        tvTotal.setText("共有"+wraper.total+"单");
 
         Glide.with(this).load(AppUrls.getInstance().BASE_IMG_URL+wraper.member_avatar).into(ivAvatar);
     }

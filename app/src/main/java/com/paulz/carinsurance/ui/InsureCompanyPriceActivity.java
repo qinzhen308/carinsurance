@@ -27,6 +27,7 @@ import com.paulz.carinsurance.utils.AppUtil;
 
 import org.json.JSONArray;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -73,6 +74,17 @@ public class InsureCompanyPriceActivity extends BaseActivity {
 
 
     private void loadData(){
+        ArrayList<Company> companies=(ArrayList<Company>)getIntent().getSerializableExtra("companies");
+        ArrayList<CompanyResult> companyResults=new ArrayList<>();
+        for(Company c:companies){
+            companyResults.add(new CompanyResult(c));
+        }
+        mAdapter.setList(companyResults);
+        mAdapter.notifyDataSetChanged();
+    }
+
+
+   /* private void loadData(){
 
         DialogUtil.showDialog(lodDialog);
         ParamBuilder params=new ParamBuilder();
@@ -92,11 +104,12 @@ public class InsureCompanyPriceActivity extends BaseActivity {
             }
         });
 
-    }
+    }*/
 
 
-    public static void invoke(Activity context){
+    public static void invoke(Activity context, ArrayList<Company> companies){
         Intent intent=new Intent(context,InsureCompanyPriceActivity.class);
+        intent.putExtra("companies",companies);
         context.startActivity(intent);
 
     }

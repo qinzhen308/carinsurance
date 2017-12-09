@@ -11,6 +11,8 @@ import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.common.AppStatic;
 import com.paulz.carinsurance.utils.AppUtil;
 
+import cn.jpush.android.api.JPushInterface;
+
 public class LaunchActivity extends Activity{
 	TextView tvVersion;
 	@Override
@@ -22,6 +24,9 @@ public class LaunchActivity extends Activity{
 			HApplication.getInstance().refreshSessionid();
 		}
 		HApplication.getInstance().loadToken();
+		if(JPushInterface.isPushStopped(getApplicationContext())){
+			JPushInterface.resumePush(getApplicationContext());
+		}
 		tvVersion=(TextView)findViewById(R.id.tv_version);
 		tvVersion.setText("保险  for android v"+ HApplication.getInstance().getVersionName());
 		if(!PreferencesUtils.getBoolean("not_new_install")){

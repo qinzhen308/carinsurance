@@ -3,6 +3,7 @@ package com.paulz.carinsurance.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -80,9 +81,18 @@ public class TeamAchievementActivity extends BaseListActivity implements LoadSta
         mListView = mPullListView.getRefreshableView();
         mListView.setDividerHeight(2);
         mAdapter = new TeamInsureFeeAdapter(this);
+        initHeader();
         mListView.setAdapter(mAdapter);
 
     }
+
+    TextView tvTotal;
+    private void initHeader(){
+        View v = LayoutInflater.from(this).inflate(R.layout.layout_footer_total_count,null);
+        tvTotal=(TextView)v.findViewById(R.id.tv_total);
+        mListView.addFooterView(v);
+    }
+
 
 //    @OnClick({R.id.btn_add_customer})
 //    public void onClick(View v) {
@@ -163,9 +173,11 @@ public class TeamAchievementActivity extends BaseListActivity implements LoadSta
 
     private void setHeader() {
         InsureFeeWraper wraper = (InsureFeeWraper) getBeanWraper();
-        tvTotalFee.setText(wraper.ains+"万");
-        tvForceFee.setText(wraper.cins+"万");
-        tvBusinessFee.setText(wraper.bins+"万");
+        tvTotalFee.setText(wraper.ains+"元");
+        tvForceFee.setText(wraper.cins+"元");
+        tvBusinessFee.setText(wraper.bins+"元");
+        tvTotal.setText("共有"+wraper.total+"单");
+
     }
 
     @Override

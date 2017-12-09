@@ -27,6 +27,7 @@ import com.paulz.carinsurance.utils.AppUtil;
 
 import org.json.JSONArray;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -131,10 +132,12 @@ public class SelectInsureCompanyActivity extends BaseActivity implements InsureC
             return;
         }
 
+        ArrayList companys=new ArrayList();
         JSONArray array=new JSONArray();
         for(Company c:mAdapter.getList()){
             if(c.isSelected){
                 array.put(Integer.valueOf(c.insurance_company_id));
+                companys.add(c);
             }
         }
 
@@ -143,7 +146,11 @@ public class SelectInsureCompanyActivity extends BaseActivity implements InsureC
             return;
         }
 
-        DialogUtil.showDialog(lodDialog);
+
+        InsureCompanyPriceActivity.invoke(SelectInsureCompanyActivity.this,companys);
+
+
+        /*DialogUtil.showDialog(lodDialog);
         ParamBuilder params=new ParamBuilder();
         HttpRequester requester=new HttpRequester();
 
@@ -162,7 +169,7 @@ public class SelectInsureCompanyActivity extends BaseActivity implements InsureC
                     }
                 }
             }
-        },requester, DESUtil.SECRET_DES);
+        },requester, DESUtil.SECRET_DES);*/
     }
 
 

@@ -483,7 +483,7 @@ public class CarInsureActivity extends BaseActivity {
                 AppUtil.showToast(getApplicationContext(), "请输入车牌");
                 return;
             }
-            if (carNumber.length() != 5) {
+            if (carNumber.length() < 5) {
                 AppUtil.showToast(getApplicationContext(), "请输入正确车牌号");
                 return;
             }

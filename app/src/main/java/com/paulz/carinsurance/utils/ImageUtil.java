@@ -619,13 +619,13 @@ public class ImageUtil {
 			bm=scaleDimen(file,degree,baseW,options);
 			long scale=size/LIMIT_SIZE;
 //            double scale=Math.sqrt(((double) size)/(double)LIMIT_SIZE);
-			String newPath=filePath+System.currentTimeMillis()+"_temp_compress.png";
+			String newPath=filePath+System.currentTimeMillis()+"_temp_compress.jpg";
 
 			File newFile=new File(newPath);
 			FileOutputStream os=null;
 			try {
 				os=new FileOutputStream(newFile);
-				boolean isSuc=bm.compress(Bitmap.CompressFormat.PNG,size>LIMIT_SIZE?(int)(100.0f/(float) scale):100,os);
+				boolean isSuc=bm.compress(Bitmap.CompressFormat.JPEG,size>LIMIT_SIZE?(int)(100.0f/(float) scale):100,os);
 				Log.d("img","compress is success?--"+isSuc+"--size="+newFile.length()+"---old size="+size+"----dimen w="+bm.getWidth()+",h="+bm.getHeight());
 				return newFile;
 			} catch (FileNotFoundException e) {

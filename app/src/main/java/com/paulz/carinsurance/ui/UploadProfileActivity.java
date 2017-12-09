@@ -31,6 +31,7 @@ import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppStatic;
 import com.paulz.carinsurance.common.AppUrls;
 import com.paulz.carinsurance.common.recyclerview.CommonRVAdapter;
+import com.paulz.carinsurance.common.recyclerview.EventCallback;
 import com.paulz.carinsurance.httputil.HttpRequester;
 import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.model.UploadProfileConfig;
@@ -41,9 +42,11 @@ import com.paulz.carinsurance.ui.viewmodel.ImageModelTip;
 import com.paulz.carinsurance.utils.AppUtil;
 import com.paulz.carinsurance.utils.Image13Loader;
 import com.paulz.carinsurance.utils.ImageUtil;
+import com.paulz.carinsurance.view.CommonDialog;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -67,8 +70,6 @@ public class UploadProfileActivity extends BaseActivity {
     private final static int TAKE_CROP = 3;// 裁剪
 
 
-    File[] files=new File[2];
-    private int curAddPicPosition = -1;
 
     UploadProfileConfig config;
 
@@ -78,6 +79,8 @@ public class UploadProfileActivity extends BaseActivity {
     TextView btnSubmit;
 
     CommonRVAdapter mAdapter;
+
+    private HashMap<String ,UploadProfileConfig.ImageModel> uploadingItems=new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +98,21 @@ public class UploadProfileActivity extends BaseActivity {
         rvContent.setLayoutManager(layoutManager);
         mAdapter=new CommonRVAdapter(rvContent);
         rvContent.setAdapter(mAdapter);
+
+        mAdapter.setCallback(new EventCallback() {
+            @Override
+            public void onEvent(int what, Object... object) {
+                if(what==EVENT_1){
+                    showPhotoWindow((UploadProfileConfig.ImageModel) object[0]);
+                }else if(what==EVENT_2){
+                    showDeleteDialog((UploadProfileConfig.ImageModel) object[0]);
+
+                }else if(what==EVENT_3){
+                    showReplaceDialog((UploadProfileConfig.ImageModel) object[0]);
+
+                }
+            }
+        });
     }
 
     @Override
@@ -147,6 +165,15 @@ public class UploadProfileActivity extends BaseActivity {
             finish();
             return;
         }
+        boolean enable=true;
+        if("3".equals(config.imgstatus)||"4".equals(config.imgstatus)){
+            btnSubmit.setVisibility(View.GONE);
+            enable=false;
+        }else {
+
+            btnSubmit.setVisibility(View.VISIBLE);
+            enable=true;
+        }
 
         List models=new ArrayList();
         models.add(new ImageModelTip(config.message));
@@ -160,12 +187,22 @@ public class UploadProfileActivity extends BaseActivity {
                 models.add(group);
                 ImageModelDouble modelDouble=null;
                 for(int i=0;i<group.imglist.size();i++){
+
+                    //同步正在上传数据的状态
+                    UploadProfileConfig.ImageModel item=group.imglist.get(i);
+                    UploadProfileConfig.ImageModel uploadItem=uploadingItems.get(item.id);
+                    if(uploadItem!=null){
+                        item.uploading=uploadItem.uploading;
+                        item.imgFile=uploadItem.imgFile;
+                        item.img=uploadItem.img;
+                    }
                     if(i%2==0){
                         modelDouble=new ImageModelDouble();
+                        modelDouble.enable=enable;
                         models.add(modelDouble);
-                        modelDouble.left=group.imglist.get(i);
+                        modelDouble.left=item;
                     }else {
-                        modelDouble.right=group.imglist.get(i);
+                        modelDouble.right=item;
                     }
                 }
 
@@ -177,14 +214,43 @@ public class UploadProfileActivity extends BaseActivity {
 
     }
 
+    private void syncOldData(){
+
+
+    }
+
+    private void showDeleteDialog(final UploadProfileConfig.ImageModel item){
+        CommonDialog dialog=new CommonDialog(this);
+        dialog.setDesc("是否删除该图片");
+        dialog.setOnRightClickListener(new CommonDialog.OnClickListener() {
+            @Override
+            public void onClick() {
+                deleteImg(item);
+            }
+        });
+        dialog.show();
+    }
+
+    private void showReplaceDialog(final UploadProfileConfig.ImageModel item){
+        CommonDialog dialog=new CommonDialog(this);
+        dialog.setDesc("是否重新上传图片");
+        dialog.setOnRightClickListener(new CommonDialog.OnClickListener() {
+            @Override
+            public void onClick() {
+                showPhotoWindow(item);
+            }
+        });
+        dialog.show();
+    }
+
 
     public void submit() {
 
         DialogUtil.showDialog(lodDialog);
         ParamBuilder params = new ParamBuilder();
         HttpRequester requester = new HttpRequester();
-        requester.getParams().put("sn", files[0]);
-        requester.getParams().put("statustag", "");
+        requester.getParams().put("sn", config.sn);
+        requester.getParams().put("statustag", config.statustag);
 
         NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_UPLOAD_PROFILE_COMMIT), new NetworkWorker.ICallback() {
             @Override
@@ -203,12 +269,12 @@ public class UploadProfileActivity extends BaseActivity {
         }, requester, DESUtil.SECRET_DES);
     }
 
-    public void deleteImg(Object o) {
+    public void deleteImg(UploadProfileConfig.ImageModel item) {
 
         DialogUtil.showDialog(lodDialog);
         ParamBuilder params = new ParamBuilder();
         HttpRequester requester = new HttpRequester();
-        requester.getParams().put("id", "");
+        requester.getParams().put("id",item.imgid );
 
         NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_UPLOAD_PROFILE_DELETE_IMG), new NetworkWorker.ICallback() {
             @Override
@@ -217,8 +283,7 @@ public class UploadProfileActivity extends BaseActivity {
                 if (status == 200) {
                     BaseObject<Object> object = GsonParser.getInstance().parseToObj(result, Object.class);
                     if (object != null && object.status == BaseObject.STATUS_OK) {
-                        AppUtil.showToast(getApplicationContext(), "提交成功");
-                        finish();
+                        loadData();
                     } else {
                         AppUtil.showToast(getApplicationContext(), "提交失败");
                     }
@@ -227,36 +292,42 @@ public class UploadProfileActivity extends BaseActivity {
         }, requester, DESUtil.SECRET_DES);
     }
 
-    public void addImg(Object o) {
-
-        DialogUtil.showDialog(lodDialog);
+    public void addImg(final UploadProfileConfig.ImageModel item) {
+        item.uploading=true;
         ParamBuilder params = new ParamBuilder();
         HttpRequester requester = new HttpRequester();
-        requester.getParams().put("sn", "");
-        requester.getParams().put("tplid", "");
-        requester.getParams().put("file", "");
+        requester.getParams().put("sn", config.sn);
+        requester.getParams().put("tplid", item.id);
+        requester.getParams().put("file", item.imgFile);
+        uploadingItems.put(item.id,item);
 
         NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_UPLOAD_PROFILE_ADD_IMG), new NetworkWorker.ICallback() {
             @Override
             public void onResponse(int status, String result) {
-                if (!isFinishing()) DialogUtil.dismissDialog(lodDialog);
+                uploadingItems.remove(item.id);
+                item.uploading=false;
+                item.imgFile=null;
+
                 if (status == 200) {
                     BaseObject<Object> object = GsonParser.getInstance().parseToObj(result, Object.class);
                     if (object != null && object.status == BaseObject.STATUS_OK) {
-                        AppUtil.showToast(getApplicationContext(), "提交成功");
-                        finish();
+//                        item.uploading=false;
+                        loadData();
                     } else {
+                        mAdapter.notifyDataSetChanged();
                         AppUtil.showToast(getApplicationContext(), "提交失败");
                     }
+                }else {
+                    mAdapter.notifyDataSetChanged();
                 }
             }
         }, requester, DESUtil.SECRET_DES);
     }
 
 
-
-    private void showPhotoWindow(final int index) {
-        curAddPicPosition=index;
+    UploadProfileConfig.ImageModel tempItem;
+    private void showPhotoWindow(final UploadProfileConfig.ImageModel item) {
+        tempItem=item;
         new IOSDialogUtil(this).builder().setCancelable(true).setCanceledOnTouchOutside(true)
                 .addSheetItem("拍照", IOSDialogUtil.SheetItemColor.Black, new IOSDialogUtil.OnSheetItemClickListener() {
                     @Override
@@ -315,14 +386,16 @@ public class UploadProfileActivity extends BaseActivity {
         startActivityForResult(intent, TAKE_CROP);
     }
 
-    private void setImg(File file, final int position){
-        if(file==null||!file.exists()){
-            Toast.makeText(this,"图片选取失败，请重试...",Toast.LENGTH_SHORT).show();
+    private void setImg(File file, UploadProfileConfig.ImageModel item){
+        if(file==null||!file.exists()) {
+            Toast.makeText(this, "图片选取失败，请重试...", Toast.LENGTH_SHORT).show();
             return;
         }
-        Log.d("crop","set进来  file"+file.getPath()+"--innerPo="+position+"curP"+curAddPicPosition);
-        files[position]=file;
-
+        item.uploading=true;
+        item.imgFile=file;
+        item.img="";
+        mAdapter.notifyDataSetChanged();
+        addImg(item);
     }
 
 
@@ -373,14 +446,14 @@ public class UploadProfileActivity extends BaseActivity {
                 File dir = new File(getFilesDir(),"images") ;
                 String mFilePath = new File(dir,"123.jpg").getAbsolutePath();
                 File file = ImageUtil.compressImage(new File(mFilePath));
-                setImg(file,curAddPicPosition);
+                setImg(file,tempItem);
 
                 break;
             case TAKE_PICTURE:
                 Uri imgUri = data.getData();
                 File imgFile = new File(ImageUtil.getRealPathFromURI(this, imgUri));
                 imgFile=ImageUtil.compressImage(imgFile);
-                setImg(imgFile,curAddPicPosition);
+                setImg(imgFile,tempItem);
 
                 break;
 

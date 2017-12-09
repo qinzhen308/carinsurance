@@ -249,41 +249,6 @@
 
 
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/layout_teyuesyr"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/text_height"
-            android:layout_marginTop="1dp"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:visibility="gone"
-            android:paddingRight="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="第一受益人"
-                android:textColor="@color/text_grey"
-                android:textSize="@dimen/text_size" />
-
-
-            <EditText
-                android:id="@+id/et_teyuesyr_id"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="center_vertical|right"
-                android:hint="请输入第一受益人"
-                android:textColor="@color/text_grey"
-                android:textColorHint="@color/text_grey_french2"
-                android:textSize="@dimen/text_size" />
-
-
-        </LinearLayout>
-
 
 
         <LinearLayout
@@ -353,6 +318,52 @@
         </LinearLayout>
 
 
+
+        <LinearLayout
+            android:id="@+id/btn_add_appoint"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_height"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="特别约定"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/arr_big"
+                android:gravity="center_vertical|right"
+                android:hint="选填（按揭车必填）"
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+
+        </LinearLayout>
+
+        <com.paulz.carinsurance.view.ListViewInScrollView
+            android:id="@+id/lv_appoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/list_divider1"
+            />
+
+
         <TextView
             android:id="@+id/tv_daikuan_tip"
             android:layout_width="wrap_content"
@@ -364,8 +375,10 @@
             android:gravity="center"
             android:visibility="gone"
             android:text="* 目前只有“人保”支持按揭车报价"
-            android:textColor="@color/text_grey_french1"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/main"
             android:textSize="@dimen/text_size_small" />
+
 
 
         <TextView

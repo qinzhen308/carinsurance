@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -85,7 +86,7 @@ public class TeamAchievementDetailActivity extends BaseListActivity implements L
         }else {
             setTitleText("", "团队出单明细",0, true);
         }
-        setTitleText("", AppStatic.getInstance().getmUserInfo().teamtype==2?"机构保费":"团队保费",0, true);
+//        setTitleText("", AppStatic.getInstance().getmUserInfo().teamtype==2?"机构保费":"团队保费",0, true);
         ButterKnife.bind(this);
         initView();
         setListener();
@@ -100,8 +101,16 @@ public class TeamAchievementDetailActivity extends BaseListActivity implements L
         mListView = mPullListView.getRefreshableView();
         mListView.setDividerHeight(2);
         mAdapter = new TeamInsureDetailFeeAdapter(this);
+        initHeader();
         mListView.setAdapter(mAdapter);
 
+    }
+
+    TextView tvTotal;
+    private void initHeader(){
+        View v = LayoutInflater.from(this).inflate(R.layout.layout_footer_total_count,null);
+        tvTotal=(TextView)v.findViewById(R.id.tv_total);
+        mListView.addFooterView(v);
     }
 
 //    @OnClick({R.id.btn_add_customer})
@@ -189,9 +198,10 @@ public class TeamAchievementDetailActivity extends BaseListActivity implements L
 
     private void setHeader() {
         InsureFeeDetailWraper wraper = (InsureFeeDetailWraper) getBeanWraper();
-        tvTotalFee.setText(wraper.ains+"万");
-        tvForceFee.setText(wraper.cins+"万");
-        tvBusinessFee.setText(wraper.bins+"万");
+        tvTotalFee.setText(wraper.ains+"元");
+        tvForceFee.setText(wraper.cins+"元");
+        tvBusinessFee.setText(wraper.bins+"元");
+        tvTotal.setText("共有"+wraper.total+"单");
     }
 
     @Override

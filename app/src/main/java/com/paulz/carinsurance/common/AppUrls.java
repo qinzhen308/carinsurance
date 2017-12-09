@@ -133,6 +133,19 @@ public class AppUrls {
 	public String URL_UPLOAD_PROFILE_DELETE_IMG =BASE_URL+"Order/delimgajax.html";//删除临时上传了的照片
 	public String URL_UPLOAD_PROFILE_ADD_IMG =BASE_URL+"Order/updateimgajax.html";//添加临时上传了的照片
 
+	public String URL_APPOINT_DETAIL=BASE_URL+"Yueding/details.html";//特约详情
+	public String URL_APPOINT_LIST=BASE_URL+"Yueding/index.html";//特约列表
+	public String URL_APPOINT_SUBMIT=BASE_URL+"Yueding/postyueding.html";//特约提交
+	public String URL_APPOINT_DELETE=BASE_URL+"Yueding/del.html";//特约删除
+
+	public String URL_MSG_DETAIL=BASE_URL+"Message/details.html";//消息详情
+	public String URL_MSG_LIST=BASE_URL+"Message/index.html";//消息列表
+	public String URL_MSG_UNREAD=BASE_URL+"Message/unreadtotal.html";//未读消息
+
+	public String URL_INSURE_PRICE_SINGLE=BASE_URL+"Process/choicecompanyajax.html";//单个保险公司询价接口
+	public String URL_INSURE_PRICE_SELECTED_COMPANY=BASE_URL+"Index/choiceinsurancecompany.html";//已选择保险公司接口
+
+
 
 
 	public String URL_WAP_FORGET_PASSWORD=BASE_WAP_URL+"Public/forget.html&form=andr";//忘记密码页面

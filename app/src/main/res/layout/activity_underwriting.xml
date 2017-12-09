@@ -204,11 +204,26 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/btn_orange"
-            android:layout_margin="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:textColor="@color/btn_white_orange"
             android:text="下一步"
             android:gravity="center"
             />
+
+
+        <TextView
+            android:id="@+id/btn_my_order"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/btn_orange"
+            android:layout_margin="15dp"
+            android:textColor="@color/btn_white_orange"
+            android:text="返回个人中心"
+            android:gravity="center"
+            />
+
 
 
 

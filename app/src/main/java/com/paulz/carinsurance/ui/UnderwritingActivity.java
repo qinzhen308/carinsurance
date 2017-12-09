@@ -60,6 +60,7 @@ public class UnderwritingActivity extends BaseActivity {
     @BindView(R.id.btn_next)
     TextView btnNext;
 
+
     PageData data;
 
     @Override
@@ -121,7 +122,7 @@ public class UnderwritingActivity extends BaseActivity {
             layoutDescrib.setVisibility(View.VISIBLE);
             tvDescrib2.setText("商业险保单号："+data.insurance_xiadan_bsalesn);
             tvDescrib1.setText("交强险保单号："+data.insurance_xiadan_csalesn);
-            btnNext.setText("查看订单");
+            btnNext.setVisibility(View.GONE);
 
         }else if(data.insurance_xiadan_hbres==2){
 //            layoutStep2.setVisibility(View.GONE);
@@ -144,20 +145,23 @@ public class UnderwritingActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.layout_order_detail, R.id.btn_next})
+    @OnClick({R.id.layout_order_detail, R.id.btn_next,R.id.btn_my_order})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.layout_order_detail:
                 OrderInfoActivity.invoke(this,data.order_sn);
                 break;
             case R.id.btn_next:
-                if(data.insurance_xiadan_hbres==1){
-                    MainActivity.invokeWithAction(this,IActions.ACTION_TO_ODER_LIST);
-                }else if(data.insurance_xiadan_hbres==3){
+                if(data.insurance_xiadan_hbres==3){
                     pay();
                 }else if(data.insurance_xiadan_hbres==0||data.insurance_xiadan_hbres==2){
                     SelectInsureCompanyActivity.invoke(this);
                 }
+                break;
+            case R.id.btn_my_order:
+
+                MainActivity.invokeWithAction(this,IActions.ACTION_TO_MAIN_USER_CENTER);
+
                 break;
         }
     }

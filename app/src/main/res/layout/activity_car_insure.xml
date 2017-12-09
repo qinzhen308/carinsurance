@@ -125,7 +125,7 @@
                 android:layout_marginLeft="5dp"
                 android:textColor="@color/text_grey"
                 android:digits="1234567890QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"
-                android:maxLength="5"
+                android:maxLength="6"
                 android:maxLines="1"
                 android:textColorHint="@color/text_grey_french2"
                 android:background="@null"

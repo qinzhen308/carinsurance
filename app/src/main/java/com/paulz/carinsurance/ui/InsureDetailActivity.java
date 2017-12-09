@@ -121,6 +121,8 @@ public class InsureDetailActivity extends BaseActivity {
     LinearLayout layoutNotSameInsured;
     @BindView(R.id.btn_next)
     TextView btnNext;
+    @BindView(R.id.tv_appoint)
+    TextView tvAppoint;
     @BindView(R.id.layout_business_all)
     LinearLayout layoutBusinessAll;
 
@@ -221,6 +223,8 @@ public class InsureDetailActivity extends BaseActivity {
         tvOwnerPhone.setText(data.insdata.insurance_tel==null?"":data.insdata.insurance_tel);
 
         tvEngineCode.setText(data.insdata.insurance_carmodel_en);
+
+        tvAppoint.setText(AppUtil.isNull(data.insdata.insurance_carmodel_teyue)?"无":data.insdata.insurance_carmodel_teyue);
 
 //        etNotSameInsuredName.setText(data.insdata.insurance_name);
 //        etNotSameInsuredId.setText(data.insdata.insurance_sfz);

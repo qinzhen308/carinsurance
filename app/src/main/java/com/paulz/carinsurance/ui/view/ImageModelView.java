@@ -2,6 +2,8 @@ package com.paulz.carinsurance.ui.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,7 +26,7 @@ import butterknife.ButterKnife;
  * Created by Paul Z on 2017/5/23.
  */
 
-public class ImageModelView extends RelativeLayout implements IViewModel<ImageModelDouble> ,IEventer{
+public class ImageModelView extends RelativeLayout implements IViewModel<ImageModelDouble>, IEventer {
 
 
     ImageModelDouble mData;
@@ -44,6 +46,12 @@ public class ImageModelView extends RelativeLayout implements IViewModel<ImageMo
     ImageView btnDelete2;
     @BindView(R.id.item_right)
     RelativeLayout itemRight;
+
+    int mPosition;
+    @BindView(R.id.progress_bar1)
+    FrameLayout progressBar1;
+    @BindView(R.id.progress_bar2)
+    FrameLayout progressBar2;
 
 
     private CircleTransform circleTransform;
@@ -69,67 +77,123 @@ public class ImageModelView extends RelativeLayout implements IViewModel<ImageMo
     @Override
     public void bindData(int position, ImageModelDouble data) {
         mData = data;
+        mPosition = position;
+
+        showItem(btnDelete1, btnAdd1, ivImg1,progressBar1, data.left);
 
 
-
-        showItem(btnDelete1,btnAdd1,ivImg1,data.left);
-
-
-
-
-        if(data.right==null){
+        if (data.right == null) {
             itemRight.setVisibility(INVISIBLE);
-        }else {
+            btnDelete2.setOnClickListener(null);
+            btnAdd2.setOnClickListener(null);
+            ivImg2.setOnClickListener(null);
+
+        } else {
             itemRight.setVisibility(VISIBLE);
-            showItem(btnDelete2,btnAdd2,ivImg2,data.right);
+            showItem(btnDelete2, btnAdd2, ivImg2, progressBar2,data.right);
         }
 
     }
 
-    private void showItem(ImageView deleteV,TextView addV,ImageView picV , UploadProfileConfig.ImageModel item){
+    private void showItem(ImageView deleteV, TextView addV, ImageView picV,View loadingBar, final UploadProfileConfig.ImageModel item) {
         addV.setText(mData.left.title);
-
-        if(AppUtil.isNull(item.img)){
-            picV.setVisibility(GONE);
+        if(!mData.enable){
+            picV.setVisibility(VISIBLE);
             deleteV.setVisibility(GONE);
-        }else {
+            addV.setVisibility(GONE);
             Glide.with(getContext())
                     .load(AppUrls.getInstance().DOMAIN + item.img)
-                    .placeholder(R.drawable.loadmin_icon_case)
+                    .placeholder(R.drawable.img_list_default)
                     .error(R.drawable.img_list_default)
-                    .into(ivImg1);
-            if(item.type==3){//多张
-                //可以无限添加
-                if(item.required==1){
-                    //删除了但是需要站位
-                    deleteV.setVisibility(VISIBLE);
+                    .into(picV);
 
-                }else {
-                    //删除了只留一个添加按钮
-                    deleteV.setVisibility(VISIBLE);
+            return;
+        }
 
-                }
-            }else if(item.type==1){//单张图片
+        if(item.uploading){
+            loadingBar.setVisibility(VISIBLE);
+        }else {
+            loadingBar.setVisibility(GONE);
+        }
 
-                if(item.required==1){
-                    //只能更新
-                    deleteV.setVisibility(GONE);
+        if (AppUtil.isNull(item.img)) {
+            picV.setVisibility(GONE);
+            deleteV.setVisibility(GONE);
+            addV.setVisibility(VISIBLE);
+            if(item.imgFile!=null){
+                picV.setVisibility(VISIBLE);
+                Glide.with(getContext())
+                        .load(item.imgFile)
+                        .placeholder(R.drawable.img_list_default)
+                        .error(R.drawable.img_list_default)
+                        .into(picV);
+            }
 
-                }else {
-                    //可以删除，但删除了要显示上传
-                    deleteV.setVisibility(VISIBLE);
-                }
+
+        } else {
+            addV.setVisibility(GONE);
+            picV.setVisibility(VISIBLE);
+            Glide.with(getContext())
+                    .load(AppUrls.getInstance().DOMAIN + item.img)
+                    .placeholder(R.drawable.img_list_default)
+                    .error(R.drawable.img_list_default)
+                    .into(picV);
+            if (item.op.equals("del")) {
+                //只有删除
+                deleteV.setVisibility(VISIBLE);
+
+            } else if (item.op.equals("up")) {
+                //只能更新
+                deleteV.setVisibility(GONE);
+
+            }else {
+                deleteV.setVisibility(GONE);
+
             }
         }
 
 
+        addV.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mCallback != null) {
+                    //添加
+                    mCallback.onEvent(EventCallback.EVENT_1, item, mData, mPosition);
+                }
+            }
+        });
+
+        deleteV.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //删除
+                if (mCallback != null) {
+                    mCallback.onEvent(EventCallback.EVENT_2, item, mData, mPosition);
+                }
+            }
+        });
+
+        picV.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!item.op.equals("up")){
+                    return;
+                }
+                //替换
+                if (mCallback != null) {
+                    mCallback.onEvent(EventCallback.EVENT_3, item, mData, mPosition);
+                }
+            }
+        });
+
+
     }
 
 
-
     EventCallback mCallback;
+
     @Override
     public void setEventCallback(EventCallback callback) {
-        mCallback=callback;
+        mCallback = callback;
     }
 }

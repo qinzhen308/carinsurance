@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -26,6 +27,7 @@ import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.model.wrapper.BeanWraper;
 import com.paulz.carinsurance.model.wrapper.InsureFeeWraper;
 import com.paulz.carinsurance.model.wrapper.SalesmanCountWraper;
+import com.paulz.carinsurance.model.wrapper.TeamWraper;
 import com.paulz.carinsurance.utils.AppUtil;
 import com.paulz.carinsurance.view.pulltorefresh.PullListView;
 import com.paulz.carinsurance.view.pulltorefresh.PullToRefreshBase;
@@ -75,7 +77,7 @@ public class SalesmanCountListActivity extends BaseListActivity implements LoadS
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setActiviyContextView(R.layout.activity_salesman_count_list, false, true);
-        id=getIntent().getStringExtra("id");
+        id=getIntent().getStringExtra("mid");
         mLoadStateController = new LoadStateController(this, (ViewGroup) findViewById(R.id.load_state_container));
         hasLoadingState = true;
         setTitleText("", "业务员数", 0, true);
@@ -92,9 +94,24 @@ public class SalesmanCountListActivity extends BaseListActivity implements LoadS
         mListView = mPullListView.getRefreshableView();
         mListView.setDividerHeight(2);
         mAdapter = new SalesmanCountAdapter(this);
+        initHeader();
         mListView.setAdapter(mAdapter);
 
     }
+
+
+    TextView tvTotal;
+    private void initHeader(){
+        View v = LayoutInflater.from(this).inflate(R.layout.layout_footer_total_count,null);
+        tvTotal=(TextView)v.findViewById(R.id.tv_total);
+        mListView.addFooterView(v);
+    }
+
+    public void handleHeader(){
+        SalesmanCountWraper wraper=(SalesmanCountWraper) getBeanWraper();
+        tvTotal.setText("共有"+wraper.total+"人");
+    }
+
 
 //    @OnClick({R.id.btn_add_customer})
 //    public void onClick(View v) {
@@ -201,6 +218,7 @@ public class SalesmanCountListActivity extends BaseListActivity implements LoadS
     protected void handlerData(List allData, List currentData, boolean isLastPage) {
         // TODO Auto-generated method stub
         mPullListView.onRefreshComplete();
+        handleHeader();
         if (AppUtil.isEmpty(allData)) {
             showNodata();
 //            showSuccess();
@@ -257,10 +275,10 @@ public class SalesmanCountListActivity extends BaseListActivity implements LoadS
     }
 
 
-    public static void invoke(Context context, String id) {
+    public static void invoke(Context context, String mid) {
         Intent intent = new Intent(context, SalesmanCountListActivity.class);
-        if (!AppUtil.isNull(id)) {
-            intent.putExtra("id", id);
+        if (!AppUtil.isNull(mid)) {
+            intent.putExtra("mid", mid);
         }
         context.startActivity(intent);
 

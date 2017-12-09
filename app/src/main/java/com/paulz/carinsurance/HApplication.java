@@ -2,6 +2,7 @@ package com.paulz.carinsurance;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.core.framework.app.devInfo.DeviceInfo;
 import com.core.framework.develop.LogUtil;
@@ -25,6 +26,8 @@ import org.json.JSONObject;
 
 import java.util.List;
 import java.util.UUID;
+
+import cn.jpush.android.api.JPushInterface;
 
 
 public class HApplication extends MyApplication {
@@ -73,6 +76,16 @@ public class HApplication extends MyApplication {
 		AppStatic.getInstance().setmUserInfo(AppStatic.getInstance().getUser());
 		SuNetEvn.getInstance();
 		session_id=PreferencesUtils.getString("session_id");
+
+		JPushInterface.setDebugMode(true); // 设置开启日志,发布时请关闭日志
+		JPushInterface.init(this); // 初始化 JPush
+		if (TextUtils.isEmpty(PreferencesUtils.getString("registerId"))) {
+			AppStatic.registerId = JPushInterface
+					.getRegistrationID(getApplicationContext());
+			PreferencesUtils.putString("registerId", AppStatic.registerId);
+		} else {
+			AppStatic.registerId = PreferencesUtils.getString("registerId");
+		}
 	}
 
 	private void initDatabase() {

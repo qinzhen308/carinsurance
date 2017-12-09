@@ -32,6 +32,13 @@ public class OrderDetail {
     public String btbname;
     public String btbsfz;
     public String btbtel;
+    //（支付前上传）影像事前上传状态0无需上传1待上传2审核中3审核失败4审核通过5对接通过6对接失败
+    public int sqimgstatus;
+    //（支付后上传） 影像事后上传状态0无需上传1待上传2审核中3审核失败4审核通过5对接通过6对接失败
+    public int shimgstatus;
+    //上传提示语
+    public String uploadmsg;
+    public String insurance_xunjia_teyue;
 
     public String[][] carerlist;
 

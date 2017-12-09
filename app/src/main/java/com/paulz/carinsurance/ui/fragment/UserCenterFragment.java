@@ -21,6 +21,7 @@ import com.paulz.carinsurance.model.UserInfo;
 import com.paulz.carinsurance.parser.gson.BaseObject;
 import com.paulz.carinsurance.parser.gson.GsonParser;
 import com.paulz.carinsurance.ui.AccountActivity;
+import com.paulz.carinsurance.ui.AppointListActivity;
 import com.paulz.carinsurance.ui.CommonWebActivity;
 import com.paulz.carinsurance.ui.MsgCenterActivity;
 import com.paulz.carinsurance.ui.MyAchievementActivity;

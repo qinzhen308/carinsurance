@@ -255,6 +255,7 @@ public class UserLoginActivity extends BaseActivity implements
 		requester.getParams().put("password", mEditPassword.getText().toString());
 		requester.getParams().put("username", mEditUsername.getText().toString());
 		requester.getParams().put("code", etCaptcha.getText().toString());
+		requester.getParams().put("rid", PreferencesUtils.getString("registerId"));
 //		if (outThirdUser != null) {
 //			if (outThirdUser.partnerType == ThirdFactory.TYPE_QQ) {
 //				params.append("qq_openid", outThirdUser.openId);

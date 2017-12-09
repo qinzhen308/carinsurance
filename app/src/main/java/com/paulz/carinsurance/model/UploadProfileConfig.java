@@ -1,5 +1,6 @@
 package com.paulz.carinsurance.model;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -12,8 +13,9 @@ public class UploadProfileConfig {
     public String message;
     public String sn;
     public String statustag;
-    public String imgstatus;
+    public String imgstatus;//上传状态，1待上传2下发修改3待审核4审核通过
     public List<ImageGroup> list;
+
 
     public class ImageGroup{
         public String title;
@@ -32,6 +34,9 @@ public class UploadProfileConfig {
         public String img;
         public String id;
         public String imgid;
+
+        public File imgFile;
+        public boolean uploading;
     }
 
 }

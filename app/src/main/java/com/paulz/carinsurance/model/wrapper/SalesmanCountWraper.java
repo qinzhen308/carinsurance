@@ -12,8 +12,8 @@ public class SalesmanCountWraper implements BeanWraper<SalesmanCount>{
 	 * 
 	 */
     public List<SalesmanCount> list; //  当前页面所有的beans  order
-
-    public int total=1;//页码总数
+    public int page_count=Integer.MAX_VALUE;//页码总数
+    public int total;//条数
 
 
     @Override
@@ -31,7 +31,7 @@ public class SalesmanCountWraper implements BeanWraper<SalesmanCount>{
     
     @Override
     public int getTotalPage(){
-    	return total;
+    	return page_count;
     }
     
 }

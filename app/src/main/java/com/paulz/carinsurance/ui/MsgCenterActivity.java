@@ -89,13 +89,13 @@ public class MsgCenterActivity extends BaseFragmentActivity {
         public Fragment getItem(int i) {
             Fragment currentFragment = null;
             if (titles[i].equals("公告")) {
-                currentFragment= MsgNoticeFragment.createInstance("");
+                currentFragment= MsgNoticeFragment.createInstance("1");
 
             } else if (titles[i].equals("消息")) {
-                currentFragment= MsgOrderFragment.createInstance("");
+                currentFragment= MsgOrderFragment.createInstance("2");
 
             } else if (titles[i].equals("提醒")) {
-                currentFragment= MsgTipFragment.createInstance("");
+                currentFragment= MsgTipFragment.createInstance("3");
 
             }
             mapFragments.put(titles[i], currentFragment);

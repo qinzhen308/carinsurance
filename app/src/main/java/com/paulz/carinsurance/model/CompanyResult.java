@@ -25,12 +25,26 @@ public class CompanyResult {
     public boolean isLoading;
     public String verifyError;
 
+    public boolean isFakeResult;//true 询价接口还没请求回来
+
 
     public boolean isError(){
         if(result|| !TextUtils.isEmpty(error))return true;
 
         return false;
 
+    }
+
+    public CompanyResult(){
+
+    }
+
+    public CompanyResult(Company company){
+        this.insurance_company_id=company.insurance_company_id;
+        this.insurance_company_name=company.insurance_company_name;
+        this.insurance_company_img=company.insurance_company_img;
+        this.insurance_company_code=company.insurance_company_code;
+        isFakeResult=true;
     }
 
 

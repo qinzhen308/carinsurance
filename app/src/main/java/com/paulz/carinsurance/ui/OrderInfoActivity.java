@@ -126,11 +126,20 @@ public class OrderInfoActivity extends BaseActivity {
     LinearLayout layoutInsuredId;
     @BindView(R.id.tv_insured_phone)
     TextView tvInsuredPhone;
+    @BindView(R.id.tv_appoint)
+    TextView tvAppoint;
     @BindView(R.id.layout_insured_phone)
     LinearLayout layoutInsuredPhone;
 
     @BindView(R.id.tag_view)
     View tagView;
+
+    @BindView(R.id.layout_upload)
+    View layoutUpload;
+    @BindView(R.id.tv_tip)
+    TextView tvTip;
+    @BindView(R.id.btn_upload_operate)
+    TextView btnUploadOperate;
 
 
     @Override
@@ -258,6 +267,73 @@ public class OrderInfoActivity extends BaseActivity {
         }
 
 
+        //0无需上传1待上传2审核中3审核失败4审核通过5对接通过6对接失败
+        if (data.order_status < 3) {
+            //未支付的
+            if(data.sqimgstatus==0){
+                layoutUpload.setVisibility(View.GONE);
+            }else if(data.sqimgstatus==1){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("上传证件");
+
+            }else if(data.sqimgstatus==2){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.sqimgstatus==3){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("上传证件");
+
+            }else if(data.sqimgstatus==4){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.sqimgstatus==5){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.sqimgstatus==6){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("上传证件");
+            }
+        } else if (data.order_status == 4) {
+            //已支付的
+            if(data.shimgstatus==0){
+                layoutUpload.setVisibility(View.GONE);
+            }else if(data.shimgstatus==1){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("上传证件");
+
+            }else if(data.shimgstatus==2){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.shimgstatus==3){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("上传证件");
+
+            }else if(data.shimgstatus==4){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.shimgstatus==5){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.shimgstatus==6){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("上传证件");
+            }
+        } else if (data.order_status == 5) {
+            layoutUpload.setVisibility(View.GONE);
+        }
+
+        tvTip.setText(data.uploadmsg);
+
+        tvAppoint.setText(AppUtil.isNull(data.insurance_xunjia_teyue)?"无":data.insurance_xunjia_teyue);
+
+
+
     }
 
 
@@ -379,7 +455,7 @@ public class OrderInfoActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    @OnClick({R.id.layout_insure_detail, R.id.btn_operation})
+    @OnClick({R.id.layout_insure_detail, R.id.btn_operation,R.id.btn_upload_operate})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.layout_insure_detail:
@@ -387,6 +463,9 @@ public class OrderInfoActivity extends BaseActivity {
                 break;
             case R.id.btn_operation:
                 doOperate();
+                break;
+            case R.id.btn_upload_operate:
+                UploadProfileActivity.invoke(this,data.order_sn);
                 break;
         }
     }

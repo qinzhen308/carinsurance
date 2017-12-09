@@ -87,6 +87,8 @@ public class MyOrganisationActivity extends BaseActivity {
     TextView tvValue3;
     @BindView(R.id.tv_title3)
     TextView tvTitle3;
+    @BindView(R.id.layout_tab_content)
+    View layoutTabContent;
 
     @BindView(R.id.layout_billboard)
     BillboardLayout layoutBillboard;
@@ -146,6 +148,8 @@ public class MyOrganisationActivity extends BaseActivity {
                 Link link = (Link) linkAdapter.getItem(position);
                 //按钮类型：1.团队列表   2.业务员列表    0wap页（会返回要跳转的相应地址，并且自动附加上Token和SESSION）
                 if (link.type == 0) {
+                    ParamBuilder params=new ParamBuilder();
+                    String url=APIUtil.parseGetUrlHasMethod(params.getParamList(),AppUrls.getInstance().DOMAIN+mData.recommonurl);
                     CommonWebActivity.invoke(MyOrganisationActivity.this,"https://www.baidu.com",link.title);
                 } else if (link.type == 1) {
                     SalesmanListActivity.invoke(MyOrganisationActivity.this);
@@ -158,7 +162,10 @@ public class MyOrganisationActivity extends BaseActivity {
 
     @Override
     public void onRightClick() {
-        CommonWebActivity.invoke(this,"https://www.baidu.com","去邀请");
+        if(mData==null)return;
+        ParamBuilder params=new ParamBuilder();
+        String url=APIUtil.parseGetUrlHasMethod(params.getParamList(),AppUrls.getInstance().DOMAIN+mData.recommonurl);
+        CommonWebActivity.invoke(this,url,"去邀请");
     }
 
     private void handleData(PageData data) {
@@ -166,17 +173,23 @@ public class MyOrganisationActivity extends BaseActivity {
         tvStatus.setText(data.authenticate);
         linkAdapter.setList(data.linklist);
         linkAdapter.notifyDataSetChanged();
-        for(int i=0, size=data.datalist.size();i<4;i++){
-            if(i<size){
-                RadioButton rb=(RadioButton) tabBar.getChildAt(i);
-                rb.setText(data.datalist.get(i).title);
-                rb.setVisibility(View.VISIBLE);
-                rb.setTag(data.datalist.get(i).type);
-            }else {
-                tabBar.getChildAt(i).setVisibility(View.GONE);
+        if(AppUtil.isEmpty(data.datalist)){
+            tabBar.setVisibility(View.GONE);
+            layoutTabContent.setVisibility(View.GONE);
+        }else {
+            for(int i=0, size=data.datalist.size();i<4;i++){
+                if(i<size){
+                    RadioButton rb=(RadioButton) tabBar.getChildAt(i);
+                    rb.setText(data.datalist.get(i).title);
+                    rb.setVisibility(View.VISIBLE);
+                    rb.setTag(data.datalist.get(i).type);
+                }else {
+                    tabBar.getChildAt(i).setVisibility(View.GONE);
+                }
             }
+            changeGroup(0);
         }
-        changeGroup(0);
+
         layoutBillboard.showView(data.message);
     }
 

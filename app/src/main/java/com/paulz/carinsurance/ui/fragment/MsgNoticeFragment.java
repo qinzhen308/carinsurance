@@ -18,6 +18,7 @@ import com.paulz.carinsurance.common.AppUrls;
 import com.paulz.carinsurance.controller.LoadStateController;
 import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.model.wrapper.BeanWraper;
+import com.paulz.carinsurance.model.wrapper.MsgWraper;
 import com.paulz.carinsurance.model.wrapper.OrderWraper;
 import com.paulz.carinsurance.utils.AppUtil;
 import com.paulz.carinsurance.view.pulltorefresh.PullListView;
@@ -100,7 +101,7 @@ public class MsgNoticeFragment extends BaseListFragment implements LoadStateCont
 
     @Override
     protected BeanWraper newBeanWraper() {
-        return new OrderWraper();
+        return new MsgWraper();
     }
 
     private void initData(boolean isRefresh) {
@@ -109,11 +110,11 @@ public class MsgNoticeFragment extends BaseListFragment implements LoadStateCont
         }
 
         ParamBuilder params = new ParamBuilder();
-        params.append("status", tag);
+        params.append("category", tag);
         if (isRefresh) {
-            immediateLoadData(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_ORDER_LIST), OrderWraper.class);
+            immediateLoadData(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_MSG_LIST), MsgWraper.class);
         } else {
-            reLoadData(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_ORDER_LIST), OrderWraper.class);
+            reLoadData(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_MSG_LIST), MsgWraper.class);
         }
     }
 

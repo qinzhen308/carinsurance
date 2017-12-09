@@ -88,7 +88,16 @@ public class SalesmanListActivity extends BaseListActivity implements PullToRefr
         mAdapter = new SalesmanAdapter(this);
         mLoadStateController=new LoadStateController(this, (ViewGroup) findViewById(R.id.load_state_container));
         hasLoadingState=true;
+        initHeader();
         mListView.setAdapter(mAdapter);
+        searchBar.setHint("请输入团队名称、名字、手机号、邀请人");
+    }
+
+    TextView tvTotal;
+    private void initHeader(){
+        View v =LayoutInflater.from(this).inflate(R.layout.layout_footer_total_count,null);
+        tvTotal=(TextView)v.findViewById(R.id.tv_total);
+        mListView.addFooterView(v);
     }
 
     private void setListener() {
@@ -110,7 +119,7 @@ public class SalesmanListActivity extends BaseListActivity implements PullToRefr
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                SalesmanDetailActivity.invoke(SalesmanListActivity.this,mAdapter.getList().get(position).member_id);
+                SalesmanDetailActivity.invoke(SalesmanListActivity.this,mAdapter.getList().get(position-mListView.getHeaderViewsCount()).member_id);
             }
         });
     }
@@ -194,11 +203,17 @@ public class SalesmanListActivity extends BaseListActivity implements PullToRefr
         }
     }
 
+    public void handleHeader(){
+        SalesmanWraper wraper=(SalesmanWraper) getBeanWraper();
+        tvTotal.setText("共有"+wraper.total+"项");
+    }
+
 
     @Override
     protected void handlerData(List allData, List currentData, boolean isLastPage) {
         // TODO Auto-generated method stub
         mPullListView.onRefreshComplete();
+        handleHeader();
         if (AppUtil.isEmpty(allData)) {
             showNodata();
         } else {

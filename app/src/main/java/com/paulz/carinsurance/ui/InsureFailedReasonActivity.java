@@ -44,6 +44,8 @@ public class InsureFailedReasonActivity extends BaseActivity {
     TextView tvReason;
     @BindView(R.id.btn_next)
     TextView btnNext;
+    @BindView(R.id.tv_status)
+    TextView tvStatua;
 
     private String orderSn;
 
@@ -57,7 +59,7 @@ public class InsureFailedReasonActivity extends BaseActivity {
 
     private void initView() {
         setActiviyContextView(R.layout.activity_failed_season, true, true);
-        setTitleText("", "核保失败", 0, true);
+        setTitleText("", "核保结果", 0, true);
         ButterKnife.bind(this);
     }
 
@@ -96,8 +98,15 @@ public class InsureFailedReasonActivity extends BaseActivity {
 
     private void handleData() {
         tvTitle.setText(data.companyname + "-" + data.carnumber);
-        Image13Loader.getInstance().loadImage(AppUrls.getInstance().IMG_INSCOMPANY + data.img, ivIcon);
-        tvReason.setText(data.hbdesc);
+        Image13Loader.getInstance().loadImage(AppUrls.getInstance().DOMAIN + data.img, ivIcon);
+        String reason=data.hbdesc.replace("\\n","\n");
+        tvReason.setText(reason);
+        tvStatua.setText(data.status);
+        if(data.status.equals("核保中")){
+            btnNext.setVisibility(View.GONE);
+        }
+
+        setTitleText("", data.status, 0, true);
 
     }
 
@@ -118,6 +127,7 @@ public class InsureFailedReasonActivity extends BaseActivity {
         public String carnumber;
         public String companyname;
         public String hbdesc;
+        public String status;
     }
 
 }

@@ -536,6 +536,43 @@
             android:layout_height="5dp"></View>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="特别约定"
+                android:textColor="@color/text_grey"
+                android:textSize="@dimen/text_size" />
+
+
+            <TextView
+                android:id="@+id/tv_appoint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="30dp"
+                android:text=""
+                android:textColor="@color/text_grey"
+                android:textColorHint="@color/text_grey_french2"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

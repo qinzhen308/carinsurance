@@ -13,6 +13,7 @@ public class TeamWraper implements BeanWraper<Team>{
     public List<Team> list; //  当前页面所有的beans  order
 
     public int page_count=Integer.MAX_VALUE;//页码总数
+    public int total;//条数
 
 
     @Override
