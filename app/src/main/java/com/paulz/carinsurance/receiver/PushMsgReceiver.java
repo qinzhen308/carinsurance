@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.paulz.carinsurance.HApplication;
 import com.paulz.carinsurance.common.GlobeFlags;
+import com.paulz.carinsurance.common.IActions;
 import com.paulz.carinsurance.ui.MainActivity;
 import com.paulz.carinsurance.utils.AppUtil;
 import com.core.framework.develop.LogUtil;
@@ -71,24 +72,15 @@ public class PushMsgReceiver extends BroadcastReceiver{
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        tagIntent=new Intent(context,MainActivity.class);
         if(msgJson!=null){
             int type=msgJson.optInt("type");
             String id=msgJson.optString("id");
-            if(type==1||type==2){
-               /* tagIntent=new Intent(context,BBSPostsDetailActivity.class);
-                tagIntent.putExtra(GlobeFlags.FLAG_PUSH_ID,pushId);
-                tagIntent.putExtra("posts_id",link_id);
-                tagIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);*/
-            }else {
-                tagIntent=new Intent(context,MainActivity.class);
-                tagIntent.putExtra(GlobeFlags.FLAG_PUSH_ID,pushId);
-                tagIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            }
-        }else {
-            tagIntent=new Intent(context,MainActivity.class);
-            tagIntent.putExtra(GlobeFlags.FLAG_PUSH_ID,pushId);
-            tagIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            tagIntent.putExtra("type",type);
+            tagIntent.setAction(IActions.ACTION_TO_MSG_CENTER);
         }
+        tagIntent.putExtra(GlobeFlags.FLAG_PUSH_ID,pushId);
+        tagIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(tagIntent);
     }
 

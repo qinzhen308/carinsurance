@@ -124,7 +124,9 @@ public class TeamInfoActivity extends BaseActivity {
            tvLabelTitle.setText("团队信息");
            btnSubmit.setVisibility(View.GONE);
            btnBelong.setVisibility(View.GONE);
+           labelTeamManager.setText("团队管理人");
        }else if(AppStatic.getInstance().getmUserInfo().teamtype==1){//我是团队管理人
+           labelTeamManager.setText("团队管理人");
            if(AppUtil.isNull(id)){
                //团队管理人查看自己资料
                setTitleTextRightText("", "团队资料", "团队费用比例", true);
@@ -136,9 +138,10 @@ public class TeamInfoActivity extends BaseActivity {
                tvLabelTitle.setText("机构信息");
            }
        } else if(AppStatic.getInstance().getmUserInfo().teamtype==2){//我是机构管理人
+           labelTeamManager.setText("机构管理人");
            if(AppUtil.isNull(id)){
                //机构管理人查看自己的机构资料
-               setTitleTextRightText("", "机构资料", "团队费用比例", true);
+               setTitleTextRightText("", "机构资料", "机构费用比例", true);
                tvLabelTitle.setText("机构信息");
            }else {
                //构管理人查看该机构的团队资料

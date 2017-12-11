@@ -15,6 +15,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.utils.Image13Loader;
 
@@ -85,7 +86,13 @@ public class CircleImageView extends ImageView {
 		this.measure(0, 0);
 		if (drawable.getClass() == NinePatchDrawable.class)
 			return;
-		Bitmap b = ((BitmapDrawable) drawable).getBitmap();
+		Bitmap b=null;
+		if(drawable instanceof  BitmapDrawable){
+			b = ((BitmapDrawable) drawable).getBitmap();
+		}else if(drawable instanceof GlideBitmapDrawable){
+			b = ((GlideBitmapDrawable) drawable).getBitmap();
+
+		}
 		Bitmap bitmap = b.copy(Config.ARGB_8888, true);
 		if (defaultWidth == 0) {
 			defaultWidth = getWidth();

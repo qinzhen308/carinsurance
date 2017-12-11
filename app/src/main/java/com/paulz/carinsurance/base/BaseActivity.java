@@ -34,7 +34,7 @@ public class BaseActivity extends Activity implements OnClickListener{
 	private TextView mLeftTv;
 	private TextView milddleTv;
 	private ImageView rightIv;
-	private TextView rightTv;
+	protected TextView rightTv;
 	protected InputMethodManager manager;
 	private RelativeLayout base_titleLayout;
 	protected LoadStateController mLoadStateController;// 加载状态的控制器

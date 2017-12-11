@@ -5,23 +5,73 @@
     android:background="@color/main_bg"
     >
 
-<!--
 
-    <TextView
-        android:id="@+id/tv_tip"
+
+    <RelativeLayout
+        android:id="@+id/base_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/base_yellow"
-        android:textColor="@color/base_red"
-        android:textSize="@dimen/text_size_small"
-        android:padding="10dp"
-        />
--->
+        android:layout_height="@dimen/title_height"
+        android:background="@color/main" >
+
+        <TextView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@drawable/back_icon_stauts_defult"
+            android:gravity="center"
+            android:drawablePadding="5dp"
+            android:textColor="@color/text_grey"
+            android:paddingLeft="@dimen/all_margin"
+            android:textSize="@dimen/text_size_big"
+            android:paddingRight="2dp" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="上传资料"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_big" />
+
+        <ImageView
+            android:id="@+id/btn_server1"
+            android:layout_width="45dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitXY"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_server2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/btn_server2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="@dimen/all_margin"
+            android:text="联系客服"
+            android:layout_below="@+id/btn_server1"
+            android:textColor="@color/white"
+            android:visibility="visible" />
+
+
+
+    </RelativeLayout>
 
 
 
 
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/base_title"
         android:id="@+id/rv_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

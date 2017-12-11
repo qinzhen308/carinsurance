@@ -14,10 +14,14 @@ import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.model.CustomerDetail;
 import com.paulz.carinsurance.model.Msg;
 import com.paulz.carinsurance.model.Order;
+import com.paulz.carinsurance.ui.AccountActivity;
+import com.paulz.carinsurance.ui.BounsRecordActivity;
 import com.paulz.carinsurance.ui.CommonWebActivity;
 import com.paulz.carinsurance.ui.CustomerInfoActivity;
+import com.paulz.carinsurance.ui.MyBounsActivity;
 import com.paulz.carinsurance.ui.NameVerifyActivity;
 import com.paulz.carinsurance.ui.OrderInfoActivity;
+import com.paulz.carinsurance.ui.WithdrawHistoryActivity;
 
 import butterknife.BindView;
 
@@ -56,13 +60,17 @@ public class MsgOrderAdapter extends AbsMutipleAdapter<Msg, MsgOrderAdapter.View
                     params.append("id",msg.id);
                     CommonWebActivity.invoke(mContext, APIUtil.parseGetUrlHasMethod(params.getParamList(),AppUrls.getInstance().URL_MSG_DETAIL),"公告详情");
                 }else if(msg.type==7||msg.type==4||msg.type==3){
-                    OrderInfoActivity.invoke(mContext,msg.extra.sn);
+                    OrderInfoActivity.invoke(mContext,msg.message_extra.sn);
                 }else if(msg.type==9){
                     NameVerifyActivity.invoke(mContext);
-                }else if(msg.type==5||msg.type==6||msg.type==8){
-                    CustomerInfoActivity.invoke(mContext,msg.extra.id);
+                }else if(msg.type==5){
+                    MyBounsActivity.invoke(mContext);
+                }else if(msg.type==6){
+                    WithdrawHistoryActivity.invoke(mContext);
+                }else if(msg.type==8){
+                    CustomerInfoActivity.invoke(mContext,msg.message_extra.id);
                 }else if(msg.type==2){
-                    CommonWebActivity.invoke(mContext, msg.extra.url,"");
+                    CommonWebActivity.invoke(mContext, msg.message_extra.url,"");
                 }
 
             }

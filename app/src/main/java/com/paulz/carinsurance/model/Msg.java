@@ -14,7 +14,7 @@ public class Msg {
     public String id;
     public String img;
     public String imgtitle;
-    public Extend extra;
+    public Extend message_extra;
     public int type;
 
     public class Extend{

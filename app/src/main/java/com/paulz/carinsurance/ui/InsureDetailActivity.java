@@ -123,6 +123,8 @@ public class InsureDetailActivity extends BaseActivity {
     TextView btnNext;
     @BindView(R.id.tv_appoint)
     TextView tvAppoint;
+    @BindView(R.id.layout_appoint)
+    View layoutAppoint;
     @BindView(R.id.layout_business_all)
     LinearLayout layoutBusinessAll;
 
@@ -224,7 +226,13 @@ public class InsureDetailActivity extends BaseActivity {
 
         tvEngineCode.setText(data.insdata.insurance_carmodel_en);
 
-        tvAppoint.setText(AppUtil.isNull(data.insdata.insurance_carmodel_teyue)?"无":data.insdata.insurance_carmodel_teyue);
+        if(AppUtil.isNull(data.insdata.insurance_carmodel_teyue)){
+            layoutAppoint.setVisibility(View.GONE);
+        }else {
+            layoutAppoint.setVisibility(View.VISIBLE);
+            tvAppoint.setText(data.insdata.insurance_carmodel_teyue);
+        }
+
 
 //        etNotSameInsuredName.setText(data.insdata.insurance_name);
 //        etNotSameInsuredId.setText(data.insdata.insurance_sfz);

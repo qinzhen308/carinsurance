@@ -100,6 +100,7 @@ public class MainActivity extends BaseFragmentActivity implements
 			isReInstance=false;
 		}
 		MainActivityPermissionsDispatcher.showPermissionsWithCheck(this);
+		handleAction(getIntent());
 	}
 
 	@Override
@@ -420,7 +421,12 @@ public class MainActivity extends BaseFragmentActivity implements
 				AccountActivity.invoke(this,1);
 				break;
 			case IActions.ACTION_TO_MAIN_USER_CENTER:
-
+				switchToFragment(TAB3);
+				break;
+			case IActions.ACTION_TO_MSG_CENTER:
+				//type=1/2/3
+				int type=data.getIntExtra("type",1);
+				MsgCenterActivity.invoke(this,type-1);
 				break;
 		}
 	}

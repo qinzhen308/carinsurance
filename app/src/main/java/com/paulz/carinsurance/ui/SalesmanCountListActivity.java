@@ -21,6 +21,7 @@ import com.paulz.carinsurance.adapter.SalesmanCountAdapter;
 import com.paulz.carinsurance.adapter.TeamInsureFeeAdapter;
 import com.paulz.carinsurance.base.BaseListActivity;
 import com.paulz.carinsurance.common.APIUtil;
+import com.paulz.carinsurance.common.AppStatic;
 import com.paulz.carinsurance.common.AppUrls;
 import com.paulz.carinsurance.controller.LoadStateController;
 import com.paulz.carinsurance.httputil.ParamBuilder;
@@ -96,6 +97,8 @@ public class SalesmanCountListActivity extends BaseListActivity implements LoadS
         mAdapter = new SalesmanCountAdapter(this);
         initHeader();
         mListView.setAdapter(mAdapter);
+
+        searchBar.setHint(AppStatic.getInstance().getmUserInfo().teamtype==2?"请输入团队名称、名字、手机号、邀请人":"请输入名字、手机号、邀请人");
 
     }
 

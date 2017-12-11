@@ -23,6 +23,7 @@ import com.paulz.carinsurance.adapter.SalesmanAdapter;
 import com.paulz.carinsurance.adapter.TeamAdapter;
 import com.paulz.carinsurance.base.BaseListActivity;
 import com.paulz.carinsurance.common.APIUtil;
+import com.paulz.carinsurance.common.AppStatic;
 import com.paulz.carinsurance.common.AppUrls;
 import com.paulz.carinsurance.controller.LoadStateController;
 import com.paulz.carinsurance.httputil.ParamBuilder;
@@ -90,7 +91,11 @@ public class SalesmanListActivity extends BaseListActivity implements PullToRefr
         hasLoadingState=true;
         initHeader();
         mListView.setAdapter(mAdapter);
-        searchBar.setHint("请输入团队名称、名字、手机号、邀请人");
+        if(AppStatic.getInstance().getmUserInfo().teamtype==2){
+            searchBar.setHint("请输入团队名称、名字、手机号、邀请人");
+        }else {
+            searchBar.setHint("请输入姓名、手机号");
+        }
     }
 
     TextView tvTotal;

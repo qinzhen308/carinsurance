@@ -128,6 +128,8 @@ public class OrderInfoActivity extends BaseActivity {
     TextView tvInsuredPhone;
     @BindView(R.id.tv_appoint)
     TextView tvAppoint;
+    @BindView(R.id.layout_appoint)
+    View layoutAppoint;
     @BindView(R.id.layout_insured_phone)
     LinearLayout layoutInsuredPhone;
 
@@ -330,7 +332,12 @@ public class OrderInfoActivity extends BaseActivity {
 
         tvTip.setText(data.uploadmsg);
 
-        tvAppoint.setText(AppUtil.isNull(data.insurance_xunjia_teyue)?"无":data.insurance_xunjia_teyue);
+        if(AppUtil.isNull(data.insurance_xunjia_teyue)){
+            layoutAppoint.setVisibility(View.GONE);
+        }else {
+            layoutAppoint.setVisibility(View.VISIBLE);
+            tvAppoint.setText(data.insurance_xunjia_teyue);
+        }
 
 
 
