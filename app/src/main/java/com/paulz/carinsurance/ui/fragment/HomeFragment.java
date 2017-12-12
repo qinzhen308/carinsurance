@@ -255,7 +255,7 @@ public class HomeFragment extends BaseFragment {
                             tvMsgCount.setText("99+");
                             tvMsgCount.setVisibility(View.VISIBLE);
                         }else if(obj.data.total>0){
-                            tvMsgCount.setText(obj.data.total);
+                            tvMsgCount.setText(""+obj.data.total);
                             tvMsgCount.setVisibility(View.VISIBLE);
                         }else {
                             tvMsgCount.setVisibility(View.GONE);

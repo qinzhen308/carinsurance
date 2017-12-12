@@ -76,8 +76,10 @@ public class PushMsgReceiver extends BroadcastReceiver{
         if(msgJson!=null){
             int type=msgJson.optInt("type");
             String id=msgJson.optString("id");
-            tagIntent.putExtra("type",type);
-            tagIntent.setAction(IActions.ACTION_TO_MSG_CENTER);
+            if(type>0){
+                tagIntent.putExtra("type",type);
+                tagIntent.setAction(IActions.ACTION_TO_MSG_CENTER);
+            }
         }
         tagIntent.putExtra(GlobeFlags.FLAG_PUSH_ID,pushId);
         tagIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -105,6 +105,7 @@ public class SearchCarModelActivity extends BaseListActivity implements PullToRe
         searchBar.setText(keywords==null?"":keywords);
         mAdapter = new CarModelAdapter(this);
         mPullListView=(PullListView)findViewById(R.id.list_view);
+        mPullListView.setMode(PullToRefreshBase.MODE_PULL_DOWN_TO_REFRESH);
         mListView=mPullListView.getRefreshableView();
         mListView.setDivider(new ColorDrawable(getResources().getColor(R.color.main_bg)));
         mListView.setDividerHeight(2);
@@ -153,6 +154,8 @@ public class SearchCarModelActivity extends BaseListActivity implements PullToRe
 
         ParamBuilder params = new ParamBuilder();
         HttpRequester requester = new HttpRequester();
+        requester.setMethod(com.core.framework.net.HttpRequester.METHOD_POST);
+        requester.setSecretMode(DESUtil.SECRET_DES);
         requester.getParams().put("keywords", keywords);
         String url=null;
         if(getIntent().getBooleanExtra("is_customer",false)){

@@ -14,6 +14,7 @@ public class UploadProfileConfig {
     public String sn;
     public String statustag;
     public String imgstatus;//上传状态，1待上传2下发修改3待审核4审核通过
+    public String edit;//上传状态，1修改2不能修改
     public List<ImageGroup> list;
 
 

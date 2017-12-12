@@ -568,9 +568,25 @@ public class NetworkWorker {
 				}
 			}
 			String data=DESUtil.encrypt(object.toString(),DESUtil.SECRET_DES_KEY);
-			requester.getParams().clear();
-			requester.getParams().put("data",data);
-			requester.getParams().putAll(fileMap);
+			if(params.length>1&&DESUtil.SECRET_DES.equals(params[1])){
+				requester.getParams().clear();
+				requester.getParams().put("data",data);
+				requester.getParams().putAll(fileMap);
+				LogUtil.d("----http post---传入的参数：" + ((HttpRequester) params[0]).mParams.toString());
+
+				return (HttpRequester) params[0];
+
+			}else{
+				requester=new HttpRequester();
+				requester.setMethod(requester.getMethod());
+				requester.setMethod(requester.getSecretMode());
+				requester.getParams().put("data",data);
+				requester.getParams().putAll(fileMap);
+				LogUtil.d("----http post---传入的参数：" + ((HttpRequester) params[0]).mParams.toString());
+
+				return requester;
+			}
+
 		}
 
 		LogUtil.d("----http post---传入的参数：" + ((HttpRequester) params[0]).mParams.toString());

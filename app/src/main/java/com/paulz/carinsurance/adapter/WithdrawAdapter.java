@@ -35,9 +35,12 @@ public class WithdrawAdapter extends AbsMutipleAdapter<CashRecord, WithdrawAdapt
 
         holder.tvMoney.setText(bean.member_atm_money);
         holder.tvDate.setText(DateUtil.getYMDHMDate(bean.member_atm_create_time*1000));
-        if(bean.member_atm_status==1){//已提现
+        if(bean.member_atm_ifcheck==1){//已提现
             holder.tvStatus.setText("已提现");
             holder.tvStatus.setTextColor(mContext.getResources().getColor(R.color.base_green));
+        }else if(bean.member_atm_ifcheck==2) {
+            holder.tvStatus.setText("失败（资金已退回）");
+            holder.tvStatus.setTextColor(mContext.getResources().getColor(R.color.main));
         }else {
             holder.tvStatus.setText("审核中");
             holder.tvStatus.setTextColor(mContext.getResources().getColor(R.color.main));

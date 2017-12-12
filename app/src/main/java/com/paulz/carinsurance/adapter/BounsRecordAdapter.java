@@ -39,7 +39,7 @@ public class BounsRecordAdapter extends AbsMutipleAdapter<BounsRecord, BounsReco
         holder.tvMoney.setText("￥"+(bean.money_type==1?"+":"-")+bean.money);
         holder.tvDate.setText(DateUtil.getYMDHMDate(bean.create_time * 1000));
         if (bean.is_paid == 1) {//已提现
-            holder.tvStatus.setText("已提现");
+            holder.tvStatus.setText("已入账");
             holder.tvStatus.setTextColor(mContext.getResources().getColor(R.color.base_green));
         } else {
             holder.tvStatus.setText("审核中");

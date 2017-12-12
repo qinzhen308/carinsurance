@@ -65,6 +65,9 @@ public class MsgOrderAdapter extends AbsMutipleAdapter<Msg, MsgOrderAdapter.View
             public void onClick(View v) {
                 //消息类型 0无跳转无详情，1公告类型，图文消息，2以上为各种跳转链接，3人工核保结果 ，4支付完成（保单生效），
                 // 5入账，6提现处理，7订单即将关闭，8车险即将到期，9实名认证审核结果
+                if(msg.unread==1){
+                    setReaded(msg);
+                }
                 if(msg.type==1){
                     ParamBuilder params=new ParamBuilder();
                     params.append("id",msg.id);
@@ -82,7 +85,6 @@ public class MsgOrderAdapter extends AbsMutipleAdapter<Msg, MsgOrderAdapter.View
                 }else if(msg.type==2){
                     CommonWebActivity.invoke(mContext, msg.message_extra.url,"");
                 }
-                setReaded(msg);
 
             }
         });
@@ -92,16 +94,15 @@ public class MsgOrderAdapter extends AbsMutipleAdapter<Msg, MsgOrderAdapter.View
     public void setReaded(final Msg msg){
         ParamBuilder params=new ParamBuilder();
         HttpRequester requester=new HttpRequester();
-        NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(),msg.url ), new NetworkWorker.ICallback() {
+        requester.getParams().put("id",msg.id);
+        NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(),AppUrls.getInstance().URL_MSG_DETAIL ), new NetworkWorker.ICallback() {
             @Override
             public void onResponse(int status, String result) {
                 if(status==200){
-                    BaseObject<Object> obj= GsonParser.getInstance().parseToObj(result,Object.class);
-                    if(obj!=null&&obj.status==BaseObject.STATUS_OK){
+//                    BaseObject<Object> obj= GsonParser.getInstance().parseToObj(result,Object.class);
                         msg.unread=0;
                         notifyDataSetChanged();
                         ((MsgCenterActivity)mContext).loadMsgCount();
-                    }
                 }
             }
         },requester, DESUtil.SECRET_DES);

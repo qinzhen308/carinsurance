@@ -64,6 +64,11 @@ public class MsgCenterActivity extends BaseFragmentActivity {
         super.onCreate(savedInstanceState);
         initView();
         initData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         loadMsgCount();
     }
 
@@ -137,7 +142,7 @@ public class MsgCenterActivity extends BaseFragmentActivity {
                             setMsgCount(msgcountView[i],msgcounts[i]);
                         }
 
-
+                        showSetReadedBtn();
 
                     }
                 }
@@ -159,7 +164,7 @@ public class MsgCenterActivity extends BaseFragmentActivity {
     public void setReaded(){
         ParamBuilder params=new ParamBuilder();
         HttpRequester requester=new HttpRequester();
-        requester.getParams().put("category",mCheckFlag);
+        requester.getParams().put("category",(mCheckFlag+1)+"");
         NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_MSG_SET_READ), new NetworkWorker.ICallback() {
             @Override
             public void onResponse(int status, String result) {
@@ -168,6 +173,7 @@ public class MsgCenterActivity extends BaseFragmentActivity {
                     if(obj!=null&&obj.status==BaseObject.STATUS_OK){
                         msgcounts[mCheckFlag]=0;
                         showSetReadedBtn();
+                        setMsgCount(msgcountView[mCheckFlag],msgcounts[mCheckFlag]);
                     }
                 }
             }
@@ -180,7 +186,7 @@ public class MsgCenterActivity extends BaseFragmentActivity {
             v.setText("99+");
             v.setVisibility(View.VISIBLE);
         }else if(count>0){
-            v.setText(count);
+            v.setText(""+count);
             v.setVisibility(View.VISIBLE);
         }else {
             v.setVisibility(View.GONE);

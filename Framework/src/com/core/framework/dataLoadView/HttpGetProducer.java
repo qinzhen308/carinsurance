@@ -117,6 +117,7 @@ public class HttpGetProducer extends AbstractProducer {
                     }
                 }
 
+
                 return result;
             } else if (304 == status) {
                 // 返回的是304，不理会max-age，直接使用应用自身的设置

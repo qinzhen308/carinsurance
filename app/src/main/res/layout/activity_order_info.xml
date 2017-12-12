@@ -34,7 +34,7 @@
             android:id="@+id/btn_upload_operate"
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:background="@color/base_blue"
+            android:background="@color/base_red"
             android:gravity="center"
             android:text="上传证件"
             android:textSize="@dimen/text_size"

@@ -159,13 +159,12 @@ public class UploadProfileActivity extends BaseActivity {
             return;
         }
         boolean enable = true;
-        if ("3".equals(config.imgstatus) || "4".equals(config.imgstatus)) {
-            btnSubmit.setVisibility(View.GONE);
-            enable = false;
-        } else {
-
+        if ("1".equals(config.edit)) {
             btnSubmit.setVisibility(View.VISIBLE);
             enable = true;
+        } else {
+            btnSubmit.setVisibility(View.GONE);
+            enable = false;
         }
 
         List models = new ArrayList();

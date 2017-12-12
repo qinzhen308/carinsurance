@@ -60,8 +60,10 @@ public class MsgNoticeAdapter extends AbsMutipleAdapter<Msg, MsgNoticeAdapter.Vi
 //                MsgNoticeDetailActivity.invoke(mContext,"");
                 ParamBuilder params=new ParamBuilder();
                 params.append("id",msg.id);
+                if(msg.unread==1){
+                    setReaded(msg);
+                }
                 CommonWebActivity.invoke(mContext, APIUtil.parseGetUrlHasMethod(params.getParamList(),AppUrls.getInstance().URL_MSG_DETAIL),"公告详情");
-                setReaded(msg);
             }
         });
     }
@@ -69,7 +71,8 @@ public class MsgNoticeAdapter extends AbsMutipleAdapter<Msg, MsgNoticeAdapter.Vi
     public void setReaded(final Msg msg){
         ParamBuilder params=new ParamBuilder();
         HttpRequester requester=new HttpRequester();
-        NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(),msg.url ), new NetworkWorker.ICallback() {
+        requester.getParams().put("id",msg.id);
+        NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(),AppUrls.getInstance().URL_MSG_DETAIL ), new NetworkWorker.ICallback() {
             @Override
             public void onResponse(int status, String result) {
                 if(status==200){
