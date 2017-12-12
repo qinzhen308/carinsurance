@@ -176,8 +176,7 @@ public class TeamAchievementActivity extends BaseListActivity implements LoadSta
         tvTotalFee.setText(wraper.ains+"元");
         tvForceFee.setText(wraper.cins+"元");
         tvBusinessFee.setText(wraper.bins+"元");
-        tvTotal.setText("共有"+wraper.total+"单");
-
+        tvTotal.setText("共有"+wraper.total+"个团队出单");
     }
 
     @Override

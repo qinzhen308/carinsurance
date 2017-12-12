@@ -38,6 +38,8 @@ import com.paulz.carinsurance.httputil.HttpRequester;
 import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.model.Banner;
 import com.paulz.carinsurance.model.IdCard;
+import com.paulz.carinsurance.model.MsgUnread;
+import com.paulz.carinsurance.model.wrapper.MsgWraper;
 import com.paulz.carinsurance.parser.gson.BaseObject;
 import com.paulz.carinsurance.parser.gson.GsonParser;
 import com.paulz.carinsurance.permissiongen.internal.PermissionUtil;
@@ -83,6 +85,8 @@ public class HomeFragment extends BaseFragment {
     AutoScollBanner bannerView;
     @BindView(R.id.tv_car_id)
     TextView tvCarId;
+    @BindView(R.id.tv_msg_count)
+    TextView tvMsgCount;
     @BindView(R.id.et_car_number)
     EditText etCarNumber;
     @BindView(R.id.tv_status)
@@ -103,6 +107,7 @@ public class HomeFragment extends BaseFragment {
     public void onResume() {
 
         super.onResume();
+        loadMsgCount();
     }
 
 
@@ -222,7 +227,38 @@ public class HomeFragment extends BaseFragment {
                             tvCarId.setText("川A");
                         }else {
                             tvCarId.setText(obj.data.firstcarnumber+"A");
+                        }
+                    }
+                }
+            }
+        });
 
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden){
+            loadMsgCount();
+        }
+    }
+
+    private void loadMsgCount(){
+        ParamBuilder params=new ParamBuilder();
+        NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_MSG_UNREAD), new NetworkWorker.ICallback() {
+            @Override
+            public void onResponse(int status, String result) {
+                if(status==200){
+                    BaseObject<MsgUnread> obj=GsonParser.getInstance().parseToObj(result,MsgUnread.class);
+                    if(obj!=null&&obj.status==BaseObject.STATUS_OK){
+                        if(obj.data.total>99){
+                            tvMsgCount.setText("99+");
+                            tvMsgCount.setVisibility(View.VISIBLE);
+                        }else if(obj.data.total>0){
+                            tvMsgCount.setText(obj.data.total);
+                            tvMsgCount.setVisibility(View.VISIBLE);
+                        }else {
+                            tvMsgCount.setVisibility(View.GONE);
                         }
                     }
                 }

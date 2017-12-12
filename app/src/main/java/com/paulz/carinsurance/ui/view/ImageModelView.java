@@ -96,7 +96,7 @@ public class ImageModelView extends RelativeLayout implements IViewModel<ImageMo
     }
 
     private void showItem(ImageView deleteV, TextView addV, ImageView picV,View loadingBar, final UploadProfileConfig.ImageModel item) {
-        addV.setText(mData.left.title);
+        addV.setText(item.title);
         if(!mData.enable){
             picV.setVisibility(VISIBLE);
             deleteV.setVisibility(GONE);

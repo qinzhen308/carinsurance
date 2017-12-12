@@ -19,6 +19,7 @@
         android:layout_marginTop="10dp"
         android:maxLines="1"
         android:layout_toLeftOf="@+id/tv_date"
+        android:layout_marginLeft="10dp"
         />
 
     <TextView
@@ -41,6 +42,7 @@
         android:layout_height="100dp"
         android:layout_below="@+id/tv_name"
         android:scaleType="fitXY"
+        android:layout_marginLeft="10dp"
         />
 
 
@@ -56,9 +58,18 @@
         android:layout_below="@+id/iv_pic"
         android:gravity="center"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         />
 
 
-
+    <View
+        android:id="@+id/v_unread"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:background="@drawable/shape_circle_red"
+        android:layout_alignTop="@+id/tv_name"
+        android:layout_marginTop="7dp"
+        android:visibility="gone"
+        />
 
 </RelativeLayout>

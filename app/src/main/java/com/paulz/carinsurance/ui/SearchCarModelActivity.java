@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,15 +26,22 @@ import com.core.framework.util.DialogUtil;
 import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.adapter.CarModelAdapter;
 import com.paulz.carinsurance.base.BaseActivity;
+import com.paulz.carinsurance.base.BaseListActivity;
 import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppUrls;
+import com.paulz.carinsurance.controller.LoadStateController;
 import com.paulz.carinsurance.httputil.HttpRequester;
 import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.model.CarModeInfo;
+import com.paulz.carinsurance.model.wrapper.BeanWraper;
+import com.paulz.carinsurance.model.wrapper.CarModeInfoWraper;
+import com.paulz.carinsurance.model.wrapper.SalesmanWraper;
 import com.paulz.carinsurance.parser.gson.BaseObject;
 import com.paulz.carinsurance.parser.gson.GsonParser;
 import com.paulz.carinsurance.utils.AppUtil;
 import com.paulz.carinsurance.utils.DateUtil;
+import com.paulz.carinsurance.view.pulltorefresh.PullListView;
+import com.paulz.carinsurance.view.pulltorefresh.PullToRefreshBase;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,7 +56,7 @@ import butterknife.OnClick;
  * 查找车型
  */
 
-public class SearchCarModelActivity extends BaseActivity {
+public class SearchCarModelActivity extends BaseListActivity implements PullToRefreshBase.OnRefreshListener, LoadStateController.OnLoadErrorListener{
 
 
     CarModelAdapter mAdapter;
@@ -57,8 +66,7 @@ public class SearchCarModelActivity extends BaseActivity {
     EditText searchBar;
     @BindView(R.id.btn_help)
     TextView btnHelp;
-    @BindView(R.id.list_view)
-    ListView listView;
+
     @BindView(R.id.tab1)
     TextView tab1;
     @BindView(R.id.tab2)
@@ -83,9 +91,12 @@ public class SearchCarModelActivity extends BaseActivity {
 
     private void initView() {
         setActiviyContextView(R.layout.activity_search_car_model, false, true);
+        mLoadStateController=new LoadStateController(this, (ViewGroup) findViewById(R.id.load_state_container));
+        hasLoadingState=true;
         setTitleText("", "选择车型", 0, true);
         ButterKnife.bind(this);
         init();
+        setListener();
     }
 
 
@@ -93,13 +104,24 @@ public class SearchCarModelActivity extends BaseActivity {
         keywords=getIntent().getStringExtra("extra_keywords");
         searchBar.setText(keywords==null?"":keywords);
         mAdapter = new CarModelAdapter(this);
-        listView.setAdapter(mAdapter);
+        mPullListView=(PullListView)findViewById(R.id.list_view);
+        mListView=mPullListView.getRefreshableView();
+        mListView.setDivider(new ColorDrawable(getResources().getColor(R.color.main_bg)));
+        mListView.setDividerHeight(2);
+        mListView.setAdapter(mAdapter);
         if(!AppUtil.isNull(keywords)){
-            searchCar();
+            searchCar(false);
         }
         if(getIntent().getBooleanExtra("just_show",false)){
-            justShowSearchCar();
+            justShowSearchCar(false);
         }
+
+    }
+
+    private void setListener() {
+        mListView.setOnScrollListener(new MyOnScrollListener());
+        mLoadStateController.setOnLoadErrorListener(this);
+        mPullListView.setOnRefreshListener(this);
         searchBar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -110,22 +132,25 @@ public class SearchCarModelActivity extends BaseActivity {
                 return false;
             }
         });
+
     }
 
 
     private void search() {
         keywords = searchBar.getText().toString();
-        searchCar();
+        searchCar(false);
     }
 
 
-    private void searchCar() {
+    private void searchCar(boolean isRefresh) {
         if (AppUtil.isNull(keywords)) {
             AppUtil.showToast(this, "请输入车型");
             return;
         }
+        if (!isRefresh) {
+            showLoading();
+        }
 
-        DialogUtil.showDialog(lodDialog);
         ParamBuilder params = new ParamBuilder();
         HttpRequester requester = new HttpRequester();
         requester.getParams().put("keywords", keywords);
@@ -135,32 +160,22 @@ public class SearchCarModelActivity extends BaseActivity {
         }else {
             url=AppUrls.getInstance().URL_BRAND_CHOICE_CAR;
         }
-        NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(), url), new NetworkWorker.ICallback() {
-            @Override
-            public void onResponse(int status, String result) {
-                if (!isFinishing()) DialogUtil.dismissDialog(lodDialog);
-                if (status == 200) {
-                    SelectCarModelActivity.clearCarMode=true;
-                    setResult(100);
-                    BaseObject<PageData> object = GsonParser.getInstance().parseToObj(result, PageData.class);
-                    if (object != null && object.status == BaseObject.STATUS_OK && object.data != null) {
-                        mAdapter.setList(object.data.list);
-                        mAdapter.notifyDataSetChanged();
-
-                    } else {
-                        mAdapter.setList(new ArrayList<CarModeInfo>());
-                        mAdapter.notifyDataSetChanged();
-                    }
-                }
-            }
-        }, requester, DESUtil.SECRET_DES);
+        setHttpRequester(requester);
+        if (isRefresh) {
+            immediateLoadData(APIUtil.parseGetUrlHasMethod(params.getParamList(), url), CarModeInfoWraper.class);
+        } else {
+            reLoadData(APIUtil.parseGetUrlHasMethod(params.getParamList(), url), CarModeInfoWraper.class);
+        }
     }
 
-    private void justShowSearchCar() {
+    private void justShowSearchCar(boolean isRefresh) {
 
         btnHelp.setVisibility(View.GONE);
         searchBar.setVisibility(View.GONE);
-        DialogUtil.showDialog(lodDialog);
+        if (!isRefresh) {
+            showLoading();
+        }
+
         ParamBuilder params = new ParamBuilder();
 //        HttpRequester requester = new HttpRequester();
         String url=null;
@@ -169,23 +184,91 @@ public class SearchCarModelActivity extends BaseActivity {
         }else {
             url=AppUrls.getInstance().URL_SEARCH_CAR_MODEL;
         }
-        NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), url), new NetworkWorker.ICallback() {
-            @Override
-            public void onResponse(int status, String result) {
-                if (!isFinishing()) DialogUtil.dismissDialog(lodDialog);
-                if (status == 200) {
-                    BaseObject<PageData> object = GsonParser.getInstance().parseToObj(result, PageData.class);
-                    if (object != null && object.status == BaseObject.STATUS_OK && object.data != null) {
-                        mAdapter.setList(object.data.list);
-                        mAdapter.notifyDataSetChanged();
 
-                    } else {
-                        mAdapter.setList(new ArrayList<CarModeInfo>());
-                        mAdapter.notifyDataSetChanged();
-                    }
-                }
+        if (isRefresh) {
+            immediateLoadData(APIUtil.parseGetUrlHasMethod(params.getParamList(), url), CarModeInfoWraper.class);
+        } else {
+            reLoadData(APIUtil.parseGetUrlHasMethod(params.getParamList(), url), CarModeInfoWraper.class);
+        }
+    }
+
+
+    @Override
+    protected BeanWraper newBeanWraper() {
+        return new CarModeInfoWraper();
+    }
+
+    @Override
+    protected void handlerData(List allData, List currentData, boolean isLastPage) {
+        // TODO Auto-generated method stub
+        mPullListView.onRefreshComplete();
+        if (AppUtil.isEmpty(allData)) {
+            showNodata();
+        } else {
+            showSuccess();
+            if(!AppUtil.isNull(keywords)){
+                SelectCarModelActivity.clearCarMode=true;
+                setResult(100);
             }
-        });
+        }
+        mAdapter.setList(allData);
+        mAdapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    protected void loadError(String message, Throwable throwable, int page) {
+        // TODO Auto-generated method stub
+        mPullListView.onRefreshComplete();
+        showFailture();
+    }
+
+    @Override
+    protected void loadTimeOut(String message, Throwable throwable) {
+        // TODO Auto-generated method stub
+        mPullListView.onRefreshComplete();
+        showFailture();
+    }
+
+    @Override
+    protected void loadNoNet() {
+        // TODO Auto-generated method stub
+        mPullListView.onRefreshComplete();
+        showFailture();
+    }
+
+    @Override
+    protected void loadServerError() {
+        // TODO Auto-generated method stub
+        mPullListView.onRefreshComplete();
+        showFailture();
+
+    }
+
+
+    @Override
+    public void onRefresh() {
+        // TODO Auto-generated method stub
+        if (!isLoading()) {
+            if(!AppUtil.isNull(keywords)){
+                searchCar(true);
+            }
+            if(getIntent().getBooleanExtra("just_show",false)){
+                justShowSearchCar(true);
+            }
+        }
+    }
+
+    @Override
+    public void onAgainRefresh() {
+        // TODO Auto-generated method stub
+
+        if(!AppUtil.isNull(keywords)){
+            searchCar(false);
+        }
+        if(getIntent().getBooleanExtra("just_show",false)){
+            justShowSearchCar(false);
+        }
     }
 
     private void showVinExample(){

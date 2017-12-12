@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical" >
+
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dip">
+
+        <com.paulz.carinsurance.view.PageSlidingIndicator
+            android:id="@+id/page_indicator_interal"
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:background="@color/white"
+            android:textSize="14sp"
+            app:indicatorColor="@color/main"
+            app:tabTextSelectedColor="@color/main"
+            app:indicatorHeight="2.5dip" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_msg_count1"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:text=""
+                    android:background="@drawable/shape_circle_red"
+                    android:textColor="@color/white"
+                    android:layout_alignTop="@+id/btn_msg"
+                    android:gravity="center"
+                    android:layout_alignRight="@+id/btn_msg"
+                    android:textSize="9sp"
+                    android:visibility="gone"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="5dp"
+                    />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_msg_count2"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:text=""
+                    android:background="@drawable/shape_circle_red"
+                    android:textColor="@color/white"
+                    android:layout_alignTop="@+id/btn_msg"
+                    android:gravity="center"
+                    android:layout_alignRight="@+id/btn_msg"
+                    android:textSize="9sp"
+                    android:visibility="gone"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="5dp"
+                    />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_msg_count3"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:text=""
+                    android:background="@drawable/shape_circle_red"
+                    android:textColor="@color/white"
+                    android:layout_alignTop="@+id/btn_msg"
+                    android:gravity="center"
+                    android:layout_alignRight="@+id/btn_msg"
+                    android:textSize="9sp"
+                    android:visibility="gone"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="5dp"
+                    />
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+
+
+    </FrameLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/integral_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ffffff"
+        android:flipInterval="30"
+        android:layout_marginTop="10dp"
+        android:persistentDrawingCache="animation" />
+
+    <TextView
+        android:id="@+id/btn_set_read"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="一键已读"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_big"
+        android:background="@color/main"
+        android:visibility="gone"
+        />
+
+</LinearLayout>

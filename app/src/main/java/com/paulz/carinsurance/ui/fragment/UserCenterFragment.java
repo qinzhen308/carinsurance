@@ -17,7 +17,9 @@ import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppStatic;
 import com.paulz.carinsurance.common.AppUrls;
 import com.paulz.carinsurance.httputil.ParamBuilder;
+import com.paulz.carinsurance.model.MsgUnread;
 import com.paulz.carinsurance.model.UserInfo;
+import com.paulz.carinsurance.model.wrapper.MsgWraper;
 import com.paulz.carinsurance.parser.gson.BaseObject;
 import com.paulz.carinsurance.parser.gson.GsonParser;
 import com.paulz.carinsurance.ui.AccountActivity;
@@ -81,11 +83,44 @@ public class UserCenterFragment extends BaseFragment {
     @BindView(R.id.layout_organization)
     TextView layoutOrganization;
     @BindView(R.id.tv_msg_count)
-    View tvMsgCount;
+    TextView tvMsgCount;
 
     @Override
     public void heavyBuz() {
 
+
+    }
+
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden){
+            loadMsgCount();
+        }
+    }
+
+    private void loadMsgCount(){
+        ParamBuilder params=new ParamBuilder();
+        NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_MSG_UNREAD), new NetworkWorker.ICallback() {
+            @Override
+            public void onResponse(int status, String result) {
+                if(status==200){
+                    BaseObject<MsgUnread> obj= GsonParser.getInstance().parseToObj(result,MsgUnread.class);
+                    if(obj!=null&&obj.status==BaseObject.STATUS_OK){
+                        if(obj.data.total>99){
+                            tvMsgCount.setText("99+");
+                            tvMsgCount.setVisibility(View.VISIBLE);
+                        }else if(obj.data.total>0){
+                            tvMsgCount.setText(obj.data.total);
+                            tvMsgCount.setVisibility(View.VISIBLE);
+                        }else {
+                            tvMsgCount.setVisibility(View.GONE);
+                        }
+                    }
+                }
+            }
+        });
 
     }
 
@@ -162,6 +197,7 @@ public class UserCenterFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         initData();
+        loadMsgCount();
     }
 
     @OnClick({R.id.layout_more, R.id.layout_bonus, R.id.layout_achievement, R.id.layout_server,

@@ -7,17 +7,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.core.framework.net.NetworkWorker;
+import com.core.framework.util.DESUtil;
 import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppUrls;
+import com.paulz.carinsurance.httputil.HttpRequester;
 import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.model.CustomerDetail;
 import com.paulz.carinsurance.model.Msg;
 import com.paulz.carinsurance.model.Order;
+import com.paulz.carinsurance.parser.gson.BaseObject;
+import com.paulz.carinsurance.parser.gson.GsonParser;
 import com.paulz.carinsurance.ui.AccountActivity;
 import com.paulz.carinsurance.ui.BounsRecordActivity;
 import com.paulz.carinsurance.ui.CommonWebActivity;
 import com.paulz.carinsurance.ui.CustomerInfoActivity;
+import com.paulz.carinsurance.ui.MsgCenterActivity;
 import com.paulz.carinsurance.ui.MyBounsActivity;
 import com.paulz.carinsurance.ui.NameVerifyActivity;
 import com.paulz.carinsurance.ui.OrderInfoActivity;
@@ -49,7 +55,11 @@ public class MsgOrderAdapter extends AbsMutipleAdapter<Msg, MsgOrderAdapter.View
         holder.tvName.setText(msg.title);
         holder.tvDate.setText(msg.date);
         holder.tvDescrib.setText(msg.abstractStr);
-
+        if(msg.unread==0){
+            holder.vUnread.setVisibility(View.GONE);
+        }else {
+            holder.vUnread.setVisibility(View.VISIBLE);
+        }
         holder.root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,11 +82,33 @@ public class MsgOrderAdapter extends AbsMutipleAdapter<Msg, MsgOrderAdapter.View
                 }else if(msg.type==2){
                     CommonWebActivity.invoke(mContext, msg.message_extra.url,"");
                 }
+                setReaded(msg);
 
             }
         });
 
     }
+
+    public void setReaded(final Msg msg){
+        ParamBuilder params=new ParamBuilder();
+        HttpRequester requester=new HttpRequester();
+        NetworkWorker.getInstance().post(APIUtil.parseGetUrlHasMethod(params.getParamList(),msg.url ), new NetworkWorker.ICallback() {
+            @Override
+            public void onResponse(int status, String result) {
+                if(status==200){
+                    BaseObject<Object> obj= GsonParser.getInstance().parseToObj(result,Object.class);
+                    if(obj!=null&&obj.status==BaseObject.STATUS_OK){
+                        msg.unread=0;
+                        notifyDataSetChanged();
+                        ((MsgCenterActivity)mContext).loadMsgCount();
+                    }
+                }
+            }
+        },requester, DESUtil.SECRET_DES);
+
+    }
+
+
 
     public static class ViewHolderImpl extends ViewHolder {
         @BindView(R.id.tv_name)
@@ -85,6 +117,8 @@ public class MsgOrderAdapter extends AbsMutipleAdapter<Msg, MsgOrderAdapter.View
         TextView tvDate;
         @BindView(R.id.tv_describ)
         TextView tvDescrib;
+        @BindView(R.id.v_unread)
+        View vUnread;
 
         public ViewHolderImpl(View view) {
             super(view);

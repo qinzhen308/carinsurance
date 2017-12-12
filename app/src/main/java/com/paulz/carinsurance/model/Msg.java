@@ -12,8 +12,10 @@ public class Msg {
     @SerializedName("abstract")
     public String abstractStr;
     public String id;
+    public String url;
     public String img;
     public String imgtitle;
+    public int unread;
     public Extend message_extra;
     public int type;
 

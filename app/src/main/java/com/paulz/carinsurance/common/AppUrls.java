@@ -141,6 +141,7 @@ public class AppUrls {
 	public String URL_MSG_DETAIL=BASE_URL+"Message/details.html";//消息详情
 	public String URL_MSG_LIST=BASE_URL+"Message/index.html";//消息列表
 	public String URL_MSG_UNREAD=BASE_URL+"Message/unreadtotal.html";//未读消息
+	public String URL_MSG_SET_READ=BASE_URL+"Message/setread.html";//未读消息
 
 	public String URL_INSURE_PRICE_SINGLE=BASE_URL+"Process/choicecompanyajax.html";//单个保险公司询价接口
 	public String URL_INSURE_PRICE_SELECTED_COMPANY=BASE_URL+"Index/choiceinsurancecompany.html";//已选择保险公司接口

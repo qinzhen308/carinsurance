@@ -23,14 +23,19 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.core.framework.net.NetworkWorker;
 import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.adapter.CustomerAdapter;
 import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppUrls;
 import com.paulz.carinsurance.controller.LoadStateController;
 import com.paulz.carinsurance.httputil.ParamBuilder;
+import com.paulz.carinsurance.model.MsgUnread;
 import com.paulz.carinsurance.model.wrapper.BeanWraper;
 import com.paulz.carinsurance.model.wrapper.CustomerWraper;
+import com.paulz.carinsurance.model.wrapper.MsgWraper;
+import com.paulz.carinsurance.parser.gson.BaseObject;
+import com.paulz.carinsurance.parser.gson.GsonParser;
 import com.paulz.carinsurance.ui.AddCustomerActivity;
 import com.paulz.carinsurance.ui.MsgCenterActivity;
 import com.paulz.carinsurance.utils.AppUtil;
@@ -68,6 +73,9 @@ public class CustomerFragment extends BaseListFragment implements PullToRefreshB
     Unbinder unbinder;
     CustomerAdapter mAdapter;
 
+    @BindView(R.id.tv_msg_count)
+    TextView tvMsgCount;
+
     String keyword="";
 
     private PopupWindow pop;
@@ -101,7 +109,42 @@ public class CustomerFragment extends BaseListFragment implements PullToRefreshB
     public void onResume() {
         super.onResume();
         initData(false);
+        loadMsgCount();
     }
+
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(!hidden){
+            loadMsgCount();
+        }
+    }
+
+    private void loadMsgCount(){
+        ParamBuilder params=new ParamBuilder();
+        NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_MSG_UNREAD), new NetworkWorker.ICallback() {
+            @Override
+            public void onResponse(int status, String result) {
+                if(status==200){
+                    BaseObject<MsgUnread> obj= GsonParser.getInstance().parseToObj(result,MsgUnread.class);
+                    if(obj!=null&&obj.status==BaseObject.STATUS_OK){
+                        if(obj.data.total>99){
+                            tvMsgCount.setText("99+");
+                            tvMsgCount.setVisibility(View.VISIBLE);
+                        }else if(obj.data.total>0){
+                            tvMsgCount.setText(obj.data.total);
+                            tvMsgCount.setVisibility(View.VISIBLE);
+                        }else {
+                            tvMsgCount.setVisibility(View.GONE);
+                        }
+                    }
+                }
+            }
+        });
+
+    }
+
 
     private void initView() {
         mPullListView = (PullListView) baseLayout.findViewById(R.id.listview);
