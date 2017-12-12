@@ -6,6 +6,7 @@ import com.core.framework.exception.InternalServerException;
 import com.core.framework.exception.UserLoginException;
 import com.core.framework.net.HttpRequester;
 import com.core.framework.net.NetworkWorker;
+import com.core.framework.util.DESUtil;
 import com.core.framework.util.StringUtil;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -13,6 +14,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -102,6 +105,17 @@ public class HttpGetProducer extends AbstractProducer {
 
                 handleMaxAge(response.getFirstHeader("Cache-Control"));
                 handleLastModified(response.getFirstHeader("Last-Modified"));
+
+                if(DESUtil.SECRET_DES.equals(requester.getSecretMode())&&!url.contains("Public/")&&!url.contains("public/")){
+                    JSONObject object= null;
+                    try {
+                        object = new JSONObject(result);
+                        result=DESUtil.decrypt(object.optString("key"),DESUtil.SECRET_DES_KEY);
+                        LogUtil.d("------http post----解密后result="+result);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
 
                 return result;
             } else if (304 == status) {

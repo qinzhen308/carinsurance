@@ -554,7 +554,7 @@ public class NetworkWorker {
 			throw new IllegalArgumentException(
 					"Http request need a HttpRequester param in the first");
 		}
-		if(params.length>1&&DESUtil.SECRET_DES.equals(params[1])){//des加密
+		if((params.length>1&&DESUtil.SECRET_DES.equals(params[1])||(params.length==1&&DESUtil.SECRET_DES.equals(((HttpRequester)params[0]).getSecretMode())))){//des加密
 			LogUtil.d("----http post---传入的加密前参数：" + ((HttpRequester) params[0]).mParams.toString());
 			HashMap<String,Object> fileMap=new HashMap<>();
 			HttpRequester requester=(HttpRequester) params[0];

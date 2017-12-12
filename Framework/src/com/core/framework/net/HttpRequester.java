@@ -52,6 +52,8 @@ public class HttpRequester {
 	public static final String METHOD_GET = "get";
 	public static final String METHOD_POST = "post";
 
+	public String mSercretMode;
+
 	public HttpRequester() {
 		mParams = new HashMap<String, Object>();
 		mParams.put("access_token", NetworkWorker.getInstance().ACCESS_TOKEN);
@@ -60,6 +62,13 @@ public class HttpRequester {
 
 	public String getMethod() {
 		return method;
+	}
+	public String getSecretMode() {
+		return mSercretMode;
+	}
+
+	public void setSecretMode(String sercretMode) {
+		mSercretMode=sercretMode;
 	}
 
 	public void setMethod(String method) {
