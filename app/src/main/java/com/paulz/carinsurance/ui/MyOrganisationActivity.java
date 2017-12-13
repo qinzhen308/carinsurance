@@ -15,11 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.core.framework.net.NetworkWorker;
 import com.core.framework.util.DialogUtil;
 import com.paulz.carinsurance.R;
@@ -27,6 +29,7 @@ import com.paulz.carinsurance.base.BaseActivity;
 import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppStatic;
 import com.paulz.carinsurance.common.AppUrls;
+import com.paulz.carinsurance.common.recyclerview.CircleTransform;
 import com.paulz.carinsurance.controller.AbstractListAdapter;
 import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.parser.gson.BaseObject;
@@ -53,7 +56,7 @@ public class MyOrganisationActivity extends BaseActivity {
    /* @BindView(R.id.tv_notice)
     TextView tvNotice;*/
     @BindView(R.id.iv_avatar)
-    CircleImageView ivAvatar;
+    ImageView ivAvatar;
     @BindView(R.id.tv_name)
     TextView tvName;
     @BindView(R.id.tv_status)
@@ -191,6 +194,9 @@ public class MyOrganisationActivity extends BaseActivity {
         }
 
         layoutBillboard.showView(data.message);
+        Glide.with(this).load(AppUrls.getInstance().DOMAIN+data.avatar).transform(new CircleTransform(this)).placeholder(R.drawable.user2).error(R.drawable.user2).into(ivAvatar);
+
+
     }
 
 

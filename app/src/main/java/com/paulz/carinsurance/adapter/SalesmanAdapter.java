@@ -3,11 +3,13 @@ package com.paulz.carinsurance.adapter;
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.common.AppUrls;
+import com.paulz.carinsurance.common.recyclerview.CircleTransform;
 import com.paulz.carinsurance.model.Salesman;
 import com.paulz.carinsurance.model.Team;
 import com.paulz.carinsurance.view.CircleImageView;
@@ -21,10 +23,12 @@ import butterknife.BindView;
 public class SalesmanAdapter extends AbsMutipleAdapter<Salesman, SalesmanAdapter.TeamHolder> {
 
 
+    private CircleTransform circleTransform;
 
 
     public SalesmanAdapter(Activity context) {
         super(context);
+        circleTransform=new CircleTransform(context);
     }
 
 
@@ -36,7 +40,7 @@ public class SalesmanAdapter extends AbsMutipleAdapter<Salesman, SalesmanAdapter
     @Override
     public void onBindViewHolder(int position, TeamHolder holder) {
         final Salesman bean = (Salesman) getItem(position);
-        Glide.with(mContext).load(AppUrls.getInstance().IMG_AVATAR+bean.member_avatar).placeholder(R.drawable.user2).error(R.drawable.user2).into(holder.ivAvatar);
+        Glide.with(mContext).load(AppUrls.getInstance().IMG_AVATAR+bean.member_avatar).transform(circleTransform).placeholder(R.drawable.user2).error(R.drawable.user2).into(holder.ivAvatar);
         holder.tvDate.setText(bean.createtime);
         holder.tvManagerName.setText(bean.member_username);
         holder.tvTeamName.setText(bean.store_name);
@@ -54,7 +58,7 @@ public class SalesmanAdapter extends AbsMutipleAdapter<Salesman, SalesmanAdapter
     public static class TeamHolder extends ViewHolder {
 
         @BindView(R.id.iv_avatar)
-        CircleImageView ivAvatar;
+        ImageView ivAvatar;
         @BindView(R.id.tv_manager_name)
         TextView tvManagerName;
         @BindView(R.id.tv_team_name)

@@ -76,6 +76,9 @@ public class HApplication extends MyApplication {
 		AppStatic.getInstance().setmUserInfo(AppStatic.getInstance().getUser());
 		SuNetEvn.getInstance();
 		session_id=PreferencesUtils.getString("session_id");
+		if(AppUtil.isNull(session_id)){
+			refreshSessionid();
+		}
 
 		JPushInterface.setDebugMode(true); // 设置开启日志,发布时请关闭日志
 		JPushInterface.init(this); // 初始化 JPush

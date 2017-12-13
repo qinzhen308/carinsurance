@@ -11,6 +11,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -92,7 +93,11 @@ public class CircleImageView extends ImageView {
 		}else if(drawable instanceof GlideBitmapDrawable){
 			b = ((GlideBitmapDrawable) drawable).getBitmap();
 
+		}else {
+			return;
 		}
+		if(b==null)return;
+
 		Bitmap bitmap = b.copy(Config.ARGB_8888, true);
 		if (defaultWidth == 0) {
 			defaultWidth = getWidth();

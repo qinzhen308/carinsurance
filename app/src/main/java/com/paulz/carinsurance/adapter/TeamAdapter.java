@@ -3,6 +3,7 @@ package com.paulz.carinsurance.adapter;
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -55,7 +56,7 @@ public class TeamAdapter extends AbsMutipleAdapter<Team, TeamAdapter.TeamHolder>
     public static class TeamHolder extends ViewHolder {
 
         @BindView(R.id.iv_avatar)
-        CircleImageView ivAvatar;
+        ImageView ivAvatar;
         @BindView(R.id.tv_manager_name)
         TextView tvManagerName;
         @BindView(R.id.tv_team_name)

@@ -20,9 +20,9 @@ public class LaunchActivity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_launch);
-		if(AppUtil.isNull(HApplication.getInstance().session_id)){
+		/*if(AppUtil.isNull(HApplication.getInstance().session_id)){
 			HApplication.getInstance().refreshSessionid();
-		}
+		}*/
 		HApplication.getInstance().loadToken();
 		if(JPushInterface.isPushStopped(getApplicationContext())){
 			JPushInterface.resumePush(getApplicationContext());

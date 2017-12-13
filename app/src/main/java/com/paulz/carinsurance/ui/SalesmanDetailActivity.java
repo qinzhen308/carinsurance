@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,7 +57,7 @@ public class SalesmanDetailActivity extends BaseListActivity implements LoadStat
 
     String id;
     @BindView(R.id.iv_avatar)
-    CircleImageView ivAvatar;
+    ImageView ivAvatar;
     @BindView(R.id.tv_name)
     TextView tvName;
     @BindView(R.id.tv_team)
@@ -202,7 +203,7 @@ public class SalesmanDetailActivity extends BaseListActivity implements LoadStat
         tvTotal.setText("共有"+wraper.total+"单");
         tel=wraper.member_tel;
 
-        Glide.with(this).load(AppUrls.getInstance().IMG_AVATAR+wraper.member_avatar).placeholder(R.drawable.user2).error(R.drawable.user2).into(ivAvatar);
+        Glide.with(this).load(AppUrls.getInstance().IMG_AVATAR+wraper.member_avatar).transform(new CircleTransform(this)).placeholder(R.drawable.user2).error(R.drawable.user2).into(ivAvatar);
     }
 
     @Override
