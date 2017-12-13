@@ -36,14 +36,14 @@ public class SalesmanDetailAdapter extends AbsMutipleAdapter<SalesmanDetail, Sal
         holder.tvDate.setText(bean.order_createtime);
         holder.tvBusinessFee.setText("￥" + bean.bamount);
         holder.tvForceFee.setText("￥" + bean.camount);
-        holder.ivCall.setOnClickListener(new View.OnClickListener() {
+       /* holder.ivCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(iCallPhone!=null){
                     iCallPhone.onCall(bean.tel);
                 }
             }
-        });
+        });*/
     }
 
     public static class ViewHolderImpl extends ViewHolder {
@@ -53,8 +53,8 @@ public class SalesmanDetailAdapter extends AbsMutipleAdapter<SalesmanDetail, Sal
         TextView tvName;
         @BindView(R.id.tv_date)
         TextView tvDate;
-        @BindView(R.id.iv_call)
-        ImageView ivCall;
+      /*  @BindView(R.id.iv_call)
+        ImageView ivCall;*/
         @BindView(R.id.tv_business_fee)
         TextView tvBusinessFee;
         @BindView(R.id.tv_force_fee)

@@ -19,6 +19,7 @@ import com.paulz.carinsurance.adapter.SalesmanDetailAdapter;
 import com.paulz.carinsurance.base.BaseListActivity;
 import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppUrls;
+import com.paulz.carinsurance.common.recyclerview.CircleTransform;
 import com.paulz.carinsurance.controller.LoadStateController;
 import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.model.wrapper.BeanWraper;
@@ -71,6 +72,8 @@ public class SalesmanDetailActivity extends BaseListActivity implements LoadStat
 
     SalesmanDetailWraper.Rate rate;
 
+    private String tel;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -113,15 +116,15 @@ public class SalesmanDetailActivity extends BaseListActivity implements LoadStat
         mListView.setOnScrollListener(new MyOnScrollListener());
         mLoadStateController.setOnLoadErrorListener(this);
         mPullListView.setOnRefreshListener(this);
-        mAdapter.setICallPhone(new CustomerAdapter.ICallPhone() {
+       /* mAdapter.setICallPhone(new CustomerAdapter.ICallPhone() {
             @Override
             public void onCall(String phone) {
                 SalesmanDetailActivityPermissionsDispatcher.showCallPhoneWithCheck(SalesmanDetailActivity.this, phone);
             }
-        });
+        });*/
     }
 
-    @OnClick({R.id.tv_invited_name, R.id.tv_invite_count})
+    @OnClick({R.id.tv_invited_name, R.id.tv_invite_count,R.id.iv_call})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_invited_name:
@@ -131,6 +134,13 @@ public class SalesmanDetailActivity extends BaseListActivity implements LoadStat
                 SalesmanCountListActivity.invoke(this,id);
 
                 break;
+            case R.id.iv_call:
+
+                SalesmanDetailActivityPermissionsDispatcher.showCallPhoneWithCheck(SalesmanDetailActivity.this, tel);
+
+
+                break;
+
         }
     }
 
@@ -190,8 +200,9 @@ public class SalesmanDetailActivity extends BaseListActivity implements LoadStat
         tvDate.setText(wraper.createtime);
         rate=wraper.rate;
         tvTotal.setText("共有"+wraper.total+"单");
+        tel=wraper.member_tel;
 
-        Glide.with(this).load(AppUrls.getInstance().BASE_IMG_URL+wraper.member_avatar).into(ivAvatar);
+        Glide.with(this).load(AppUrls.getInstance().IMG_AVATAR+wraper.member_avatar).placeholder(R.drawable.user2).error(R.drawable.user2).into(ivAvatar);
     }
 
     @Override

@@ -38,12 +38,12 @@
 
     </LinearLayout>
 
-    <ImageView
+   <!-- <ImageView
         android:id="@+id/iv_call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:src="@drawable/tel_icon_cutomer" />
+        android:src="@drawable/tel_icon_cutomer" />-->
 
 
     <TextView
@@ -51,6 +51,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center"
         android:text="保险公司"
         android:textColor="@color/text_grey"
         android:textSize="@dimen/text_size" />

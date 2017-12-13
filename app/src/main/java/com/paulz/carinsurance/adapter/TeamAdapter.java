@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.paulz.carinsurance.R;
+import com.paulz.carinsurance.common.AppUrls;
 import com.paulz.carinsurance.model.Team;
 import com.paulz.carinsurance.view.CircleImageView;
 
@@ -35,7 +36,8 @@ public class TeamAdapter extends AbsMutipleAdapter<Team, TeamAdapter.TeamHolder>
     public void onBindViewHolder(int position, TeamHolder holder) {
         final Team bean = (Team) getItem(position);
 
-        Glide.with(mContext).load(bean.member_avatar).into(holder.ivAvatar);
+        Glide.with(mContext).load(AppUrls.getInstance().IMG_AVATAR+bean.member_avatar).placeholder(R.drawable.user2).error(R.drawable.user2).into(holder.ivAvatar);
+
         holder.tvDate.setText(bean.createtime);
         holder.tvManagerName.setText(bean.member_username);
         holder.tvTeamName.setText(bean.store_name);
