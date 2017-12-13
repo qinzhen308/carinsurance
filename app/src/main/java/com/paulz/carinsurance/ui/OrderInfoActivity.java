@@ -154,9 +154,14 @@ public class OrderInfoActivity extends BaseActivity {
         setActiviyContextView(R.layout.activity_order_info, true, true);
         setTitleText("", "订单信息", 0, true);
         ButterKnife.bind(this);
-        init();
+//        init();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        init();
+    }
 
     private void init() {
         showLoading();
@@ -284,7 +289,7 @@ public class OrderInfoActivity extends BaseActivity {
 
             }else if(data.sqimgstatus==3){
                 layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("上传证件");
+                btnUploadOperate.setText("重新上传");
 
             }else if(data.sqimgstatus==4){
                 layoutUpload.setVisibility(View.VISIBLE);
@@ -296,7 +301,7 @@ public class OrderInfoActivity extends BaseActivity {
 
             }else if(data.sqimgstatus==6){
                 layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("上传证件");
+                btnUploadOperate.setText("重新上传");
             }
         } else if (data.order_status == 4) {
             //已支付的
@@ -312,7 +317,7 @@ public class OrderInfoActivity extends BaseActivity {
 
             }else if(data.shimgstatus==3){
                 layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("上传证件");
+                btnUploadOperate.setText("重新上传");
 
             }else if(data.shimgstatus==4){
                 layoutUpload.setVisibility(View.VISIBLE);
@@ -324,7 +329,7 @@ public class OrderInfoActivity extends BaseActivity {
 
             }else if(data.shimgstatus==6){
                 layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("上传证件");
+                btnUploadOperate.setText("重新上传");
             }
         } else if (data.order_status == 5) {
             layoutUpload.setVisibility(View.GONE);

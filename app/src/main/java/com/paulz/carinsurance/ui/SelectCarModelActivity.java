@@ -98,7 +98,6 @@ public class SelectCarModelActivity extends BaseActivity {
 
     private void initView() {
         setActiviyContextView(R.layout.activity_select_carmodel, false, true);
-        setTitleText("", "车辆识别代码", 0, true);
         ButterKnife.bind(this);
         init();
     }
@@ -135,8 +134,12 @@ public class SelectCarModelActivity extends BaseActivity {
 
         if(getIntent().getBooleanExtra("showCache",false)){
             justShowSearchCar();
+            setTitleText("", "车型选择", 0, true);
         }else if(!AppUtil.isNull(vin)&&getIntent().getBooleanExtra("doSearch",false)){
             search();
+            setTitleText("", "车辆识别代码", 0, true);
+        }else {
+            setTitleText("", "车辆识别代码", 0, true);
         }
 
     }

@@ -254,7 +254,7 @@ public class UploadProfileActivity extends BaseActivity {
                         AppUtil.showToast(getApplicationContext(), "提交成功");
                         finish();
                     } else {
-                        AppUtil.showToast(getApplicationContext(), "提交失败");
+                        AppUtil.showToast(getApplicationContext(), object!=null?object.msg:"提交失败");
                     }
                 }
             }

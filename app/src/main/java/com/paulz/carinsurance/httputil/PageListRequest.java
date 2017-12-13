@@ -214,6 +214,9 @@ public abstract class PageListRequest<T> implements IConsumer, IDisConsumer {
         } else {
             add.append(pageIndexKey).append("=").append(page).append("&")
                     .append(pageCountKey).append("=").append(pageSize);
+            if(httpRequester!=null){
+                httpRequester.getParams().put(pageIndexKey,page);
+            }
         }
 
         String url;
