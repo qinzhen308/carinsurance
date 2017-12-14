@@ -9,6 +9,7 @@ import com.paulz.carinsurance.R;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -52,6 +53,8 @@ public class BillboardLayout extends RelativeLayout{
 				
 				@Override
 				public void onAnimationEnd(Animation animation) {
+					animation.reset();
+					middleView.setVisibility(GONE);
 					showData();
 				}
 			});
@@ -103,6 +106,9 @@ public class BillboardLayout extends RelativeLayout{
 		String msg1=list[curPositon];
 
 		middleView.setText(msg1);
+		middleView.setVisibility(VISIBLE);
+
+		Log.d("qz","billboard---msg="+msg1);
 
 	 
 		if (!isSingleLine&&list.length>(curPositon+1)) {
