@@ -110,6 +110,6 @@
 
     <color name="common_btn_white_bg_press">#ffd7d7db</color>
     <color name="course_state_stop">#aaaaaa</color>
-    <color name="launch_yellow">#F39800</color>
+    <color name="launch_yellow">#F39F1C</color>
 
 </resources>

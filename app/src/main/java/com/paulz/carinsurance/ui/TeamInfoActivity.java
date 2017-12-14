@@ -230,7 +230,7 @@ public class TeamInfoActivity extends BaseActivity {
 
         btnYears.setText(mData.years);
 
-        Image13Loader.getInstance().loadImage(AppUrls.getInstance().IMG_AVATAR + mData.avatar, ivAvatar, R.drawable.user2);
+        Image13Loader.getInstance().loadImage(AppUrls.getInstance().DOMAIN + mData.avatar, ivAvatar, R.drawable.user2);
 
         setEditable(mData.edit == 1);
 

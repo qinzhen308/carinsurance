@@ -41,7 +41,7 @@
         <com.paulz.carinsurance.view.BillboardLayout
             android:id="@+id/layout_billboard"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/all_margin" />
     </LinearLayout>
 

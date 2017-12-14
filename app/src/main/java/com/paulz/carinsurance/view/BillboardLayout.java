@@ -53,8 +53,6 @@ public class BillboardLayout extends RelativeLayout{
 				
 				@Override
 				public void onAnimationEnd(Animation animation) {
-					animation.reset();
-					middleView.setVisibility(GONE);
 					showData();
 				}
 			});
@@ -106,7 +104,6 @@ public class BillboardLayout extends RelativeLayout{
 		String msg1=list[curPositon];
 
 		middleView.setText(msg1);
-		middleView.setVisibility(VISIBLE);
 
 		Log.d("qz","billboard---msg="+msg1);
 
@@ -120,7 +117,6 @@ public class BillboardLayout extends RelativeLayout{
 				bottomView.setVisibility(View.GONE);
 			}
 		}else {
-			curPositon=0;
 			bottomView.setVisibility(View.GONE);
 		}
 		

@@ -292,10 +292,12 @@ public class UserLoginActivity extends BaseActivity implements
 									finish();
 								}else {
 									AppUtil.showToast(getApplicationContext(), object.msg);
+									getCaptcha();
 								}
 
 							}else {
 								AppUtil.showToast(getApplicationContext(), "请检查网络");
+								getCaptcha();
 							}
 
 						}else {
@@ -388,6 +390,7 @@ public class UserLoginActivity extends BaseActivity implements
 		params.append("random", new Random().nextInt());
 		String url=APIUtil.parseGetUrlHasMethod(params.getParamList(),AppUrls.getInstance().URL_GET_CAPTCHA);
 		Image13Loader.getInstance().loadImage(url,ivCaptcha);
+		etCaptcha.setText("");
 	}
 
 	private void doThirdLogin(int type) {
