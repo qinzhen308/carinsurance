@@ -1,6 +1,7 @@
 package com.paulz.carinsurance.ui;
 
 
+import com.core.framework.develop.LogUtil;
 import com.paulz.carinsurance.HApplication;
 import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.base.BaseFragmentActivity;

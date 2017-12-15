@@ -293,6 +293,12 @@ public class UserLoginActivity extends BaseActivity implements
 								}else {
 									AppUtil.showToast(getApplicationContext(), object.msg);
 									getCaptcha();
+									if(object.errorcode==BaseObject.ERROR_CODE_ACCOUNT){
+										mEditUsername.setText("");
+										mEditPassword.setText("");
+									}else if(object.errorcode==BaseObject.ERROR_CODE_PWD){
+										mEditPassword.setText("");
+									}
 								}
 
 							}else {

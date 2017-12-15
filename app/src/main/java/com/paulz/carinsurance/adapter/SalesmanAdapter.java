@@ -40,7 +40,7 @@ public class SalesmanAdapter extends AbsMutipleAdapter<Salesman, SalesmanAdapter
     @Override
     public void onBindViewHolder(int position, TeamHolder holder) {
         final Salesman bean = (Salesman) getItem(position);
-        Glide.with(mContext).load(AppUrls.getInstance().IMG_AVATAR+bean.member_avatar).transform(circleTransform).placeholder(R.drawable.user2).error(R.drawable.user2).into(holder.ivAvatar);
+        Glide.with(mContext).load(AppUrls.getInstance().DOMAIN+bean.member_avatar).transform(circleTransform).placeholder(R.drawable.user2).error(R.drawable.user2).into(holder.ivAvatar);
         holder.tvDate.setText(bean.createtime);
         holder.tvManagerName.setText(bean.member_username);
         holder.tvTeamName.setText(bean.store_name);

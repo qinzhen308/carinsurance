@@ -203,7 +203,7 @@ public class SalesmanDetailActivity extends BaseListActivity implements LoadStat
         tvTotal.setText("共有"+wraper.total+"单");
         tel=wraper.member_tel;
 
-        Glide.with(this).load(AppUrls.getInstance().IMG_AVATAR+wraper.member_avatar).transform(new CircleTransform(this)).placeholder(R.drawable.user2).error(R.drawable.user2).into(ivAvatar);
+        Glide.with(this).load(AppUrls.getInstance().DOMAIN+wraper.member_avatar).transform(new CircleTransform(this)).placeholder(R.drawable.user2).error(R.drawable.user2).into(ivAvatar);
     }
 
     @Override

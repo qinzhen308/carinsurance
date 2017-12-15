@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.common.AppUrls;
+import com.paulz.carinsurance.common.recyclerview.CircleTransform;
 import com.paulz.carinsurance.model.Team;
 import com.paulz.carinsurance.view.CircleImageView;
 
@@ -20,11 +21,13 @@ import butterknife.BindView;
 
 public class TeamAdapter extends AbsMutipleAdapter<Team, TeamAdapter.TeamHolder> {
 
+    CircleTransform circleTransform;
 
 
 
     public TeamAdapter(Activity context) {
         super(context);
+        circleTransform=new CircleTransform(context);
     }
 
 
@@ -37,7 +40,7 @@ public class TeamAdapter extends AbsMutipleAdapter<Team, TeamAdapter.TeamHolder>
     public void onBindViewHolder(int position, TeamHolder holder) {
         final Team bean = (Team) getItem(position);
 
-        Glide.with(mContext).load(AppUrls.getInstance().IMG_AVATAR+bean.member_avatar).placeholder(R.drawable.user2).error(R.drawable.user2).into(holder.ivAvatar);
+        Glide.with(mContext).load(AppUrls.getInstance().DOMAIN+bean.member_avatar).transform(circleTransform).placeholder(R.drawable.user2).error(R.drawable.user2).into(holder.ivAvatar);
 
         holder.tvDate.setText(bean.createtime);
         holder.tvManagerName.setText(bean.member_username);

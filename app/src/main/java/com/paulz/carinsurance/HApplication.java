@@ -43,8 +43,8 @@ public class HApplication extends MyApplication {
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
-		super.onCreate();
 		instance=this;
+		super.onCreate();
 	}
 	
 	public static HApplication getInstance(){
@@ -72,13 +72,17 @@ public class HApplication extends MyApplication {
 	public void doBusyTransaction() {
 		Image13Loader.getInstance().resume();
 		AppStatic.getInstance().isLogin = PreferencesUtils.getBoolean("isLogin");
-		token = PreferencesUtils.getString(AppStatic.ACCESS_TOKEN);
-		AppStatic.getInstance().setmUserInfo(AppStatic.getInstance().getUser());
-		SuNetEvn.getInstance();
 		session_id=PreferencesUtils.getString("session_id");
 		if(AppUtil.isNull(session_id)){
 			refreshSessionid();
 		}
+		token = PreferencesUtils.getString(AppStatic.ACCESS_TOKEN);
+		if(AppUtil.isNull(token)){
+			loadToken();
+		}
+		AppStatic.getInstance().setmUserInfo(AppStatic.getInstance().getUser());
+		SuNetEvn.getInstance();
+
 
 		JPushInterface.setDebugMode(true); // 设置开启日志,发布时请关闭日志
 		JPushInterface.init(this); // 初始化 JPush
@@ -114,6 +118,7 @@ public class HApplication extends MyApplication {
 
 	public void loadToken(){
 		ParamBuilder params=new ParamBuilder();
+		params.clear();
 		params.append("sessionid",session_id);
 
 		NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_GET_TOKEN), new NetworkWorker.ICallback() {

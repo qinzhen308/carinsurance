@@ -188,6 +188,8 @@ public class TeamAchievementDetailActivity extends BaseListActivity implements L
         ParamBuilder params = new ParamBuilder();
         params.append("starttime", start);
         params.append("endtime", end);
+        if(!AppUtil.isNull(teamId))
+        params.append("sid", teamId);
 
         if (isRefresh) {
             immediateLoadData(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_INSURE_ORDER_DETAIL_FEE_LIST), InsureFeeDetailWraper.class);

@@ -64,6 +64,7 @@ public class GsonParser {
 	
 	
 	public BaseObject parseToObj(String json,Class clazz){
+		LogUtil.d("------------qz------parse------"+json);
 		
 		BaseObject obj=null;
 		try {

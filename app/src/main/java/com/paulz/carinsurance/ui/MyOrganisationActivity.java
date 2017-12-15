@@ -152,8 +152,8 @@ public class MyOrganisationActivity extends BaseActivity {
                 //按钮类型：1.团队列表   2.业务员列表    0wap页（会返回要跳转的相应地址，并且自动附加上Token和SESSION）
                 if (link.type == 0) {
                     ParamBuilder params=new ParamBuilder();
-                    String url=APIUtil.parseGetUrlHasMethod(params.getParamList(),AppUrls.getInstance().DOMAIN+mData.recommonurl);
-                    CommonWebActivity.invoke(MyOrganisationActivity.this,"https://www.baidu.com",link.title);
+                    String url=APIUtil.parseGetUrlHasMethod(params.getParamList(),AppUrls.getInstance().DOMAIN+link.url);
+                    CommonWebActivity.invoke(MyOrganisationActivity.this,url,link.title);
                 } else if (link.type == 1) {
                     SalesmanListActivity.invoke(MyOrganisationActivity.this);
                 } else if (link.type == 2) {
@@ -302,6 +302,7 @@ public class MyOrganisationActivity extends BaseActivity {
 
     private class Link {
         String title;
+        String url;
         int type;
     }
 
