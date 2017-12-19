@@ -226,12 +226,15 @@ public class InsureDetailActivity extends BaseActivity {
 
         tvEngineCode.setText(data.insdata.insurance_carmodel_en);
 
-        if(AppUtil.isNull(data.insdata.insurance_carmodel_teyue)){
-            layoutAppoint.setVisibility(View.GONE);
-        }else {
-            layoutAppoint.setVisibility(View.VISIBLE);
-            tvAppoint.setText(data.insdata.insurance_carmodel_teyue);
-        }
+
+        layoutAppoint.setVisibility(View.GONE);
+
+//        if(AppUtil.isNull(data.insdata.insurance_carmodel_teyue)){
+//            layoutAppoint.setVisibility(View.GONE);
+//        }else {
+//            layoutAppoint.setVisibility(View.VISIBLE);
+//            tvAppoint.setText(data.insdata.insurance_carmodel_teyue);
+//        }
 
 
 //        etNotSameInsuredName.setText(data.insdata.insurance_name);

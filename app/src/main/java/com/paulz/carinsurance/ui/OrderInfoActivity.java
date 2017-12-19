@@ -148,6 +148,7 @@ public class OrderInfoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
+        init();
     }
 
     private void initView() {
@@ -160,7 +161,7 @@ public class OrderInfoActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        init();
+        loadUploadState();
     }
 
     private void init() {
@@ -184,6 +185,97 @@ public class OrderInfoActivity extends BaseActivity {
                 }
             }
         });
+
+    }
+
+    private void loadUploadState() {
+        showLoading();
+        ParamBuilder params = new ParamBuilder();
+        params.append("sn", getIntent().getStringExtra("order_sn"));
+        NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_ORDER_DETAIL), new NetworkWorker.ICallback() {
+            @Override
+            public void onResponse(int status, String result) {
+                if (status == 200) {
+                    showSuccess();
+                    BaseObject<OrderDetail> obj = GsonParser.getInstance().parseToObj(result, OrderDetail.class);
+                    if (obj != null && obj.data != null) {
+                        data = obj.data;
+                        handleUploadState();
+                    } else {
+                        showNodata();
+                    }
+                } else {
+                    showFailture();
+                }
+            }
+        });
+
+    }
+
+
+    private void handleUploadState(){
+        //0无需上传1待上传2审核中3审核失败4审核通过5对接通过6对接失败
+        if (data.order_status <= 3) {
+            //未支付的
+            if(data.sqimgstatus==0){
+                layoutUpload.setVisibility(View.GONE);
+            }else if(data.sqimgstatus==1){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("上传证件");
+
+            }else if(data.sqimgstatus==2){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.sqimgstatus==3){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("重新上传");
+
+            }else if(data.sqimgstatus==4){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.sqimgstatus==5){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.sqimgstatus==6){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("重新上传");
+            }
+        } else if (data.order_status == 4) {
+            //已支付的
+            if(data.shimgstatus==0){
+                layoutUpload.setVisibility(View.GONE);
+            }else if(data.shimgstatus==1){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("上传证件");
+
+            }else if(data.shimgstatus==2){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.shimgstatus==3){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("重新上传");
+
+            }else if(data.shimgstatus==4){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.shimgstatus==5){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("查看");
+
+            }else if(data.shimgstatus==6){
+                layoutUpload.setVisibility(View.VISIBLE);
+                btnUploadOperate.setText("重新上传");
+            }
+        } else if (data.order_status == 5) {
+            layoutUpload.setVisibility(View.GONE);
+        }
+
+        tvTip.setText(data.uploadmsg);
 
     }
 
@@ -274,77 +366,17 @@ public class OrderInfoActivity extends BaseActivity {
         }
 
 
-        //0无需上传1待上传2审核中3审核失败4审核通过5对接通过6对接失败
-        if (data.order_status < 3) {
-            //未支付的
-            if(data.sqimgstatus==0){
-                layoutUpload.setVisibility(View.GONE);
-            }else if(data.sqimgstatus==1){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("上传证件");
+        handleUploadState();
 
-            }else if(data.sqimgstatus==2){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("查看");
-
-            }else if(data.sqimgstatus==3){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("重新上传");
-
-            }else if(data.sqimgstatus==4){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("查看");
-
-            }else if(data.sqimgstatus==5){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("查看");
-
-            }else if(data.sqimgstatus==6){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("重新上传");
-            }
-        } else if (data.order_status == 4) {
-            //已支付的
-            if(data.shimgstatus==0){
-                layoutUpload.setVisibility(View.GONE);
-            }else if(data.shimgstatus==1){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("上传证件");
-
-            }else if(data.shimgstatus==2){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("查看");
-
-            }else if(data.shimgstatus==3){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("重新上传");
-
-            }else if(data.shimgstatus==4){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("查看");
-
-            }else if(data.shimgstatus==5){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("查看");
-
-            }else if(data.shimgstatus==6){
-                layoutUpload.setVisibility(View.VISIBLE);
-                btnUploadOperate.setText("重新上传");
-            }
-        } else if (data.order_status == 5) {
-            layoutUpload.setVisibility(View.GONE);
-        }
-
-        tvTip.setText(data.uploadmsg);
-
-        if(AppUtil.isNull(data.insurance_xunjia_teyue)){
-            layoutAppoint.setVisibility(View.GONE);
-        }else {
-            layoutAppoint.setVisibility(View.VISIBLE);
-            tvAppoint.setText(data.insurance_xunjia_teyue);
-        }
+        layoutAppoint.setVisibility(View.GONE);
 
 
+//        if(AppUtil.isNull(data.insurance_xunjia_teyue)){
+//            layoutAppoint.setVisibility(View.GONE);
+//        }else {
+//            layoutAppoint.setVisibility(View.VISIBLE);
+//            tvAppoint.setText(data.insurance_xunjia_teyue);
+//        }
 
     }
 

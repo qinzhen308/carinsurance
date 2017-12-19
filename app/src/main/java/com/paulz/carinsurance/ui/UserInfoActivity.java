@@ -81,6 +81,7 @@ public class UserInfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         initView();
         setListener();
+        loadNameVerity();
     }
 
     private void setListener() {
@@ -104,6 +105,44 @@ public class UserInfoActivity extends BaseActivity {
         etName.setText(AppStatic.getInstance().getmUserInfo()!=null?AppStatic.getInstance().getmUserInfo().member_nickname:"[新用户]");
         if(AppStatic.getInstance().getmUserInfo()!=null){
             Image13Loader.getInstance().loadImage(AppUrls.getInstance().BASE_IMG_URL + AppStatic.getInstance().getmUserInfo().member_avatar, ivAvatar, R.drawable.user2);
+        }
+
+    }
+
+    private void loadNameVerity() {
+
+        ParamBuilder params = new ParamBuilder();
+        params.append("id", ""+AppStatic.getInstance().getUser().member_realname);
+        NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_NAME_VERIFY), new NetworkWorker.ICallback() {
+            @Override
+            public void onResponse(int status, String result) {
+                if (status == 200) {
+                    BaseObject<NameVerifyActivity.PageInfo> object = GsonParser.getInstance().parseToObj(result, NameVerifyActivity.PageInfo.class);
+                    if (object != null && object.status == BaseObject.STATUS_OK && object.data != null) {
+                        setNameVerity(object.data);
+                    }
+                }
+            }
+        });
+
+    }
+
+    private void setNameVerity(NameVerifyActivity.PageInfo data) {
+        if (data == null) {
+            return;
+        }
+        if(AppUtil.isNull(data.authenticate_status)){
+            tvStatus.setTextColor(getResources().getColor(R.color.text_grey_french1));
+            tvStatus.setText("尚未认证，去认证");
+        }else if (data.authenticate_status.equals("2")) {
+            tvStatus.setText("已认证");
+            tvStatus.setTextColor(getResources().getColor(R.color.green_light));
+        } else if (data.authenticate_status.equals("1")) {
+            tvStatus.setText("认证中");
+            tvStatus.setTextColor(getResources().getColor(R.color.base_yellow));
+        } else if(data.authenticate_status.equals("0")){
+            tvStatus.setText("认证失败");
+            tvStatus.setTextColor(getResources().getColor(R.color.base_red));
         }
 
     }

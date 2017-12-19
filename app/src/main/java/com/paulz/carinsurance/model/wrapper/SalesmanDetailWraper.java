@@ -22,6 +22,7 @@ public class SalesmanDetailWraper implements BeanWraper<SalesmanDetail>{
     public String member_username;
     public String member_tel;
     public String member_avatar;
+    public String avatar;
     public String name;
     public String recomname;
     public String recomtotal;

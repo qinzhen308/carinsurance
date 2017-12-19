@@ -39,6 +39,7 @@ public class OrderDetail {
     //上传提示语
     public String uploadmsg;
     public String insurance_xunjia_teyue;
+    public int imgedit;
 
     public String[][] carerlist;
 

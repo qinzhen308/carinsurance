@@ -61,6 +61,8 @@ public class NameVerifyActivity extends BaseActivity {
     private final static int TAKE_CROP = 3;// 裁剪
 
 
+    @BindView(R.id.tv_tip)
+    TextView tvTip;
     @BindView(R.id.tv_status)
     TextView tvStatus;
     @BindView(R.id.et_name)
@@ -142,8 +144,10 @@ public class NameVerifyActivity extends BaseActivity {
         etName.setText(data.authenticate_name==null?"":data.authenticate_name);
         etId.setText(data.authenticate_sfz==null?"":data.authenticate_sfz);
         if(AppUtil.isNull(data.authenticate_status)){
+            tvTip.setVisibility(View.GONE);
 
         }else if (data.authenticate_status.equals("2")) {
+            tvTip.setVisibility(View.GONE);
             tvStatus.setText("已认证");
             tvStatus.setTextColor(getResources().getColor(R.color.green_light));
             etName.setEnabled(false);
@@ -152,8 +156,9 @@ public class NameVerifyActivity extends BaseActivity {
             ivImg1.setEnabled(false);
             ivImg2.setEnabled(false);
             etName.setText("*"+data.authenticate_name.substring(1,data.authenticate_name.length()));
-            etId.setText(data.authenticate_sfz.substring(0,3)+"***********"+data.authenticate_sfz.substring(data.authenticate_sfz.length()-4,data.authenticate_sfz.length()));
+            etId.setText(data.authenticate_sfz.substring(0,5)+"*****"+data.authenticate_sfz.substring(10,data.authenticate_sfz.length()));
         } else if (data.authenticate_status.equals("1")) {
+            tvTip.setVisibility(View.GONE);
             tvStatus.setText("认证中");
             tvStatus.setTextColor(getResources().getColor(R.color.base_yellow));
             etName.setEnabled(false);
@@ -162,6 +167,8 @@ public class NameVerifyActivity extends BaseActivity {
             ivImg1.setEnabled(false);
             ivImg2.setEnabled(false);
         } else if(data.authenticate_status.equals("0")){
+            tvTip.setVisibility(View.VISIBLE);
+            tvTip.setText(data.authenticate_res);
             tvStatus.setText("认证失败");
             tvStatus.setTextColor(getResources().getColor(R.color.base_red));
             btnSubmit.setText("重新审核");
@@ -310,7 +317,7 @@ public class NameVerifyActivity extends BaseActivity {
         }
     }
 
-    private class PageInfo {
+    public class PageInfo {
         public String authenticate_id;
         public String authenticate_name;
         public String authenticate_sfz;
