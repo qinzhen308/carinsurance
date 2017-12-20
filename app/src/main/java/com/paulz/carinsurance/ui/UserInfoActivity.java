@@ -139,7 +139,7 @@ public class UserInfoActivity extends BaseActivity {
             tvStatus.setTextColor(getResources().getColor(R.color.green_light));
         } else if (data.authenticate_status.equals("1")) {
             tvStatus.setText("认证中");
-            tvStatus.setTextColor(getResources().getColor(R.color.base_yellow));
+            tvStatus.setTextColor(getResources().getColor(R.color.v_yellow));
         } else if(data.authenticate_status.equals("0")){
             tvStatus.setText("认证失败");
             tvStatus.setTextColor(getResources().getColor(R.color.base_red));

@@ -141,8 +141,13 @@ public class NameVerifyActivity extends BaseActivity {
         if (data == null) {
             return;
         }
-        etName.setText(data.authenticate_name==null?"":data.authenticate_name);
-        etId.setText(data.authenticate_sfz==null?"":data.authenticate_sfz);
+        if(!data.authenticate_status.equals("0")){
+            etName.setText(data.authenticate_name==null?"":data.authenticate_name);
+            etId.setText(data.authenticate_sfz==null?"":data.authenticate_sfz);
+            Image13Loader.getInstance().loadImage(AppUrls.getInstance().IMG_AUTHEIMG+data.authenticate_fimg,ivImg1);
+            Image13Loader.getInstance().loadImage(AppUrls.getInstance().IMG_AUTHEIMG+data.authenticate_rimg,ivImg2);
+        }
+
         if(AppUtil.isNull(data.authenticate_status)){
             tvTip.setVisibility(View.GONE);
 
@@ -160,7 +165,7 @@ public class NameVerifyActivity extends BaseActivity {
         } else if (data.authenticate_status.equals("1")) {
             tvTip.setVisibility(View.GONE);
             tvStatus.setText("认证中");
-            tvStatus.setTextColor(getResources().getColor(R.color.base_yellow));
+            tvStatus.setTextColor(getResources().getColor(R.color.v_yellow));
             etName.setEnabled(false);
             etId.setEnabled(false);
             btnSubmit.setVisibility(View.GONE);
@@ -176,8 +181,7 @@ public class NameVerifyActivity extends BaseActivity {
 
 
 
-        Image13Loader.getInstance().loadImage(AppUrls.getInstance().IMG_AUTHEIMG+data.authenticate_fimg,ivImg1);
-        Image13Loader.getInstance().loadImage(AppUrls.getInstance().IMG_AUTHEIMG+data.authenticate_rimg,ivImg2);
+
 
     }
 

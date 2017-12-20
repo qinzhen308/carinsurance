@@ -595,8 +595,8 @@ public class ImageUtil {
 			file.delete();
 		}
 	}
-	public static final long LIMIT_SIZE=1024*256;
-	public static final int LIMIT_WIDTH=500;//压缩的图片均以宽为准，超出这个宽度的，都按宽等比压缩至这么大。
+	public static final long LIMIT_SIZE=1024*1024;
+	public static final int LIMIT_WIDTH=800;//压缩的图片均以宽为准，超出这个宽度的，都按宽等比压缩至这么大。
 	public static File compressImage(File file){
 		if(file==null||!file.exists())return null;
 		long size=file.length();
@@ -617,7 +617,7 @@ public class ImageUtil {
 		}
 		if(size>LIMIT_SIZE||baseW>LIMIT_SIZE){
 			bm=scaleDimen(file,degree,baseW,options);
-			long scale=size/LIMIT_SIZE;
+			float scale=(float) Math.sqrt(size/(float)LIMIT_SIZE);
 //            double scale=Math.sqrt(((double) size)/(double)LIMIT_SIZE);
 			String newPath=filePath+System.currentTimeMillis()+"_temp_compress.jpg";
 
@@ -625,7 +625,7 @@ public class ImageUtil {
 			FileOutputStream os=null;
 			try {
 				os=new FileOutputStream(newFile);
-				boolean isSuc=bm.compress(Bitmap.CompressFormat.JPEG,size>LIMIT_SIZE?(int)(100.0f/(float) scale):100,os);
+				boolean isSuc=bm.compress(Bitmap.CompressFormat.JPEG,size>LIMIT_SIZE?(int)(100.0f/ scale):100,os);
 				Log.d("img","compress is success?--"+isSuc+"--size="+newFile.length()+"---old size="+size+"----dimen w="+bm.getWidth()+",h="+bm.getHeight());
 				return newFile;
 			} catch (FileNotFoundException e) {

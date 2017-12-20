@@ -211,7 +211,7 @@ public class UserCenterFragment extends BaseFragment {
             tvStatus.setTextColor(getResources().getColor(R.color.base_yellow));
         } else if(data.authenticate_status.equals("0")){
             tvStatus.setText("认证失败");
-            tvStatus.setTextColor(getResources().getColor(R.color.base_red));
+            tvStatus.setTextColor(getResources().getColor(R.color.text_grey_french1));
         }
 
     }

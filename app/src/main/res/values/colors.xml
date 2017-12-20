@@ -112,4 +112,7 @@
     <color name="course_state_stop">#aaaaaa</color>
     <color name="launch_yellow">#F39F1C</color>
 
+
+    <color name="v_yellow">#FFD023</color>
+
 </resources>
