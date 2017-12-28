@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.core.framework.util.DESUtil;
 import com.core.framework.util.DialogUtil;
 import com.core.framework.util.IOSDialogUtil;
 import com.paulz.carinsurance.R;
+import com.paulz.carinsurance.adapter.AbsMutipleAdapter;
 import com.paulz.carinsurance.base.BaseActivity;
 import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppUrls;
@@ -32,6 +34,7 @@ import com.paulz.carinsurance.httputil.HttpRequester;
 import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.model.Area;
 import com.paulz.carinsurance.model.CarCard;
+import com.paulz.carinsurance.model.InsureAppoint;
 import com.paulz.carinsurance.parser.gson.BaseObject;
 import com.paulz.carinsurance.parser.gson.GsonParser;
 import com.paulz.carinsurance.utils.AppUtil;
@@ -40,6 +43,7 @@ import com.paulz.carinsurance.utils.OCRDecoder;
 import com.paulz.carinsurance.view.CommonDialog;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -108,6 +112,20 @@ public class CarInsureActivity extends BaseActivity {
     @BindView(R.id.btn_delete)
     TextView btnDelete;
 
+    @BindView(R.id.cb_credit)
+    CheckBox cbCredit;
+    @BindView(R.id.tv_daikuan_tip)
+    TextView tvDaikuanTip;
+
+
+    @BindView(R.id.btn_add_appoint)
+    View btnAddAppoint;
+
+    @BindView(R.id.lv_appoint)
+    ListView lvAppoint;
+
+    InsureAppointAdapter appointAdapter;
+
     private PageInfo data;
 
     OCRDecoder ocrDecoder;
@@ -138,6 +156,8 @@ public class CarInsureActivity extends BaseActivity {
                 }
             }
         });
+        appointAdapter=new InsureAppointAdapter(this);
+        lvAppoint.setAdapter(appointAdapter);
     }
 
     private void setCarInfo(CarCard card){
@@ -145,6 +165,9 @@ public class CarInsureActivity extends BaseActivity {
         btnCarCode.setText(card.getVIN());
         etEngineId.setText(card.getEngine());
         btnRegistDate.setText(card.getRegDate());
+        model="";
+        modelid="";
+        btnCarType.setText("");
     }
 
 
@@ -159,7 +182,7 @@ public class CarInsureActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    @OnClick({R.id.btn_ocr,R.id.btn_delete,R.id.tv_car_id, R.id.btn_insure_city, R.id.btn_new_date,
+    @OnClick({R.id.btn_ocr,R.id.btn_delete,R.id.tv_car_id, R.id.btn_insure_city, R.id.btn_new_date,R.id.btn_add_appoint,
             R.id.btn_car_code, R.id.btn_car_type, R.id.btn_site_count, R.id.btn_regist_date, R.id.btn_force_date,
             R.id.btn_business_date, R.id.btn_next, R.id.btn_help})
     public void onViewClicked(View view) {
@@ -219,6 +242,9 @@ public class CarInsureActivity extends BaseActivity {
                 break;
             case R.id.btn_help:
                 showVinExample();
+                break;
+            case R.id.btn_add_appoint:
+                AppointListActivity.invoke(this);
                 break;
         }
     }
@@ -286,6 +312,11 @@ public class CarInsureActivity extends BaseActivity {
     @OnCheckedChanged(R.id.cb_new)
     public void checkIsNew(boolean isChecked) {
         layoutIsNew.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+    }
+
+    @OnCheckedChanged(R.id.cb_credit)
+    public void checkIsDaikuan(boolean isChecked) {
+        tvDaikuanTip.setVisibility(isChecked ? View.VISIBLE : View.GONE);
     }
 
     private void showSiteDialog(int cur) {
@@ -408,6 +439,12 @@ public class CarInsureActivity extends BaseActivity {
         btnForceDate.setText(data.insurance_compulsoryinsdate);
         btnRegistDate.setText(data.regdate);
 
+        cbCredit.setChecked(data.daikuan==1);
+
+        appointAdapter.setList(data.teyuelist);
+        appointAdapter.notifyDataSetChanged();
+
+
     }
 
 
@@ -449,6 +486,30 @@ public class CarInsureActivity extends BaseActivity {
                     if (object != null && object.status == BaseObject.STATUS_OK && object.data != null) {
                         data = object.data;
                         handleData();
+                    } else {
+
+                    }
+                }
+            }
+        });
+    }
+
+    private void refreshAppoint() {
+        if (TextUtils.isEmpty(id)) return;
+        DialogUtil.showDialog(lodDialog);
+        ParamBuilder params = new ParamBuilder();
+        params.append("edit", "1");
+        params.append("id", id);
+        params.append("cid", cid);
+        NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_CUSTOMER_CAR_ADD), new NetworkWorker.ICallback() {
+            @Override
+            public void onResponse(int status, String result) {
+                if (!isFinishing()) DialogUtil.dismissDialog(lodDialog);
+                if (status == 200) {
+                    BaseObject<PageInfo> object = GsonParser.getInstance().parseToObj(result, PageInfo.class);
+                    if (object != null && object.status == BaseObject.STATUS_OK && object.data != null) {
+                        appointAdapter.setList(object.data.teyuelist);
+                        appointAdapter.notifyDataSetChanged();
                     } else {
 
                     }
@@ -526,6 +587,11 @@ public class CarInsureActivity extends BaseActivity {
 //            return;
 //        }
 
+        if(cbCredit.isChecked()&&appointAdapter.getCount()==0){
+            AppUtil.showToast(this, "请选择特别约定");
+            return;
+        }
+
 
         DialogUtil.showDialog(lodDialog);
         ParamBuilder params = new ParamBuilder();
@@ -553,6 +619,10 @@ public class CarInsureActivity extends BaseActivity {
             requester.getParams().put("carnum", carNumber);
             requester.getParams().put("fnum", carid);
         }
+
+        requester.getParams().put("daikuan", cbCredit.isChecked() ? "1" : "0");
+
+
         String url = AppUrls.getInstance().URL_CUSTOMER_CAR_ADD;
 //        if(detail!=null){
 //            requester.getParams().put("customer_id",detail.customer_id);
@@ -628,6 +698,16 @@ public class CarInsureActivity extends BaseActivity {
                 tvCarId.setText(data.getStringExtra("car_number"));
             }else if(requestCode==OCRDecoder.TAKE_PICTURE||requestCode==OCRDecoder.TAKE_PHOTO){
                 CarInsureActivityPermissionsDispatcher.showStorageWithCheck(CarInsureActivity.this,requestCode,data);
+            }else if(requestCode==AppointEditlActivity.REQUEST_CODE){
+                refreshAppoint();
+                /*String op=data.getStringExtra("op");
+                if(op.equals("del")){
+
+                }else if(op.equals("add")){
+
+                }else if(op.equals("edit")){
+
+                }*/
             }
         }else if(resultCode==100){
             clearCarMode();
@@ -650,6 +730,7 @@ public class CarInsureActivity extends BaseActivity {
         public String remark;
         public String modelid;
         public int isguohu;
+        public int daikuan;
         public String saledate;
         public String engineno;
         public String vin;
@@ -661,10 +742,43 @@ public class CarInsureActivity extends BaseActivity {
         public String cityvalue;
         public String cityid;
         public CityData data;
+        List<InsureAppoint> teyuelist;
+
     }
 
     private class CityData{
         ArrayList<Area> citylist;
+    }
+
+
+    private class InsureAppointAdapter extends AbsMutipleAdapter<InsureAppoint, AddCarInfoActivity.AppointHolder> {
+
+        public InsureAppointAdapter(Activity context) {
+            super(context);
+        }
+
+        @Override
+        public AddCarInfoActivity.AppointHolder onCreateViewHolder(int position, int viewType, ViewGroup parent) {
+            return new AddCarInfoActivity.AppointHolder(mInflater.inflate(R.layout.item_insure_appoint, null));
+        }
+
+        @Override
+        public void onBindViewHolder(int position, AddCarInfoActivity.AppointHolder holder) {
+            final InsureAppoint bean =(InsureAppoint)getItem(position);
+            holder.tvValue.setText(bean.insurance_teyue_tile);
+            holder.root.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if(bean.insurance_teyue_type==3){
+                        AppointOtherEditActivity.invoke(CarInsureActivity.this,bean.insurance_teyue_id,bean.insurance_teyue_tid,true);
+                    }else {
+                        AppointEditlActivity.invoke(CarInsureActivity.this,bean.insurance_teyue_id,bean.insurance_teyue_tid,true);
+                    }
+                }
+            });
+        }
+
     }
 
     @Override

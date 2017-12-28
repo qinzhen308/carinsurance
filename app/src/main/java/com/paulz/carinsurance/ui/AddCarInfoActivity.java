@@ -25,7 +25,6 @@ import android.widget.Toast;
 import com.core.framework.net.NetworkWorker;
 import com.core.framework.util.DialogUtil;
 import com.core.framework.util.IOSDialogUtil;
-import com.core.framework.util.StringUtil;
 import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.adapter.AbsMutipleAdapter;
 import com.paulz.carinsurance.adapter.ViewHolder;
@@ -34,6 +33,7 @@ import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppUrls;
 import com.paulz.carinsurance.httputil.ParamBuilder;
 import com.paulz.carinsurance.model.CarCard;
+import com.paulz.carinsurance.model.InsureAppoint;
 import com.paulz.carinsurance.parser.gson.BaseObject;
 import com.paulz.carinsurance.parser.gson.GsonParser;
 import com.paulz.carinsurance.utils.AppUtil;
@@ -137,6 +137,10 @@ public class AddCarInfoActivity extends BaseActivity {
         tvCarCode.setText(card.getVIN());
         etEngineId.setText(card.getEngine());
         btnRegistDate.setText(card.getRegDate());
+        //清除车型
+        modelId = "";
+        car_mode = "";
+        btnCarType.setText("");
     }
 
 
@@ -253,6 +257,7 @@ public class AddCarInfoActivity extends BaseActivity {
         btnRegistDate.setText(allData.regdate);
         car_mode = allData.remark.split(" ")[1];
         modelId = (Integer.valueOf(allData.modelid) + 1) + "";
+        cbCredit.setChecked(allData.daikuan ==1);
 
         appointAdapter.setList(data.teyuelist);
         appointAdapter.notifyDataSetChanged();
@@ -510,6 +515,7 @@ public class AddCarInfoActivity extends BaseActivity {
         String regdate;
         String teyuesyr;
         int seat;
+        int daikuan;
         String engineno;
         int isguohu;
         String saledate;
@@ -517,19 +523,6 @@ public class AddCarInfoActivity extends BaseActivity {
     }
 
 
-    private class InsureAppoint {
-        public String insurance_teyue_id;
-        public String insurance_teyue_tile;
-        public String insurance_teyue_code;
-        public String insurance_teyue_body;
-        public String insurance_teyue_sbody;
-        public String insurance_teyue_extra;
-        public String insurance_teyue_cid;
-        public String insurance_teyue_tid;
-        public String insurance_teyue_modelid;
-        public String insurance_teyue_status;
-        public int insurance_teyue_type;
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

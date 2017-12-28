@@ -8,11 +8,14 @@ import com.core.framework.app.devInfo.DeviceInfo;
 import com.core.framework.develop.LogUtil;
 import com.core.framework.net.NetworkWorker;
 import com.core.framework.util.DESUtil;
+import com.core.framework.util.DialogUtil;
 import com.paulz.carinsurance.common.APIUtil;
 import com.paulz.carinsurance.common.AppStatic;
 import com.paulz.carinsurance.common.AppUrls;
 import com.paulz.carinsurance.httputil.ParamBuilder;
+import com.paulz.carinsurance.parser.gson.BaseObject;
 import com.paulz.carinsurance.parser.gson.GsonParser;
+import com.paulz.carinsurance.ui.fragment.UserCenterFragment;
 import com.paulz.carinsurance.utils.AppUtil;
 import com.paulz.carinsurance.utils.Image13Loader;
 import com.core.framework.app.MyApplication;
@@ -144,6 +147,20 @@ public class HApplication extends MyApplication {
 
 	public void refreshSessionid(){
 		session_id= UUID.randomUUID().toString();
+	}
+
+	public void uploadRegistrationId(String rid) {
+		ParamBuilder params = new ParamBuilder();
+		params.append("rid", rid);
+
+		NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_USER_INFO), new NetworkWorker.ICallback() {
+			@Override
+			public void onResponse(int status, String result) {
+				if (status == 200) {
+
+				}
+			}
+		});
 	}
 
 

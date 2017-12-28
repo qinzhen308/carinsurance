@@ -39,7 +39,7 @@ public class PushMsgReceiver extends BroadcastReceiver{
             PreferencesUtils.putString(GlobeFlags.FLAG_PUSH_REGISTION_ID,HApplication.getInstance().push_regestion_id);
             LogUtil.d("jpush---receiver--rid="+HApplication.getInstance().push_regestion_id);
             if(!AppUtil.isNull(HApplication.getInstance().push_regestion_id)){
-//                HApplication.getInstance().uploadRegistrationId(HApplication.getInstance().push_regestion_id);
+                HApplication.getInstance().uploadRegistrationId(HApplication.getInstance().push_regestion_id);
             }
         }
 

@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.core.framework.net.NetworkWorker;
+import com.core.framework.store.sharePer.PreferencesUtils;
 import com.core.framework.util.DialogUtil;
 import com.paulz.carinsurance.R;
 import com.paulz.carinsurance.base.BaseFragment;
@@ -221,6 +222,7 @@ public class UserCenterFragment extends BaseFragment {
     private void initData() {
         DialogUtil.showDialog(lodDialog);
         ParamBuilder params = new ParamBuilder();
+
         NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_USER_INFO), new NetworkWorker.ICallback() {
             @Override
             public void onResponse(int status, String result) {
