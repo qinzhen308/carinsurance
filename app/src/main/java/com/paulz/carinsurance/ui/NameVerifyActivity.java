@@ -141,7 +141,7 @@ public class NameVerifyActivity extends BaseActivity {
         if (data == null) {
             return;
         }
-        if(!data.authenticate_status.equals("0")){
+        if(!AppUtil.isNull(data.authenticate_status)&&!data.authenticate_status.equals("0")){
             etName.setText(data.authenticate_name==null?"":data.authenticate_name);
             etId.setText(data.authenticate_sfz==null?"":data.authenticate_sfz);
             Image13Loader.getInstance().loadImage(AppUrls.getInstance().IMG_AUTHEIMG+data.authenticate_fimg,ivImg1);
