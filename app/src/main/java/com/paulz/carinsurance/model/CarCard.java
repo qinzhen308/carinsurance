@@ -8,6 +8,7 @@ public class CarCard {
     public final String KEY_VIN="车辆识别代号";
     public final String KEY_ENGINE="发动机号码";
     public final String KEY_REG_DATE="注册日期";
+    public final String KEY_CAR_NUMBER="号牌号码";
 //    public final String KEY_REG_DATE="发证日期";
 
     public Msg message;
@@ -55,6 +56,14 @@ public class CarCard {
         if(cardsinfo==null)return "";
         for(Item item:cardsinfo[0].items){
             if(KEY_ENGINE.equals(item.desc))return item.content;
+        }
+        return "";
+    }
+
+    public String getCarNumber(){
+        if(cardsinfo==null)return "";
+        for(Item item:cardsinfo[0].items){
+            if(KEY_CAR_NUMBER.equals(item.desc))return item.content;
         }
         return "";
     }

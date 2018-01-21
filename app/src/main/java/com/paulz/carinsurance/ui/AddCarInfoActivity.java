@@ -103,10 +103,14 @@ public class AddCarInfoActivity extends BaseActivity {
 
     OCRDecoder ocrDecoder;
 
+    public static boolean isScanVin=false;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        isScanVin=false;
         setExtra();
         initView();
         loadData();
@@ -141,6 +145,7 @@ public class AddCarInfoActivity extends BaseActivity {
         modelId = "";
         car_mode = "";
         btnCarType.setText("");
+        isScanVin=true;
     }
 
 
@@ -409,6 +414,8 @@ public class AddCarInfoActivity extends BaseActivity {
                 String vin = tvCarCode.getText().toString().trim();
                 if (AppUtil.isNull(vin)) {
                     AppUtil.showToast(getApplicationContext(), "请先通过vin码查询车型");
+                }else if(isScanVin){
+                    AppUtil.showToast(getApplicationContext(),"请先通过vin码查询车型");
                 } else {
                     SelectCarModelActivity.invoke(this, vin, btnRegistDate.getText().toString().trim(), false, true, true);
                 }
@@ -612,6 +619,7 @@ public class AddCarInfoActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         SelectCarModelActivity.vinEtCache = "";
+        isScanVin=false;
         super.onDestroy();
     }
 

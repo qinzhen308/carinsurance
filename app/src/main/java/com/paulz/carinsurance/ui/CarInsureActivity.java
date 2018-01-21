@@ -130,9 +130,12 @@ public class CarInsureActivity extends BaseActivity {
 
     OCRDecoder ocrDecoder;
 
+    public static boolean isScanVin=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        isScanVin=false;
         id = getIntent().getStringExtra("extra_id");
         cid = getIntent().getStringExtra("extra_cid");
         initView();
@@ -168,6 +171,16 @@ public class CarInsureActivity extends BaseActivity {
         model="";
         modelid="";
         btnCarType.setText("");
+
+        String carnumber=card.getCarNumber();
+        if(!AppUtil.isNull(carnumber)&&carnumber.length()>2){
+            tvCarId.setText(carnumber.substring(0,2));
+            etCarNumber.setText(carnumber.substring(2,carnumber.length()));
+            checkBox.setChecked(false);
+        }else {
+            checkBox.setChecked(true);
+        }
+        isScanVin=true;
     }
 
 
@@ -197,6 +210,8 @@ public class CarInsureActivity extends BaseActivity {
             case R.id.btn_car_type:
                 String vin=btnCarCode.getText().toString().trim();
                 if(AppUtil.isNull(vin)){
+                    AppUtil.showToast(getApplicationContext(),"请先通过vin码查询车型");
+                }else if(isScanVin){
                     AppUtil.showToast(getApplicationContext(),"请先通过vin码查询车型");
                 }else {
                     SelectCarModelActivity.invoke(this, vin, btnRegistDate.getText().toString().trim(),true,true,true);
@@ -719,6 +734,7 @@ public class CarInsureActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         SelectCarModelActivity.vinEtCache="";
+        isScanVin=false;
         super.onDestroy();
     }
 

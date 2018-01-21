@@ -201,19 +201,38 @@ public class SelectCarModelActivity extends BaseActivity {
                 resultDate=date;
                 setResultVin();
                 if (!isFinishing()) DialogUtil.dismissDialog(lodDialog);
-                if (status == 200) {
-                    BaseObject<PageData> object = GsonParser.getInstance().parseToObj(result, PageData.class);
-                    if (object != null && object.status == BaseObject.STATUS_OK && object.data != null&&object.data.data!=null) {
-                        mAdapter.setList(object.data.data.list);
-                        mAdapter.notifyDataSetChanged();
-                        if(mAdapter.getCount()!=0){
-//                            setResultVin();
-                        }
 
-                    } else {
-                        mAdapter.setList(new ArrayList<CarModeInfo>());
-                        mAdapter.notifyDataSetChanged();
+                if (status == 200) {
+                    if(getIntent().getBooleanExtra("is_customer",false)){
+                        BaseObject<PageDataInner> object = GsonParser.getInstance().parseToObj(result, PageDataInner.class);
+                        if (object != null && object.status == BaseObject.STATUS_OK && object.data!=null) {
+                            mAdapter.setList(object.data.list);
+                            mAdapter.notifyDataSetChanged();
+                            if(mAdapter.getCount()!=0){
+//                            setResultVin();
+                            }
+                            CarInsureActivity.isScanVin=false;
+
+                        } else {
+                            mAdapter.setList(new ArrayList<CarModeInfo>());
+                            mAdapter.notifyDataSetChanged();
+                        }
+                    }else {
+                        BaseObject<PageData> object = GsonParser.getInstance().parseToObj(result, PageData.class);
+                        if (object != null && object.status == BaseObject.STATUS_OK && object.data != null&&object.data.data!=null) {
+                            mAdapter.setList(object.data.data.list);
+                            mAdapter.notifyDataSetChanged();
+                            if(mAdapter.getCount()!=0){
+//                            setResultVin();
+                            }
+                            AddCarInfoActivity.isScanVin=false;
+
+                        } else {
+                            mAdapter.setList(new ArrayList<CarModeInfo>());
+                            mAdapter.notifyDataSetChanged();
+                        }
                     }
+
                 }
             }
         }, requester, DESUtil.SECRET_DES);
