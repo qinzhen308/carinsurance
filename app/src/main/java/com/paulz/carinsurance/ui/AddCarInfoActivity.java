@@ -415,7 +415,8 @@ public class AddCarInfoActivity extends BaseActivity {
                 if (AppUtil.isNull(vin)) {
                     AppUtil.showToast(getApplicationContext(), "请先通过vin码查询车型");
                 }else if(isScanVin){
-                    AppUtil.showToast(getApplicationContext(),"请先通过vin码查询车型");
+//                    AppUtil.showToast(getApplicationContext(),"请先通过vin码查询车型");
+                    SelectCarModelActivity.invoke(this, tvCarCode.getText().toString().trim(), btnRegistDate.getText().toString().trim(), false, false, false);
                 } else {
                     SelectCarModelActivity.invoke(this, vin, btnRegistDate.getText().toString().trim(), false, true, true);
                 }
