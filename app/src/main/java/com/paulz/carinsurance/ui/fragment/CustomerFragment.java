@@ -342,6 +342,10 @@ public class CustomerFragment extends BaseListFragment implements PullToRefreshB
 
     @NeedsPermission(Manifest.permission.CAMERA)
     void showCallPhone(String phone){
+        if(AppUtil.isNull(phone)){
+            AppUtil.showToast(getActivity(),"请先设置客户手机号码");
+            return;
+        }
         AppUtil.callTo(getActivity(),phone);
     }
 
