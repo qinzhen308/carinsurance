@@ -111,8 +111,21 @@ public class UserLoginActivity extends BaseActivity implements
 		etCaptcha = (EditText) findViewById(R.id.et_captcha);
 //		mTvChatLogin = (TextView) findViewById(R.id.login_chatTv);
 //		mTvQQLogin = (TextView) findViewById(R.id.login_qqTv);
-		getCaptcha();
-		
+		if(getIntent().getBooleanExtra("needRefreshToken",true)){
+			HApplication.getInstance().loadToken(new ICallback() {
+				@Override
+				public void onResponse(int status, String result) {
+					if (status==200){
+						getCaptcha();
+					}else {
+						AppUtil.showTaoToast(getApplication(),result);
+					}
+				}
+			});
+		}else {
+			getCaptcha();
+		}
+
 	}
 
 
@@ -224,7 +237,20 @@ public class UserLoginActivity extends BaseActivity implements
 			mEditPassword.setText("");
 			mTvPasswordCancel.setVisibility(View.GONE);
 		} else if(paramView==ivCaptcha){
-			getCaptcha();
+			if(getIntent().getBooleanExtra("needRefreshToken",true)){
+				HApplication.getInstance().loadToken(new ICallback() {
+					@Override
+					public void onResponse(int status, String result) {
+						if(status==200){
+							getCaptcha();
+						}else {
+							AppUtil.showToast(getApplication(),result);
+						}
+					}
+				});
+			}else {
+				getCaptcha();
+			}
 		} else {
 			super.onClick(paramView);
 		}
@@ -505,6 +531,12 @@ public class UserLoginActivity extends BaseActivity implements
 
 	public static void invoke(Activity context) {
 		Intent intent = new Intent(context, UserLoginActivity.class);
+		context.startActivity(intent);
+	}
+
+	public static void invoke(Activity context,boolean needRefreshToken) {
+		Intent intent = new Intent(context, UserLoginActivity.class);
+		intent.putExtra("needRefreshToken",needRefreshToken);
 		context.startActivity(intent);
 	}
 

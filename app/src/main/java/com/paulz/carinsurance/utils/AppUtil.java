@@ -1217,6 +1217,10 @@ public class AppUtil {
 			AppUtil.showToast(context, "您禁用了拨打电话的权限！");
 			return;
 		}
+		if(AppUtil.isNull(phone)){
+			AppUtil.showToast(context, "暂无号码");
+			return;
+		}
 		Intent intentPhone = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"
 				+ phone));
 		intentPhone.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

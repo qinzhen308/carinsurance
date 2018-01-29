@@ -41,7 +41,7 @@ public class LaunchActivity extends Activity{
 					if(AppStatic.getInstance().isLogin && !AppUtil.isNull(HApplication.getInstance().session_id)){//已经登录了
 						MainActivity.invoke(LaunchActivity.this);
 					}else {
-						UserLoginActivity.invoke(LaunchActivity.this);
+						UserLoginActivity.invoke(LaunchActivity.this,false);
 					}
 				}
 				finish();

@@ -98,7 +98,7 @@ public class GuideActivity extends BaseActivity {
 			MainActivity.invoke(this);
 
 		}else {
-			UserLoginActivity.invoke(this);
+			UserLoginActivity.invoke(this,false);
 		}
 		PreferencesUtils.putInteger("current_app_vison", HApplication.getInstance().getVersionCode());
 		finish();

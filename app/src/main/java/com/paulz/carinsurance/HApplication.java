@@ -144,6 +144,35 @@ public class HApplication extends MyApplication {
 
 	}
 
+	public void loadToken(final NetworkWorker.ICallback callback){
+		ParamBuilder params=new ParamBuilder();
+		params.clear();
+		params.append("sessionid",session_id);
+
+		NetworkWorker.getInstance().get(APIUtil.parseGetUrlHasMethod(params.getParamList(), AppUrls.getInstance().URL_GET_TOKEN), new NetworkWorker.ICallback() {
+			@Override
+			public void onResponse(int status, String result) {
+				JSONObject object= null;
+				try {
+					object = new JSONObject(result);
+					if(object.optInt("status")==1){
+						String tk=object.optJSONObject("data").optString("token");
+						token=DESUtil.decrypt(tk,DESUtil.SECRET_DES_KEY);
+						LogUtil.d("---token="+token);
+						callback.onResponse(200,"");
+					}else {
+						callback.onResponse(404,"token获取失败，请重新启动app");
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					callback.onResponse(404,"token获取失败，请重新启动app");
+				}
+
+			}
+		});
+
+	}
+
 
 	public void refreshSessionid(){
 		session_id= UUID.randomUUID().toString();

@@ -110,8 +110,8 @@ public class MainActivity extends BaseFragmentActivity implements
 		if(intent!=null){
 			if(intent.getBooleanExtra("is_expired",false)){
 				HApplication.getInstance().refreshSessionid();
-				HApplication.getInstance().loadToken();
-				UserLoginActivity.invoke(this);
+//				HApplication.getInstance().loadToken();
+				UserLoginActivity.invoke(this,true);
 				finish();
 			}else {
 				handleAction(intent);
